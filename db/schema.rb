@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2024_04_15_102445) do
   end
 
   create_table "admins", force: :cascade do |t|
+    #sign_up機能がないため、default設定してみました。dbにもデータ保存済み
     t.string "email", default: "aaa@aaa", null: false
     t.string "encrypted_password", default: "aaaaaa", null: false
     t.string "reset_password_token"
