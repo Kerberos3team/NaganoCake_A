@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :customers
 
-  root to: "homes#top"
+  root to: "public/homes#top"
 
-  get 'about' => "homes#about", as: "about"
+  get 'about' => "public/homes#about", as: "about"
 
   resources :addresses, only: [:create, :update, :destroy, :index, :edit]
   resources :cart_items, only: [:index, :create, :update, :destroy]
