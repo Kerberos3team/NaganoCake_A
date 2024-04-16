@@ -1,2 +1,9 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3>配送先編集</h3>
+    <%= render 'form', address: @address %>
+    <div class="active">
+      <%= f.submit "変更内容を保存" class: "col-md-2 btn-lg btn-success pull-right" %>
+    </div>
+  </div>
+</div>

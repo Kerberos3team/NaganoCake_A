@@ -2,6 +2,9 @@
   <div class="row">
     <h3>配送先登録・一覧</h3>
     <%= render 'form', address: @address %>
+    <div class="row">
+      <%= f.submit "新規登録", class: "col-md-2 btn-lg btn-success pull-right" %>
+    </div>
   </div>
   <div class="row">
     <table class="table">
