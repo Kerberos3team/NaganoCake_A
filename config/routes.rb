@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'customers/unsubscribe'
   patch 'customers/withdraw'
 
+
+
   namespace :admin do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
