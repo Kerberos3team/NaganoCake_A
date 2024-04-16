@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_15_102445) do
+ActiveRecord::Schema.define(version: 2024_04_15_042709) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,9 +50,8 @@ ActiveRecord::Schema.define(version: 2024_04_15_102445) do
   end
 
   create_table "admins", force: :cascade do |t|
-    #sign_up機能がないため、default設定してみました。dbにもデータ保存済み
-    t.string "email", default: "aaa@aaa", null: false
-    t.string "encrypted_password", default: "aaaaaa", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

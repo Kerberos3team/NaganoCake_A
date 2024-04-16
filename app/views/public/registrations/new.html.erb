@@ -14,7 +14,7 @@
     
       <div class="col-lg-3">
         <%= f.label :"(名)" %><br />
-        <%= f.text_field :first_name, autofocus: true, placeholder: "道子" %>
+        <%= f.text_field :first_name, placeholder: "道子" %>
       </div>
     </div>
     
@@ -22,19 +22,19 @@
       <label class="col-lg-3">フリガナ</label>
       <div class="col-lg-3">
         <%= f.label :"(セイ)" %><br />
-        <%= f.text_field :last_name_kana, autofocus: true, placeholder: "レイワ" %>
+        <%= f.text_field :last_name_kana, placeholder: "レイワ" %>
       </div>
       
       <div class="col-lg-3">
         <%= f.label :"(メイ)" %><br />
-        <%= f.text_field :first_name_kana, autofocus: true, placeholder: "ミチコ" %>
+        <%= f.text_field :first_name_kana, placeholder: "ミチコ" %>
       </div>
     </div>
     
     <div class="row">
       <label class="col-lg-3">メールアドレス</label>
       <div class="col-lg-3">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com" %>
       </div>
     </div>
     
@@ -42,21 +42,21 @@
       <%#時間あったら郵便番号で検索のやつ入れる？%>
       <label class="col-lg-3">郵便番号（ハイフンなし）</label>
       <div class="col-lg-3">
-        <%= f.text_field :postal_code, autofocus: true, placeholder: "000000" %>
+        <%= f.text_field :postal_code, placeholder: "000000" %>
       </div>
     </div>
     
     <div class="row">
       <label class="col-lg-3">住所</label>
       <div class="col-lg-3">
-        <%= f.text_field :address, autofocus: true,:size=>"60", placeholder: "東京都渋谷区代々木神薗町0-0" %>
+        <%= f.text_field :address,:size=>"60", placeholder: "東京都渋谷区代々木神薗町0-0" %>
       </div>
     </div>
   
   　<div class="row">
       <label class="col-lg-3">電話番号（ハイフンなし）</label>
       <div class="col-lg-3">
-        <%= f.text_field :telephone_number, autofocus: true, placeholder: "0000000000" %>
+        <%= f.text_field :telephone_number, placeholder: "0000000000" %>
       </div>
     </div>
   

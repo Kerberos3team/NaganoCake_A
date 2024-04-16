@@ -7,11 +7,12 @@
     <%= csp_meta_tag %>
 
     <script src="https://kit.fontawesome.com/867c591370.js" crossorigin="anonymous"></script>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
     <%= yield %>
   </body>
 </html>
