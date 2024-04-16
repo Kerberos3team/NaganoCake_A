@@ -6,9 +6,9 @@
   <div class="row">
     <% @items.each do |item| %>
      <%= link_to item_path(item), local: true do %>
-        <div class="col-2 table-hover">
+        <div class="col-2 link-opacity-50-hover">
           <%= image_tag item.image, size: "160×90" %>
-          <h3><%= item.name %></h3>
+          <p class="font-weight-bold"><%= item.name %></p>
           <p>￥<%= item.with_tax_price %></p>
         </div>
       <% end %>

@@ -4,14 +4,15 @@
         <%= image_tag @item.image, size: '200x200' %>
     </div>
 
-    <h2><%= @item.name %></h2>
-    <p><%= @item.introduction %></p>
-    <p><strong>￥<%= @item.price_with_tax %></strong>(税込)</p>
-    <% form_with model: [:admin, @cart_item ], local: true do |f| %>
-      <%= f.select "個数選択", :amount, *[1..10] %>
-      <%= f.hidden_field :item_id, :value => @item.id %>
-      <%= f.submit "カートに入れる" %>
-    <% end %>
-
+    <div class="col">
+      <h2><%= @item.name %></h2>
+      <p><%= @item.introduction %></p>
+      <p><strong>￥<%= @item.with_tax_price %></strong>(税込)</p>
+      <%= form_with model: @cart_item, local: true, class: "form-inline" do |f| %>
+        <%= f.select :amount, *[1..10], {include_blank: "個数選択"}, class: 'custom-select' %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      <% end %>
+    </div>
   </div>
 </div>
