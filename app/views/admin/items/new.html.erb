@@ -1,2 +1,27 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h2>商品新規登録</h2>
+
+<%= form_with model: @item, local: true do |f| %>
+
+<div class="field">
+  <%= f.label "商品画像" %>
+  <%= f.file_field :image %>
+</div>
+
+<div class="field">
+  <%= f.label "商品画像" %>
+  <%= f.file_field :image %>
+</div>
+
+<div class="field">
+  <%= f.label "商品画像" %>
+  <%= f.file_field :image %>
+</div>
+
+<div class="field">
+  <%= f.label "商品画像" %>
+  <%= f.file_field :image %>
+</div>
+
+<%= f.submit "商品を登録する", class: "btn btn-success submit-btn" %>
+
+<% end %>
