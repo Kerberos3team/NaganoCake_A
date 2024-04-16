@@ -1,7 +1,13 @@
-<h2>ジャンル編集</h2>
+<div class="container p-2">
+  <h2>ジャンル編集</h2>
 
-<%= form_with model: @genre, url: admin_genre_path, method: :patch, local: true do |f| %>
-  <div class="">ジャンル名</div>
-  <%= f.text_field :name, class: "genre-text-field" %>
-  <%= f.submit "変更を保存", class: "submit-btn" %>
-<% end %>
+  <%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
+    <div class="row py-4">
+      <div class="form">
+        <%= f.label "ジャンル名", class: "form_label" %>
+        <%= f.text_field :name, class: "form_control genre-text-field ml-5" %>
+      </div>
+      <%= f.submit "変更を保存", class: "btn btn-success submit-btn ml-5" %>
+    </div>
+  <% end %>
+</div>
