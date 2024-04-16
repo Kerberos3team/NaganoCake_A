@@ -1,4 +1,4 @@
-<%= form_with model: @item, local: true do |f| %>
+<%= form_with model: [:admin, item ], method: :post, local: true do |f| %>
   <div class="row">
     <table class="col-md-6 mx-auto">
       <tr class="form-group">
@@ -27,12 +27,12 @@
       </tr>
 
       <tr class="form-group">
-        <td><%= f.label "販売ステータス" %></td>
+        <td><%= f.label :is_active, "販売ステータス" %></td>
         <td>
-        <%= f.radio_button :status, :true, checked: true %>
-        <%= f.label :status, "販売中", {value: :true, style: "display: inline-block;"} %>
-        <%= f.radio_button :status, :false %>
-        <%= f.label :status, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+        <%= f.radio_button :is_active, :true, checked: true %>
+        <%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+        <%= f.radio_button :is_active, :false %>
+        <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
         </td>
       </tr>
     </table>
