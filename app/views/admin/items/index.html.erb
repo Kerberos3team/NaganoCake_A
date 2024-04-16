@@ -1,5 +1,8 @@
 <div class="container">
   <h2>商品一覧</h2>
+  <div class="text-right p-4">
+    <%= link_to "新規商品登録へ", new_admin_item_path, class: "btn btn-success" %>
+  </div>
 
   <div class="row">
     <table class="table">
@@ -22,8 +25,8 @@
           </th>
         </tr>
       </thead>
-      <% @items.each do |item| %>
-        <tbody>
+      <tbody>
+        <% @items.each do |item| %>
           <tr>
             <th>
               <%= item.id %>
@@ -33,7 +36,7 @@
               <%= link_to item.name, admin_item_path(item) %>
             </th>
             <th>
-              <%= item.price %>
+              <%= item.price %>円
             </th>
             <th>
               <%= item.genre.name %>
@@ -46,8 +49,8 @@
               <% end %>
             </th>
           </tr>
-        </tbody>
-      <% end %>
+        <% end %>
+      </tbody>
     </table>
   </div>
 

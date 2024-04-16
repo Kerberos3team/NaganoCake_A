@@ -11,6 +11,8 @@ class Item < ApplicationRecord
   validates :genre_id, presence: true
   validates :is_active, inclusion: {in: [true, false]}
 
+
+#税込価格の計算
   def price_with_tax
     tax_included_price = self.price * 1.1
     return tax_included_price.to_i
