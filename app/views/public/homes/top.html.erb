@@ -43,6 +43,20 @@
         </div>
       </div>
 
+      <!--新着商品-->
+      <div>
+        <h2>新着商品</h2>
+        <div class="d-flex justify-content-between">
+          <%= @items. each do |item| %>
+          <div class="card p-2">
+            <%= image_tag 'top-image', size: '160x160' %>
+            <p><%= item.name %></p>
+            <p><%= item.price %></p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
   　　<!--新着商品-->
       <div>
         <h2>新着商品</h2>
