@@ -13,9 +13,8 @@ class Item < ApplicationRecord
 
 
 #税込価格の計算
-  def price_with_tax
-    tax_included_price = self.price * 1.1
-    return tax_included_price.to_i
+  def with_tax_price
+    (self.price * 1.1).floor
   end
 
 
