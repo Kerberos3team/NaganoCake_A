@@ -1,5 +1,6 @@
 class Public::CartItemsController < ApplicationController
-
+  before_action :authenticate_customer!
+  
   def index
     @cart_items = current_user.cart_items
   end
