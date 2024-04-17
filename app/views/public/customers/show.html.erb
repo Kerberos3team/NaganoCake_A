@@ -28,14 +28,18 @@
           <td><%= @customer.email %></td>
         </tr>
       </table>
-      <div class="d-flex align-items-center">
-        <h3><strong>配送先</strong></h3>
-        <%= link_to "一覧を見る", "#", class: "btn btn-primary ml-3" %>
+      <div class="row d-flex align-items-center">
+        <table>
+          <tr>
+            <th scope="col"><h3><strong>配送先</strong></h3></th>
+            <td class="pl-5"><%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %></td>
+          </tr>
+          <tr>
+            <th scope="col"><h3><strong>注文履歴</strong></h3></th>
+            <td class="pl-5"><%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %></td>
+          </tr>
+        </table>
       </div>
-      <div class="d-flex align-items-center">
-        <h3><strong>注文履歴</strong></h3>
-        <%= link_to "一覧を見る", "#", class:"btn btn-primary ml-3" %>
-      </div> 
     </div>
   </div>
 </div>

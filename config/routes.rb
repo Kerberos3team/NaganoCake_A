@@ -31,7 +31,6 @@ Rails.application.routes.draw do
   get 'orders/thanks'
 
 
-
   namespace :admin do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
