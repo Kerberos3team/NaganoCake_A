@@ -1,2 +1,89 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container d-flex flex-row">
+  <div class="row">
+
+    <!--ジャンル検索-->
+    <div class="col-3">
+      <table class="table">
+        <thead>
+          <tr  class="table-light">
+            <th>ジャンル</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>ケーキ</td>
+            </tr>
+            <tr>
+              <td>プリン</td>
+            </tr>
+            <tr>
+              <td>焼き菓子</td>
+            </tr>
+            <tr>
+              <td>キャンディ</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-8">
+
+  　<!--トップ画像-->
+      <div class="card">
+        <%= image_tag 'top-image', class: "" %>
+        <div class="card-img-overlay d-flex">
+          <div class="text-white m-auto">
+            <h1>ようこそ、<strong>ながのCAKE</strong>へ！</h1>
+            <p>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--新着商品-->
+      <div>
+        <h2>新着商品</h2>
+        <div class="d-flex justify-content-between">
+          <%= @items. each do |item| %>
+          <div class="card p-2">
+            <%= image_tag 'top-image', size: '160x160' %>
+            <p><%= item.name %></p>
+            <p><%= item.price %></p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+  　　<!--新着商品-->
+      <div>
+        <h2>新着商品</h2>
+        <div class="d-flex justify-content-between">
+          <div class="card p-2">
+            <%= image_tag 'top-image', size: '160x160' %>
+            <p>商品名</p>
+            <p>値段</p>
+          </div>
+          <div class="card p-2">
+            <%= image_tag 'top-image', size: '160x160' %>
+            <p>商品名</p>
+            <p>値段</p>
+          </div>
+          <div class="card p-2">
+            <%= image_tag 'top-image', size: '160x160' %>
+            <p>商品名</p>
+            <p>値段</p>
+          </div>
+          <div class="card p-2">
+            <%= image_tag 'top-image', size: '160x160' %>
+            <p>商品名</p>
+            <p>値段</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

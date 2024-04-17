@@ -1,23 +1,34 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :customers
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+  
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
 
   root to: "public/homes#top"
 
   get 'about' => "public/homes#about", as: "about"
 
-  resources :addresses, only: [:create, :update, :destroy, :index, :edit]
-  resources :cart_items, only: [:index, :create, :update, :destroy]
-  delete "cart_items/destroy_all" => "cart_items#destroy_all"
+  scope module: :public do
+    resources :addresses, only: [:create, :update, :destroy, :index, :edit]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :items, only: [:index, :show]
+    resources :orders, only: [:new, :index, :show, :create]
+  end
 
-  resources :items, only: [:index, :show]
-  resources :orders, only: [:new, :index, :show, :create]
+  delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
+
+
   post 'orders/confirm'
   get 'orders/thanks'
 
-  get "customers/my_page" => "customers#show"
-  get "customers/information/edit" => "customers#edit"
-  patch "customers/information" => "customers#update"
+#controllerのファイルの階層記載
+  get "customers/my_page" => "public/customers#show", as: "customers/my_page"
+  get "customers/information/edit" => "public/customers#edit"
+  patch "customers/information" => "public/customers#update"
   get 'customers/unsubscribe'
   patch 'customers/withdraw'
 
