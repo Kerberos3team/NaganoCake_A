@@ -12,12 +12,16 @@ Rails.application.routes.draw do
 
   get 'about' => "public/homes#about", as: "about"
 
-  resources :addresses, only: [:create, :update, :destroy, :index, :edit]
-  resources :cart_items, only: [:index, :create, :update, :destroy]
-  delete "cart_items/destroy_all" => "cart_items#destroy_all"
+  scope module: :public do
+    resources :addresses, only: [:create, :update, :destroy, :index, :edit]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :items, only: [:index, :show]
+    resources :orders, only: [:new, :index, :show, :create]
+  end
 
-  resources :items, only: [:index, :show]
-  resources :orders, only: [:new, :index, :show, :create]
+  delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
+
+
   post 'orders/confirm'
   get 'orders/thanks'
 
