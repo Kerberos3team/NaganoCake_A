@@ -1,5 +1,7 @@
 <div class="container">
   <div class="row">
-    <h2><</h2>
+    <h2><%= @cutomer.full_name %>さんの会員情報編集</h2>
+    <%# formとtable相性悪い。formでtable囲む%>
+    <%= form_with model :@customer, url :admin_customer_path(@customer), method: :patch, local: true do |f| 
   </div>
 </div>
