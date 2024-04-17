@@ -22,22 +22,41 @@
             <td>
               <%= image_tag cart_item.item.image, size: '48x27', style: "object-fit: cover;" %><%= cart_item.item.name %>
             </td>
-            <td><%= cart_item.item.with_tax_price %></td>
+            <td>
+              ￥<%= number_with_precision(cart_item.item.with_tax_price, precision: 0, delimiter: ',') %>
+              <!--裏で合計金額の計算-->
+              <% @total_price += cart_item.subtotal %>
+            </td>
             <td>
               <%= form_with model: cart_item, url: cart_item_path(cart_item.id) , local: true do |f| %>
                 <%= f.select :amount, *[1..10] %>
                 <%= f.submit "変更" , class: "ml-5 btn btn-success" %>
               <% end %>
             </td>
-            <td><%= cart_item.subtotal %></td>
-            <td><%= link_to "削除", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
+            <td>￥<%= number_with_precision(cart_item.subtotal, precision: 0, delimiter: ',') %></td>
+            <td><%= link_to "この商品を削除", cart_item_path(cart_item), method: :delete, class: "btn btn-outline-danger" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
-
-
-
-
   </div>
+
+  <div class="m-4 d-flex justify-content-between">
+    <div>
+      <%= link_to "←買い物を続ける", items_path, class: "btn btn-outline-primary", local: true %>
+    </div>
+    <div>
+      <table class="table table-bordered">
+        <tr><td>合計金額</td></tr>
+        <tr>
+          <td>
+            ￥<%= number_with_precision(@total_price, delimiter: ',') %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+
 </div>

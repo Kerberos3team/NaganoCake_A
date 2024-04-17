@@ -21,7 +21,7 @@
         </tr>
         <tr>
           <td>税込価格<br>(税抜価格)</td>
-          <td><%= @item.with_tax_price %>円<br>(<%= @item.price %>円)</td>
+          <td><%= number_with_precision(@item.with_tax_price, precision: 0, delimiter: ',') %>円<br><%= number_with_precision(@item.price, precision: 0, delimiter: ',') %>円</td>
         </tr>
         <tr>
           <td>販売ステータス</td>
