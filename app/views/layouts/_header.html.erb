@@ -29,5 +29,24 @@
         </div>
       </div>
     </div>
+    <% if admin_signed_in? %>
+      <div class="search row ml-auto">
+        <%= form_with (model: [ :admin, @search ]) , method: :get, local: true do |f| %>
+          <%= f.text_field :word %>
+          <%= form.radio_button :search_obj %>
+          <%= form.label :customers, "ユーザー" %>
+          <%= form.radio_button :search_obj %>
+          <%= form.label :items, "商品" %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="seach row ml-auto">
+        <%= form_with model: @search do |f| %>
+          <%= f.text_field :word %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </header>

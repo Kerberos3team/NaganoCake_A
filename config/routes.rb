@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
 
   get 'about' => "public/homes#about", as: "about"
+
+  get "search" => "searches#search"
+  get "admin/search" => "admin/searches#search"
 
   delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
 
