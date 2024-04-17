@@ -1,34 +1,43 @@
+<% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="container">
+  
   <div class="row">
     <h3>配送先登録・一覧</h3>
     <%= render 'form', address: @address %>
-    <div class="row">
-      <%= f.submit "新規登録", class: "col-md-2 btn-lg btn-success pull-right" %>
-    </div>
+    
   </div>
-  <div class="row">
-    <table class="table">
-      <% @address.each do |a| %>
+  <div class="row mt-3">
+    
+    <table class="table table-bordered border-dark">
       <thead>
-        <tr>
+        <tr class="table-active">
           <th>郵便番号</th>
           <th>住所</th>
           <th>宛名</th>
-          <th></th>
+          <th colspan="2"></th>
         </tr>
       </thead>
       <tbody>
+        <% @addresses.each do |address| %>
         <tr>
-          <td><%= a.postal_code %></td>
-          <td><%= a.address %></td>
-          <td><%= a.name %></td>
-          <td>
-            <%= button_to "編集する",edit_address_path(a), class: "btn btn-success" %>
-            <%= button_to "削除する",address_path(a), method: :delete ,class: "btn btn-danger" %>
+          <td><%= address.postal_code %></td>
+          <td><%= address.address %></td>
+          <td><%= address.name %></td>
+          <td class="d-flex justify-content-center ">
+            <%= button_to "編集する",edit_address_path(address.id), class: "btn btn-success mr-3" %>
+            <%= button_to "削除する",address_path(address.id), method: :delete ,class: "btn btn-danger " %>
           </td>
         </tr>
+        <% end %>
       </tbody>
-      <% end %>
     </table>
   </div>
 </div>

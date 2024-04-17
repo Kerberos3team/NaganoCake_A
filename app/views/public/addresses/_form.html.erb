@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <%= form_with (model:address, :url => {:controller => "public/addresses"}) do |f| %>
+  <%= form_with model: address do |f| %>
     <div class="form-group col-md-12">
       <%= f.label :"郵便番号（ハイフンなし）", class: "col-md-3" %>
       <%= f.text_field :postal_code, class: "col-md-4" %>
@@ -11,6 +11,9 @@
     <div class="form-group col-md-12">
       <%= f.label :"氏名", class: "col-md-3" %>
       <%= f.text_field :name, class: "col-md-4" %>
+    </div>
+    <div class="row">
+      <%= f.submit "新規登録", class: "col-md-2 btn-lg btn-success pull-right" %>
     </div>
   <% end %>  
 </div>

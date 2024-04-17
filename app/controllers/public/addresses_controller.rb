@@ -1,5 +1,5 @@
 class Public::AddressesController < ApplicationController
-  #before_action :authenticate_customer!
+  before_action :authenticate_customer!
 
   def index
     @address = Address.new
@@ -13,7 +13,6 @@ class Public::AddressesController < ApplicationController
       redirect_to addresses_path
       flash[:success] = '登録しました。'
     else
-      @address = Address.new
       @addresses = current_customer.addresses
       render 'index'
     end
