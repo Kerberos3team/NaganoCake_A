@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'orders/thanks'
 
 #controllerのファイルの階層記載
-  get "customers/my_page" => "public/customers#show", as: "my_page"
+  get "customers/my_page" => "public/customers#show", as: "customers/my_page"
   get "customers/information/edit" => "public/customers#edit"
   patch "customers/information" => "public/customers#update"
   get 'customers/unsubscribe'
