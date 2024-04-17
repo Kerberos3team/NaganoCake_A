@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   delete "cart_items/destroy_all" => "cart_items#destroy_all"
 
   resources :items, only: [:index, :show]
+    scope module: :public do
   resources :orders, only: [:new, :index, :show, :create]
+    end
   post 'orders/confirm'
   get 'orders/thanks'
 

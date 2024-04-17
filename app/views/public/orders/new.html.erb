@@ -1,2 +1,43 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class="container">
+  <div class="d-flex flex-column">
+
+    <h1>注文情報入力</h1>
+    <div>
+      <h2>支払方法</h2>
+      <div class="row d-flex flex-column">
+        <!--enumを後で日本語化させる-->
+        <%= form_with model: @order do |f| %>
+          <div class="col">
+            <%= f.radio_button :payment_method, "credit_card" %>
+            <%= f.label :payment_method, "クレジットカード" %>
+          </div>
+          <div class="col">
+            <%= f.radio_button :payment_method, "transfer" %>
+            <%= f.label :payment_method, "銀行振込" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div>
+      <h2>お届け先</h2>
+      <div class="row d-flex flex-column">
+        <%= form_with model: @order do |f| %>
+          <div class="col">
+            <%= f.radio_button :あああ, "あああ" %>
+            <%= f.label :あああ, "ご自身の住所" %>
+          </div>
+          <div class="col">
+            <%= f.radio_button :あああ, "あああ" %>
+            <%= f.label :あああ, "登録済み住所から選択" %>
+          </div>
+          <div class="col">
+            <%= f.radio_button :あああ, "あああ" %>
+            <%= f.label :あああ, "新しいお届け先" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+</div>
+</div>
