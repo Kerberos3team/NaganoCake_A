@@ -1,7 +1,7 @@
 class Public::CartItemsController < ApplicationController
 
   def index
-    @cart_items = CartItem.find_all(params[:customer_id])
+    @cart_items = current_user.cart_items
   end
 
   def create
@@ -9,8 +9,7 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.save
       redirect_to cart_items_path
     else
-      @item = Item.find(params[:item_id])
-      render item_path(@item)
+      redirect_to items_path
     end
   end
 

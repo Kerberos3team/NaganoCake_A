@@ -1,18 +1,20 @@
-<div class="container">
+<div class="container p-3">
   <div class="row">
-    <div class="p-4">
-        <%= image_tag @item.image, size: '200x200' %>
+    <div class="col-md-6 p-4">
+      <%= image_tag @item.image, size: '300x300', class: "d-block mx-auto img-fluid" %>
     </div>
 
     <div class="col">
-      <h2><%= @item.name %></h2>
-      <p><%= @item.introduction %></p>
-      <p><strong>￥<%= @item.with_tax_price %></strong>(税込)</p>
-      <%= form_with model: @cart_item, local: true, class: "form-inline" do |f| %>
-        <%= f.select :amount, *[1..10], {include_blank: "個数選択"}, class: 'custom-select' %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.submit "カートに入れる", class: "btn btn-success" %>
-      <% end %>
+      <div class="p-3">
+        <h2 class="mb-2"><%= @item.name %></h2>
+        <p class="mb-5"><%= @item.introduction %></p>
+        <p><strong class="h3">￥<%= @item.with_tax_price %></strong>(税込)</p>
+        <%= form_with model: @cart_item, url: cart_items_path, local: true, class: "form-inline" do |f| %>
+          <%= f.select :amount, *[1..10], {include_blank: "個数選択"}, class: 'custom-select' %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
