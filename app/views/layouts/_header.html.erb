@@ -13,10 +13,11 @@
         </div>
       <div class="col-5">
         <% if admin_signed_in? %>
+        <!--注文一覧のビューとルーティング作る-->
           <div class="d-flex justify-content-end">
-            <%= link_to '商品一覧', items_path, class: "btn btn-light m-2" %>
+            <%= link_to '商品一覧', admin_items_path, class: "btn btn-light m-2" %>
             <%= link_to '会員一覧', admin_customers_path, class: "btn btn-light m-2" %>
-            <%= link_to '注文履歴一覧（ビューとルーティング作る）', orders_path, class: "btn btn-light m-2" %>
+            <%= link_to '注文履歴一覧', orders_path, class: "btn btn-light m-2" %>
             <%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-light m-2" %>
             <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-light m-2" %>
           </div>
