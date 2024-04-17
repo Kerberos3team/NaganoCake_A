@@ -30,12 +30,6 @@ Rails.application.routes.draw do
   post 'orders/confirm'
   get 'orders/thanks'
 
-  get "customers/my_page" => "public/customers#show", as: "customers/my_page"
-  get "customers/information/edit" => "public/customers#edit"
-  patch "customers/information" => "public/customers#update"
-  get 'customers/unsubscribe'
-  patch 'customers/withdraw'
-
 
 
   namespace :admin do
