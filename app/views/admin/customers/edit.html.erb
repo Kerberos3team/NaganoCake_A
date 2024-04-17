@@ -1,7 +1,76 @@
 <div class="container">
   <div class="row">
-    <h2><%= @cutomer.full_name %>さんの会員情報編集</h2>
-    <%# formとtable相性悪い。formでtable囲む%>
-    <%= form_with model :@customer, url :admin_customer_path(@customer), method: :patch, local: true do |f| 
+    <div class="col">
+      <h2><%= @customer.full_name %>さんの会員情報編集</h2>
+      <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
+        <table class="table">
+          <tr><th scope="col">会員ID</th><td><%= @customer.id %></td></tr>
+            <tr>
+              <th scope="col">氏名</th>
+              <td>
+                <div class="field">
+                  <%= f.text_field :last_name %>
+                  <%= f.text_field :first_name %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">フリガナ</th>
+              <td>
+                <div class="field">
+                  <%= f.text_field :last_name_kana %>
+                  <%= f.text_field :first_name_kana %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">郵便番号</th>
+              <td>
+                <div class="field">
+                  <%= f.text_field :postal_code %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">住所</th>
+              <td>
+                <div class="field">
+                  <%= f.text_field :address %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">電話番号</th>
+              <td>
+                <div class="field">
+                  <%= f.text_field :telephone_number %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">メールアドレス</th>
+              <td>
+                <div class="field">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">会員ステータス</th>
+              <td>
+                <%= f.radio_button :is_active, "true" %>
+                <%= f.label :is_active_true, "有効" %>
+                <%= f.radio_button :is_active, "false" %>
+                <%= f.label :is_active_false, "退会" %>
+                
+              </td>
+            </tr>
+            <tr>
+              <th scope="col"></th>
+              <td><%= f.submit '変更を保存', class:"btn btn-success" %></td>
+            </tr>
+        </table>
+      <% end %>
+    </div>
   </div>
 </div>
