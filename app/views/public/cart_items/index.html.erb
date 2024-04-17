@@ -2,7 +2,10 @@
 
   <div class="m-4 d-flex justify-content-between">
     <h2>ショッピングカート</h2>
+    <!--削除ボタンとかはアイコン使ってみてもいいかも-->
+    <div>
     <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger", local: true %>
+    </div>
   </div>
 
   <div class="row">
@@ -50,13 +53,14 @@
         <tr><td>合計金額</td></tr>
         <tr>
           <td>
-            ￥<%= number_with_precision(@total_price, delimiter: ',') %>
+            ￥<%= number_with_precision(@total_price, precision: 0, delimiter: ',') %>
           </td>
         </tr>
       </table>
     </div>
   </div>
-
-
+  <div class="text-center">
+    <%= link_to "購入手続きへ", new_order_path, class: "btn btn-success" %>
+  </div>
 
 </div>
