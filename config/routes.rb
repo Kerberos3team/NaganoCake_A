@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :orders, only: [:new, :index, :show, :create]
+    get "customers/my_page" => "customers#show", as: "customers_my_page"
+    get "customers/information/edit" => "customers#edit"
+    patch "customers/information" => "customers#update"
+    get 'customers/unsubscribe'
+    patch 'customers/withdraw'
   end
 
   delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
@@ -25,7 +30,6 @@ Rails.application.routes.draw do
   post 'orders/confirm'
   get 'orders/thanks'
 
-#controllerのファイルの階層記載
   get "customers/my_page" => "public/customers#show", as: "customers/my_page"
   get "customers/information/edit" => "public/customers#edit"
   patch "customers/information" => "public/customers#update"
