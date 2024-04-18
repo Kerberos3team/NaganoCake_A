@@ -15,7 +15,8 @@
             <p>数量を選択してください。</p>
             </div>
             <%= f.select :amount, *[1..10], {include_blank: "個数選択"}, class: 'custom-select' %>個<br>
-            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.hidden_field :item_id, value: @item.id %>
+            <%= f.hidden_field :customer_id, value: current_customer.id %>
             <%= f.submit "カートに入れる", class: "mt-4 btn btn-success" %>
           </div>
         <% end %>
