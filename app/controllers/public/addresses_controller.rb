@@ -10,7 +10,7 @@ class Public::AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
     if @address.save
-      redirect_to addresses_path, info: "配送先登録しました。"
+      redirect_to addresses_path, success: "配送先登録しました。"
     else
       @addresses = current_customer.addresses
       render 'index'
