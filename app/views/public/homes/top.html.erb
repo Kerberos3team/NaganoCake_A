@@ -1,7 +1,7 @@
-<div class="container d-flex flex-row px-5">
-
+<div class="container">
+  <div class="row">
     <!--ジャンル検索-->
-    <div class="col-3">
+    <div class="col-2">
       <table class="table">
         <thead>
           <tr  class="table-light">
@@ -25,7 +25,7 @@
       </table>
     </div>
 
-    <div class="col-8">
+    <div class="col-10">
 
   　<!--トップ画像-->
       <div class="card">
@@ -45,19 +45,12 @@
       <!--新着商品-->
       <div class="mt-5 mb-2">
         <h2>新着商品</h2>
-        <div class="d-flex flex-wrap">
-          <% @items.last(4). each do |item| %>
-          <div class="card w-30 m-1 p-2">
-            <%= image_tag item.image, size: '160x160', class: "card-img-top mx-auto " %>
-            <div class="card-body">
-              <p class="card-title"><%= item.name %></p>
-              <p class="card-subtitle">￥<%= item.price %></p>
-            </div>
-          </div>
-          <% end %>
-        </div>
-          <p><%= link_to '全ての商品を見る ▶', items_path %></p>
+        <%= render "public/items/items_index", items: @items %>
+        <p><%= link_to '全ての商品を見る ▶', items_path %></p>
       </div>
 
     </div>
+  </div>
+
+
 </div>
