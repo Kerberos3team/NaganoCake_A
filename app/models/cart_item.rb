@@ -1,6 +1,5 @@
 class CartItem < ApplicationRecord
-  before_action :authenticate_customer!
-  
+
   belongs_to :customer
   belongs_to :item
 
