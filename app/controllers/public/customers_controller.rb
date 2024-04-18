@@ -11,8 +11,13 @@ class Public::CustomersController < ApplicationController
   
   def update
     @customer = Customer.find(current_customer.id)
-    @customer.update(customer_params)
-    redirect_to customers_my_page_path
+    if @customer.update(customer_params)
+      flash[:notice] = "会員情報更新に成功しました。"
+      redirect_to customers_my_page_path
+    else
+      flash.now[:alert] = "会員情報更新に失敗しました。"
+      render 'edit'
+    end  
   end  
 
   def unsubscribe
