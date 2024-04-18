@@ -16,7 +16,7 @@ class Public::OrdersController < ApplicationController
       @order_details.price = cart_item.item.price
       @order_details.amount = cart_item.amount
       @order_details.making_status = 0
-      @order_details.save
+      @order_details.save!
     end
     CartItem.destroy_all
     redirect_to orders_thanks_path
@@ -52,6 +52,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :customer_id, :shopping_cost, :total_payment, :status)
   end
 end

@@ -8,12 +8,12 @@
         <h2>支払方法</h2>
         <div class="row d-flex flex-column">
           <div class="col">
-            <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+            <%= f.radio_button :payment_method, "credit_card" %>
+            <%= f.label :payment_method, "クレジットカード" %>
           </div>
           <div class="col">
-            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-            <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+            <%= f.radio_button :payment_method, "transfer" %>
+            <%= f.label :payment_method, "銀行振込" %>
           </div>
         </div>
       </div>
