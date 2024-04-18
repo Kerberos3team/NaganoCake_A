@@ -16,5 +16,7 @@ class Customer < ApplicationRecord
  validates :address, presence: true
  validates :telephone_number, presence: true
  validates :is_active, inclusion: {in: [true, false]}
+ 
+
 
 end
