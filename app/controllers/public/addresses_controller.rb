@@ -10,8 +10,7 @@ class Public::AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
     if @address.save
-      flash[:notice] = '配送先登録しました。'
-      redirect_to addresses_path
+      redirect_to addresses_path, info: "配送先登録しました。"
     else
       @addresses = current_customer.addresses
       render 'index'
@@ -29,7 +28,7 @@ class Public::AddressesController < ApplicationController
       redirect_to addresses_path
     else
       render "edit"
-    end  
+    end
   end
 
   def destroy
