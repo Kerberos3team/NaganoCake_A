@@ -1,6 +1,6 @@
 <%= form_with model: [:admin, item ], local: true do |f| %>
   <div class="row">
-    <table class="col-md-6 mx-auto">
+    <table class="col-md-6 mx-auto table-borderless">
       <tr class="form-group">
         <td><%= f.label :image, "商品画像" %></td>
         <td><%= f.file_field :image %></td>

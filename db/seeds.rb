@@ -7,28 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #customerデータ作成
-reiwa = Customer.find_or_create_by!(email: "sample@example.com") do |customer|
-  customer.last_name = "令和"
-  customer.first_name = "道子"
-  customer.last_name_kana = "レイワ"
-  customer.first_name_kana = "ミチコ"
-  customer.postal_code = "0000000"
-  customer.address = "東京都渋谷区代々木神薗町0-0"
-  customer.telephone_number = "11111111111"
-  customer.password = "password"
-  customer.is_active = "true"
-end
 
-yamada = Customer.find_or_create_by!(email: "yamada@example.com") do |customer|
-  customer.last_name = "山田"
-  customer.first_name = "花子"
-  customer.last_name_kana = "ヤマダ"
-  customer.first_name_kana = "ハナコ"
-  customer.postal_code = "2222222"
-  customer.address = "東京都渋谷区代々木神薗町0-0"
-  customer.telephone_number = "33333333333"
-  customer.password = "password"
-  customer.is_active = "true"
+15.times do |n|
+  Customer.create!(
+    last_name: "令和#{n + 1}",
+    first_name: "道子#{n + 1}",
+    last_name_kana: "レイワ#{n + 1}",
+    first_name_kana: "ミチコ#{n + 1}",
+    email: "sample#{n + 1}@example.com",
+    postal_code: "0000000",
+    address: "東京都渋谷区代々木神薗町0-0",
+    telephone_number: "11111111111",
+    password: "password",
+    is_active: "true",
+  )
 end
 
 #addressデータ作成
