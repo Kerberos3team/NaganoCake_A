@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     patch 'customers/withdraw'
   end
 
+
   namespace :admin do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
