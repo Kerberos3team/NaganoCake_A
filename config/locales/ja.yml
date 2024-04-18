@@ -4,6 +4,19 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
+      status:
+        waiting: "入金待ち"
+        paid: "入金確認"
+        producting: "製作中"
+        preparing: "発送準備中"
+        sented: "発送済み"
+    order_detail:
+      making_status:
+        impossible: "着手不可"
+        waiting: "製作待ち"
+        producting: "製作中"
+        completion: "製作完了"
+
   activerecord:
     errors:
       messages:
@@ -21,6 +34,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
+    -
     -
     - 1月
     - 2月
@@ -47,6 +61,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
+    -
     -
     - 1月
     - 2月

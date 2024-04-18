@@ -7,12 +7,17 @@
     <div class="col">
       <div class="p-3">
         <h2 class="mb-2"><%= @item.name %></h2>
-        <p class="mb-5"><%= @item.introduction %></p>
-        <p><strong class="h3">￥<%= @item.with_tax_price %></strong>(税込)</p>
+        <p class="mb-5"><%= safe_join(@item.introduction.split("\n"),tag(:br)) %></p>
+        <p><strong class="h3">￥<%= number_with_precision(@item.with_tax_price, precision: 0, delimiter: ',') %></strong>(税込)</p>
         <%= form_with model: @cart_item, url: cart_items_path, local: true, class: "form-inline" do |f| %>
-          <%= f.select :amount, *[1..10], {include_blank: "個数選択"}, class: 'custom-select' %>
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+          <div class="container">
+            <div class="row  mt-4">
+            <p>数量を選択してください。</p>
+            </div>
+            <%= f.select :amount, *[1..10], {include_blank: "個数選択"}, class: 'custom-select' %>個<br>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.submit "カートに入れる", class: "mt-4 btn btn-success" %>
+          </div>
         <% end %>
       </div>
     </div>
