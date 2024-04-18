@@ -5,7 +5,7 @@
     <div>
       <h2>支払方法</h2>
       <div class="row d-flex flex-column">
-        <!--enumを後で日本語化させる-->
+        <!--後でenumの日本語化の記述を反映させる-->
         <%= form_with model: @order do |f| %>
           <div class="col">
             <%= f.radio_button :payment_method, "credit_card" %>
@@ -23,18 +23,39 @@
       <h2>お届け先</h2>
       <div class="row d-flex flex-column">
         <%= form_with model: @order do |f| %>
-          <div class="col">
+          <div class="col mb-4">
             <%= f.radio_button :あああ, "あああ" %>
             <%= f.label :あああ, "ご自身の住所" %>
+            <div>
+              〒 <%= current_customer.postal_code %>
+              <%= current_customer.address %><br>
+              <%= current_customer.last_name %> <%= current_customer.first_name %>
+            </div>
           </div>
           <div class="col">
             <%= f.radio_button :あああ, "あああ" %>
             <%= f.label :あああ, "登録済み住所から選択" %>
+            <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
           </div>
           <div class="col">
             <%= f.radio_button :あああ, "あああ" %>
             <%= f.label :あああ, "新しいお届け先" %>
+            <div>
+              <div>
+                <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+                <%= f.text_field :postal_code, placeholder: "0000000" %>
+              </div>
+              <div>
+                <%= f.label :address, "住所" %>
+                <%= f.text_field :address, placeholder: "東京都渋谷区代々木神薗町0-0" %>
+              </div>
+              <div>
+                <%= f.label :name, "宛名" %>
+                <%= f.text_field :name, placeholder: "令和道子" %>
+              </div>
+            </div>
           </div>
+          <%= f.submit '確認画面へ進む', class: "btn btn-info" %>
         <% end %>
       </div>
     </div>
