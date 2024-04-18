@@ -16,18 +16,18 @@ class Customer < ApplicationRecord
  validates :address, presence: true
  validates :telephone_number, presence: true
  validates :is_active, inclusion: {in: [true, false]}
- 
+
   def full_name
     "#{last_name} #{first_name}"
   end
-  
+
   def full_name_kana
     "#{last_name_kana} #{first_name_kana}"
   end
 
   def self.search_for(content)
-    if search != ""
-      Customer.where('last_name LIKE ? OR first_name LIKE ? OR last_name_kana LIKE ? OR first_name_kana LIKE ?', '%'+content+'%')
+    if content != ""
+      Customer.where('last_name LIKE ? OR first_name LIKE ? OR last_name_kana LIKE ? OR first_name_kana LIKE ?', '%'+content+'%', '%'+content+'%', '%'+content+'%', '%'+content+'%')
     else
       Customer.all
     end

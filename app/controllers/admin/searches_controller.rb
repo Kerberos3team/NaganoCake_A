@@ -3,14 +3,11 @@ class Admin::SearchesController < ApplicationController
 
   def search
     @keyword = params[:keyword]
-    @genre = params[:genre_id]
-    @method = params[:type]
-    if params[:type] === "items"
-      @results = Item.search_for(@keyword, @method)
-    elsif params[:type] === "genre"
-      @results = Item.search_for(@genre, @method)
+    @type = params[:search_obj]
+    if @type == "items"
+      @results = Item.search_for(@keyword).page(params[:page])
     else
-      @results = Customer.search_for(@keyword)
+      @results = Customer.search_for(@keyword).page(params[:page])
     end
   end
 

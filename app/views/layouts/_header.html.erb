@@ -36,31 +36,33 @@
             <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-light m-2" %>
           </div>
         <% end %>
-        <div class="input-group col-6">
-          <input type="text" class="form-control" placeholder="Search...">
-          <button class="btn btn-light" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+
+        <div class="seach text-right pb-2 m-2">
+          <div>
+            <% if admin_signed_in? %>
+              <%= form_with url: admin_search_path, method: :get do |f| %>
+                <%= f.text_field :keyword %>
+                <br>
+                <%= f.radio_button :search_obj, :customers, checked: "checked", value: "customers" %>
+                <%= f.label :customers, "ユーザー" %>
+                <%= f.radio_button :search_obj, :items, value: "items" %>
+                <%= f.label :items, "商品" %>
+                <%= button_tag type: "submit", class: "btn-light" do %>
+                  <i class="fas fa-search"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= form_with url: search_path, method: :get do |f| %>
+                <%= f.text_field :keyword %>
+                <%= button_tag type: "submit", class: "btn-light" do %>
+                  <i class="fas fa-search"></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
+
     </div>
-      <div class="seach row pb-2 m-2">
-        <div class="ml-auto">
-          <% if admin_signed_in? %>
-            <%= form_with url: admin_search_path, method: :get do |f| %>
-              <%= f.text_field :keyword %>
-              <br>
-              <%= f.radio_button :search_obj, :type, checked: "checked", value: "customers" %>
-              <%= f.label :customers, "ユーザー" %>
-              <%= f.radio_button :search_obj, :type, value: "items_name" %>
-              <%= f.label :items, "商品" %>
-            <% end %>
-          <% else %>
-            <%= form_with url: search_path, method: :get do |f| %>
-              <%= f.text_field :keyword %>
-              <%= f.hidden_field :type, value: "items_name" %>
-              <%= f.submit "検索" %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
   </div>
 </header>
