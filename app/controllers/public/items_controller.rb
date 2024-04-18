@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
 
   def index
-    @items_all_counter = Item
+    @items_all_counter = Item.all
     @items = Item.all.order(created_at: :desc).page(params[:page])
   end
 
