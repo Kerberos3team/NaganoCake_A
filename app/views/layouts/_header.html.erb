@@ -29,24 +29,25 @@
         </div>
       </div>
     </div>
-    <% if admin_signed_in? %>
-      <div class="search row ml-auto">
-        <%= form_with (model: [ :admin, @search ]) , method: :get, local: true do |f| %>
-          <%= f.text_field :word %>
-          <%= form.radio_button :search_obj %>
-          <%= form.label :customers, "ユーザー" %>
-          <%= form.radio_button :search_obj %>
-          <%= form.label :items, "商品" %>
-          <%= f.submit "検索" %>
-        <% end %>
+      <div class="seach row pb-2 m-2">
+        <div class="ml-auto">
+          <% if admin_signed_in? %>
+            <%= form_with url: admin_search_path, method: :get do |f| %>
+              <%= f.text_field :keyword %>
+              <br>
+              <%= f.radio_button :search_obj, :type, checked: "checked", value: "customers" %>
+              <%= f.label :customers, "ユーザー" %>
+              <%= f.radio_button :search_obj, :type, value: "items_name" %>
+              <%= f.label :items, "商品" %>
+            <% end %>
+          <% else %>
+            <%= form_with url: search_path, method: :get do |f| %>
+              <%= f.text_field :keyword %>
+              <%= f.hidden_field :type, value: "items_name" %>
+              <%= f.submit "検索" %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-    <% else %>
-      <div class="seach row ml-auto">
-        <%= form_with model: @search do |f| %>
-          <%= f.text_field :word %>
-          <%= f.submit "検索" %>
-        <% end %>
-      </div>
-    <% end %>
   </div>
 </header>

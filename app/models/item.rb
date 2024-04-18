@@ -16,6 +16,13 @@ class Item < ApplicationRecord
   def with_tax_price
     (self.price * 1.1).floor
   end
-
+  
+  def self.search_for(content, type)
+    if type == "items_name"
+      Item.where('name LIKE ?', '%'+content+'%')
+    else 
+      Item.where('genre_id LIKE ?', content)
+    end
+  end
 
 end

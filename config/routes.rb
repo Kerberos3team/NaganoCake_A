@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'about' => "public/homes#about", as: "about"
 
-  get "search" => "searches#search"
+  get "search" => "public/searches#search"
   get "admin/search" => "admin/searches#search"
 
   delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
