@@ -12,14 +12,6 @@ Rails.application.routes.draw do
 
   get 'about' => "public/homes#about", as: "about"
   delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
-  
-  post 'orders/confirm'
-  get 'orders/thanks'
-
-  delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
-
-  post 'orders/confirm'
-  get 'orders/thanks'
 
   scope module: :public do
     resources :addresses, only: [:create, :update, :destroy, :index, :edit]
@@ -31,6 +23,8 @@ Rails.application.routes.draw do
     patch "customers/information" => "customers#update"
     get 'customers/unsubscribe'
     patch 'customers/withdraw'
+    post 'orders/confirm'
+    get 'orders/thanks'
   end
 
 
