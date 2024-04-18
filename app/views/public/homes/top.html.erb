@@ -1,28 +1,8 @@
 <div class="container d-flex flex-row px-5">
-
+  
     <!--ジャンル検索-->
     <div class="col-3">
-      <table class="table">
-        <thead>
-          <tr  class="table-light">
-            <th>ジャンル</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td>ケーキ</td>
-            </tr>
-            <tr>
-              <td>プリン</td>
-            </tr>
-            <tr>
-              <td>焼き菓子</td>
-            </tr>
-            <tr>
-              <td>キャンディ</td>
-            </tr>
-        </tbody>
-      </table>
+      <%= render 'public/searches/genre_sidebar', genres: @genres %>
     </div>
 
     <div class="col-8">
