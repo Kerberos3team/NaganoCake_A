@@ -9,7 +9,7 @@
         <%= image_tag item.image, size: '208x117', style: "object-fit: cover;" , class: "d-block mx-auto" %>
         <div class="card-body">
           <p class="card-title"><%= item.name %></p>
-          <p class="card-subtitle">￥<%= item.with_tax_price %></p>
+          <p class="card-subtitle">￥<%= number_with_precision(item.with_tax_price, precision: 0, delimiter: ',') %></p>
         </div>
       <% end %>
     <% end %>

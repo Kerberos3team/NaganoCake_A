@@ -1,31 +1,44 @@
-<header>
-  <div class="container-fluid" style="background-color:#94846a;">
+<header class="bg-warning">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-4">
-        <%= image_tag 'top-image', size: '200x100' %>
+      <div class="col-4 my-4">
+        <%= link_to root_path do %>
+          <%= image_tag 'top-image', size: '200x100' %>
+        <% end %>
       </div>
-      <div class="col-8">
-        <!--ログイン未の時（ログインできるようになってからifで分ける）-->
-        <div class="d-flex justify-content-end">
-          <%= link_to 'About', about_path, class: "btn btn-light m-2" %>
-          <%= link_to '商品一覧（routes修正したら確認）', items_path, class: "btn btn-light m-2" %>
-          <%= link_to '新規登録', new_customer_registration_path, class: "btn btn-light m-2" %>
-          <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-light m-2" %>
+        <div class="col-3 p-5 text-white">
+          <% if customer_signed_in? %>
+            <p>ようこそ、<strong><%= current_customer.last_name %></strong>さん！</p>
+          <% end %>
         </div>
-        <!--customerログイン時(後でマイページ・カートにcurrent_user.idを付ける)-->
-        <div class="d-flex justify-content-end">
-          <%= link_to 'マイページ（ログイン出来たら確認）', customers_my_page_path, class: "btn btn-light m-2" %>
-          <%= link_to '商品一覧（routes修正したら確認）', items_path, class: "btn btn-light m-2" %>
-          <%= link_to 'カート（routes修正したら確認）', cart_items_path, class: "btn btn-light m-2" %>
-          <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-light m-2" %>
-        </div>
-        <!--adminログイン時(後で注文履歴一覧のビューもルーティングもないのでリンク飛ばない。追加する？)-->
-        <div class="d-flex justify-content-end">
-          <%= link_to '商品一覧（routes修正したら確認）', items_path, class: "btn btn-light m-2" %>
-          <%= link_to '会員一覧', admin_customers_path, class: "btn btn-light m-2" %>
-          <%= link_to '注文履歴一覧（ビューとルーティング作る）', orders_path, class: "btn btn-light m-2" %>
-          <%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-light m-2" %>
-          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-light m-2" %>
+      <div class="col-5">
+        <% if admin_signed_in? %>
+        <!--注文一覧のビューとルーティング作る-->
+          <div class="d-flex justify-content-end">
+            <%= link_to '商品一覧', admin_items_path, class: "btn btn-light m-2" %>
+            <%= link_to '会員一覧', admin_customers_path, class: "btn btn-light m-2" %>
+            <%= link_to '注文履歴一覧', orders_path, class: "btn btn-light m-2" %>
+            <%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-light m-2" %>
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-light m-2" %>
+          </div>
+        <% elsif customer_signed_in? %>
+          <div class="d-flex justify-content-end">
+            <%= link_to 'マイページ', customers_my_page_path, class: "btn btn-light m-2" %>
+            <%= link_to '商品一覧', items_path, class: "btn btn-light m-2" %>
+            <%= link_to 'カート', cart_items_path, class: "btn btn-light m-2" %>
+            <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-light m-2" %>
+          </div>
+        <% else %>
+          <div class="d-flex justify-content-end">
+            <%= link_to 'About', about_path, class: "btn btn-light m-2" %>
+            <%= link_to '商品一覧', items_path, class: "btn btn-light m-2" %>
+            <%= link_to '新規登録', new_customer_registration_path, class: "btn btn-light m-2" %>
+            <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-light m-2" %>
+          </div>
+        <% end %>
+        <div class="input-group col-6">
+          <input type="text" class="form-control" placeholder="Search...">
+          <button class="btn btn-light" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
         </div>
       </div>
     </div>

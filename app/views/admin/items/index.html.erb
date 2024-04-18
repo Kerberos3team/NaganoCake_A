@@ -36,7 +36,7 @@
               <%= link_to item.name, admin_item_path(item) %>
             </th>
             <th>
-              <%= item.price %>円
+              <%= number_with_precision(item.price, precision: 0, delimiter: ',') %>円
             </th>
             <th>
               <%= item.genre.name %>
