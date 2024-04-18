@@ -12,8 +12,14 @@
       <%= f.label :"氏名", class: "col-md-3" %>
       <%= f.text_field :name, class: "col-md-4" %>
     </div>
-    <div class="row">
-      <%= f.submit "新規登録", class: "col-md-2 btn-lg btn-success pull-right" %>
-    </div>
+    <% if params[:action] == 'edit' %>
+      <div class="row">
+        <%= f.submit "変更内容を保存", class: "col-md-2 btn-lg btn-success pull-right" %>
+      </div>
+    <% else %>
+      <div class="row">
+        <%= f.submit "新規登録", class: "col-md-2 btn-lg btn-success pull-right" %>
+      </div>
+    <% end %>
   <% end %>  
 </div>

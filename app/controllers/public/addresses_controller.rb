@@ -2,6 +2,7 @@ class Public::AddressesController < ApplicationController
   before_action :authenticate_customer!
 
   def index
+    condition = params[:action] == 'index'
     @address = Address.new
     @addresses = current_customer.addresses
   end
@@ -19,6 +20,7 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
+    condition = params[:action] == 'edit'
     @address = Address.find(params[:id])
   end
 
@@ -38,6 +40,5 @@ class Public::AddressesController < ApplicationController
 
   def address_params
     params.require(:address).permit(:customer_id, :name, :postal_code, :address)
-
   end
 end
