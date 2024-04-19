@@ -9,6 +9,7 @@
         <h2 class="mb-2"><%= @item.name %></h2>
         <p class="mb-5"><%= @item.introduction %></p>
         <p><strong class="h3">￥<%= number_with_precision(@item.with_tax_price, precision: 0, delimiter: ',') %></strong>(税込)</p>
+
         <% if @item.is_active %>
           <p class="text-success">販売中</p>
         <% else %>
@@ -24,6 +25,7 @@
               <%= f.hidden_field :item_id, :value => @item.id %>
               <%= f.submit "カートに入れる", class: "mt-4 btn btn-success" %>
             <% end %>
+
           </div>
         <% end %>
       </div>
