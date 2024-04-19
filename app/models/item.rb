@@ -17,6 +17,11 @@ class Item < ApplicationRecord
     (self.price * 1.1).floor
   end
 
+
+  def self.search_for(content)
+    Item.where('name LIKE ?', '%'+content+'%')
+  end
+
   def image_convert_for_index
     image.variant( resize: "208" ).processed
   end
