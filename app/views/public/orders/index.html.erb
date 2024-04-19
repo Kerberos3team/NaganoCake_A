@@ -30,7 +30,7 @@
           <% end %>
         </td>
         <td>
-          <%= order.total_payment %>
+          ￥<%= number_with_precision(order.total_payment, precision: 0, delimiter: ',') %>
         </td>
         <td>
           <%= order.status_i18n %>

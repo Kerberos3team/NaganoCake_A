@@ -20,16 +20,17 @@ class Public::OrdersController < ApplicationController
       @order_details.save!
     end
     CartItem.destroy_all
-    redirect_to orders_thanks_path
+    render :thanks
   end
 
   def confirm
     @total_price = 0
+    @shipping_cost = SHIPPING_COST
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.full_name
     elsif params[:order][:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.postal_code = @address.postal_code
@@ -56,7 +57,9 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  private
+
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :customer_id, :shopping_cost, :total_payment, :status)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :customer_id, :shipping_cost, :total_payment, :status)
   end
 end

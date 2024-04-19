@@ -30,15 +30,15 @@
       <table class="table">
         <tr>
           <td class="table-secondary">商品合計</td>
-          <td><%= @order.total_payment - 800 %></td>
+          <td><%= number_with_precision(@order.total_payment - @order.shipping_cost, precision: 0, delimiter: ',') %></td>
         </tr>
         <tr>
           <td class="table-secondary">配送料</td>
-          <td>￥800</td>
+          <td>￥<%= number_with_precision(@order.shipping_cost, precision: 0, delimiter: ',') %></td>
         </tr>
         <tr>
           <td class="table-secondary">お支払い金額</td>
-          <td>￥<%= @order.total_payment %></td>
+          <td>￥<%= number_with_precision(@order.total_payment, precision: 0, delimiter: ',') %></td>
         </tr>
       </table>
     </div>
@@ -65,13 +65,13 @@
               <% end %>
             </td>
             <td>
-              ￥<%= order_detail.item.price %>
+              ￥<%= number_with_precision(order_detail.item.price, precision: 0, delimiter: ',') %>
             </td>
             <td>
               <%= order_detail.amount %>
             </td>
             <td>
-              ￥<%= order_detail.amount * order_detail.item.price %>
+              ￥<%= number_with_precision(order_detail.amount * order_detail.item.price, precision: 0, delimiter: ',') %>
             </td>
           </tr>
           <% end %>
