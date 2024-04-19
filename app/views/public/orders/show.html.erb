@@ -15,7 +15,7 @@
         </tr>
         <tr>
           <td class="table-secondary">支払方法</td>
-          <td><%= @order.payment_method %></td>
+          <td><%= @order.payment_method_i18n %></td>
         </tr>
         <tr>
           <td class="table-secondary">ステータス</td>
@@ -47,7 +47,7 @@
   <div class="row">
     <h2>注文内容</h2>
     <div class="col">
-      <table>
+      <table class="table">
         <thead>
           <tr class="table-secondary">
             <th>商品</th>
