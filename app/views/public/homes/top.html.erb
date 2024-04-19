@@ -1,5 +1,5 @@
 <div class="container d-flex flex-row px-1 py-2">
-  
+  <div class="row">
     <!--ジャンル検索-->
     <div class="col-2">
       <%= render 'public/searches/genre_sidebar', genres: @genres %>
@@ -28,9 +28,6 @@
         <%= render "public/items/items_index", items: @items %>
         <p><%= link_to '全ての商品を見る ▶', items_path %></p>
       </div>
-
     </div>
   </div>
-
-
 </div>
