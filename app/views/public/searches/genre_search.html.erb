@@ -1,10 +1,16 @@
-<div class="container p-2">
+<div class="container px-5">
   <div class="row m-3">
-    <div class="col">
-      <h2>"<%= @genre.name %>"に一致する商品</h2>
+    <div class="col-md-3">
+      <%= render 'genre_sidebar', genres: @genres %>
+    </div>
+    <div class="col-md-9">
+      <div class="d-flex align-items-center">
+        <h2><%= @genre.name %>一覧</h2>
+        <p class="m-3 mb-0">(全<%= @items.count %>件)</p>
+      </div>
       <div class="d-flex flex-wrap">
         <% @items.each do |item| %>
-         <%= link_to item_path(item), class: "w-25 col-12 col-sm-6 col-md-4 col-lg-3 text-dark text-decoration-none", local: true do %>
+         <%= link_to item_path(item), class: "w-25 col-9 col-sm-6 col-md-4 col-lg-3 text-dark text-decoration-none", local: true do %>
             <%= image_tag item.image, size: '208x117', style: "object-fit: cover;" , class: "d-block mx-auto" %>
             <div class="card-body">
               <p class="card-title"><%= item.name %></p>
