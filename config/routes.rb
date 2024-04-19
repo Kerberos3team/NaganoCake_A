@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     patch "customers/information" => "customers#update"
     get 'customers/unsubscribe'
     patch 'customers/withdraw'
+    get 'genre/search' => 'searches#genre_search'
   end
 
 
