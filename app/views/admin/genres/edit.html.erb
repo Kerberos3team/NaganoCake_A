@@ -1,4 +1,5 @@
-<div class="container p-2">
+<div class="container px-1 py-2">
+  <%= render 'layouts/errors', obj: @genre %>
   <h2>ジャンル編集</h2>
 
   <%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>
