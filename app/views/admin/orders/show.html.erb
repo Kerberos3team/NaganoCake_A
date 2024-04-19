@@ -25,8 +25,15 @@
       </tr>
       <tr>
         <td class="table-secondary">注文ステータス</td>
-        <!--status変えれるようにする-->
-        <td><%= @order.status_i18n %></td>
+        <td>
+        <!--ボタンだけ付けた-->
+        <%= form_with model: @order do |f| %>
+          <div class="form-group">
+            <%= f.select :status, Order.statuses_i18n.invert %>
+            <%= f.submit '更新', class: "btn btn-info" %>
+          </div>
+        <% end %>
+        </td>
       </tr>
     </table>
   </div>
@@ -53,17 +60,22 @@
               <% end %>
             </td>
             <td>
-              ￥<%= order_detail.item.price %>
+              ￥<%= number_with_precision(order_detail.item.price, precision: 0, delimiter: ',') %>
             </td>
             <td>
               <%= order_detail.amount %>
             </td>
             <td>
-              ￥<%= order_detail.amount * order_detail.item.price %>
+              ￥<%= number_with_precision(order_detail.amount * order_detail.item.price, precision: 0, delimiter: ',') %>
             </td>
             <td>
-              <!--status変えれるようにする-->
-              <%= order_detail.making_status_i18n %>
+              <!--ボタンだけ付けた-->
+              <%= form_with model: @order_detail do |f| %>
+                <div class="form-group">
+                  <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+                  <%= f.submit '更新', class: "btn btn-info" %>
+                </div>
+              <% end %>
             </td>
           </tr>
           <% end %>
@@ -75,16 +87,15 @@
       <table class="table">
         <tr>
           <td class="table-secondary">商品合計</td>
-          <td>￥<%= @order.total_payment - 800 %></td>
+          <td>￥<%= number_with_precision(@order.total_payment - @order.shipping_cost, precision: 0, delimiter: ',') %></td>
         </tr>
         <tr>
-          <!--送料メソッドとかなんかまとめて呼び出せるようにする-->
           <td class="table-secondary">送料</td>
-          <td>￥800</td>
+          <td>￥<%= number_with_precision(@order.shipping_cost, precision: 0, delimiter: ',') %></td>
         </tr>
         <tr>
           <td class="table-secondary">請求金額合計</td>
-          <td>￥<%= @order.total_payment %></td>
+          <td>￥<%= number_with_precision(@order.total_payment, precision: 0, delimiter: ',') %></td>
         </tr>
       </table>
     </div>

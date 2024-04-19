@@ -4,9 +4,13 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: params[:id])
   end
+  
+  def update
+    
+  end
 
   def index
-    @orders = Order.all
+    @orders = Order.all.order(created_at: "DESC")
   end
 
   def customer_order
