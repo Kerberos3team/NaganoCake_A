@@ -25,6 +25,7 @@
       </tr>
       <tr>
         <td class="table-secondary">注文ステータス</td>
+        <!--status変えれるようにする-->
         <td><%= @order.status_i18n %></td>
       </tr>
     </table>
@@ -61,6 +62,7 @@
               ￥<%= order_detail.amount * order_detail.item.price %>
             </td>
             <td>
+              <!--status変えれるようにする-->
               <%= order_detail.making_status_i18n %>
             </td>
           </tr>
@@ -76,6 +78,7 @@
           <td>￥<%= @order.total_payment - 800 %></td>
         </tr>
         <tr>
+          <!--送料メソッドとかなんかまとめて呼び出せるようにする-->
           <td class="table-secondary">送料</td>
           <td>￥800</td>
         </tr>

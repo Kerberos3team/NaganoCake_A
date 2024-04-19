@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+    <!--並び順を新しい順にする-->
     <h1><%= @customer.full_name %>さんの注文履歴一覧</h1>
     <table class="table table-hover">
       <thead>
@@ -17,10 +18,10 @@
               <%= order.created_at.strftime('%Y/%m/%d') %></td>
             <% end %>
           <td>
-             <%= order.order_details.group(:order_id).sum(:amount).values.first %> 個
+           <%= order.order_details.group(:order_id).sum(:amount).values.first %> 個
           </td>
           <td>
-              <%= order.status_i18n %>
+            <%= order.status_i18n %>
           </td>
         </tr>
         <% end %>
@@ -29,3 +30,5 @@
   </div>
 
 </div>
+
+<!--ページネーションがいる-->
