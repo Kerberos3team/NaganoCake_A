@@ -21,7 +21,11 @@
         </td>
         <td>
           <% order.order_details.each do |order_detail| %>
-            <li><%= order_detail.item.name %></li>
+            <li>
+              <%= link_to item_path(order_detail.item_id), class: "text-info" do %>
+                <%= order_detail.item.name %>
+              <% end %>
+            </li>
           <% end %>
         </td>
         <td>

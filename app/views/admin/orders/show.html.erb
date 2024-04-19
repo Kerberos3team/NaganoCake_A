@@ -5,7 +5,11 @@
     <table class="table">
       <tr>
         <td class="table-secondary">購入者</td>
-        <td><%= @order.customer.full_name %></td>
+        <td>
+          <%= link_to admin_customer_path(@order.customer_id), class: "text-info" do %>
+            <%= @order.customer.full_name %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <td class="table-secondary">注文日</td>
@@ -43,7 +47,9 @@
           <% @order_details.each do |order_detail| %>
           <tr>
             <td>
-              <%= order_detail.item.name %>
+              <%= link_to admin_item_path(order_detail.item_id), class: "text-info" do %>
+                <%= order_detail.item.name %>
+              <% end %>
             </td>
             <td>
               ￥<%= order_detail.item.price %>
@@ -81,5 +87,7 @@
     </div>
   </div>
   <!--道子の注文履歴と顧客情報に飛ぶリンクを付ける-->
-  <%= link_to '顧客の注文履歴', admin_customer_customer_order_path(@order.customer_id) %>
+  <%= link_to admin_customer_customer_order_path(@order.customer_id), class: "btn btn-info" do %>
+    <%= @order.customer.full_name %>さんの注文履歴
+  <% end %>
 </div>

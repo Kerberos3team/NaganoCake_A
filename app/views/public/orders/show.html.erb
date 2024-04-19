@@ -60,7 +60,9 @@
           <% @order_details.each do |order_detail| %>
           <tr>
             <td>
-              <%= order_detail.item.name %>
+              <%= link_to item_path(order_detail.item_id), class: "text-info" do %>
+                <%= order_detail.item.name %>
+              <% end %>
             </td>
             <td>
               ￥<%= order_detail.item.price %>

@@ -10,6 +10,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def customer_order
-    @orders = Order.where(customer_id: params[:id])
+    @customer = Customer.find(params[:customer_id])
+    @orders = Order.where(customer_id: params[:customer_id])
   end
 end
