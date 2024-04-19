@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get 'about' => "public/homes#about", as: "about"
   delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
 
+  get "search" => "public/searches#search"
+  get "admin/search" => "admin/searches#search"
+
+
   scope module: :public do
     resources :addresses, only: [:create, :update, :destroy, :index, :edit]
     resources :cart_items, only: [:index, :create, :update, :destroy]
@@ -25,6 +29,7 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe'
     patch 'customers/withdraw'
     post 'orders/confirm'
+    get 'genre/search' => 'searches#genre_search'
   end
 
 

@@ -16,7 +16,7 @@
         <tr>
           <td><%= customer.id %></td>
           <td>
-            <%= link_to(admin_customer_path(customer.id), class:"text-muted") do %>
+            <%= link_to(admin_customer_path(customer.id), class: "text-muted") do %>
               <%= customer.full_name %>
             <% end %>
           </td>
@@ -32,6 +32,7 @@
         <% end %>
       </tbody>
     </table>
-    <%= paginate @customers %>
+    <%# pagination bootstrap の適用, Gemfileの追加 %>
+    <%= paginate @customers, theme: 'bootstrap-5' %>
   </div>
 </div>

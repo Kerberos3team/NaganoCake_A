@@ -6,6 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= favicon_link_tag('favicon3.ico') %>
+
     <script src="https://kit.fontawesome.com/867c591370.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,8 +15,8 @@
 
   <body class="d-flex flex-column vh-100">
     <%= render 'layouts/header' %>
-    <p id="notice"><%= notice %></p>
     <main class="mb-auto">
+      <%= render 'layouts/flash' %>
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>
