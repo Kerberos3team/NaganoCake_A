@@ -1,7 +1,7 @@
 <header class="bg-warning">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-4 my-4">
+      <div class="col-3 my-4">
         <%= link_to root_path do %>
           <%= image_tag 'top-image', size: '200x100' %>
         <% end %>
@@ -11,7 +11,7 @@
             <p>ようこそ、<strong><%= current_customer.last_name %></strong>さん！</p>
           <% end %>
         </div>
-      <div class="col-5">
+      <div class="col-6">
         <% if admin_signed_in? %>
         <!--注文一覧のビューとルーティング作る-->
           <div class="d-flex justify-content-end">
