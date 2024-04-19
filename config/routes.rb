@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   post 'orders/confirm'
   get 'orders/thanks'
 
+  get "search" => "public/searches#search"
+  get "admin/search" => "admin/searches#search"
+
   delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
 
   post 'orders/confirm'

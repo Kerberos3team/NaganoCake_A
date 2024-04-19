@@ -1,0 +1,95 @@
+<% if @type === "items" %>
+<div class="container">
+  <h2>"<%= @search %>"に一致する商品</h2>
+
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            商品ID
+          </th>
+          <th>
+            商品名
+          </th>
+          <th>
+            税抜価格
+          </th>
+          <th>
+            ジャンル
+          </th>
+          <th>
+            販売ステータス
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @results.each do |item| %>
+          <tr>
+            <th>
+              <%= item.id %>
+            </th>
+            <th>
+              <!--リンクの装飾を変えるかどうか-->
+              <%= link_to item.name, admin_item_path(item) %>
+            </th>
+            <th>
+              <%= number_with_precision(item.price, precision: 0, delimiter: ',') %>円
+            </th>
+            <th>
+              <%= item.genre.name %>
+            </th>
+            <th>
+              <% if item.is_active %>
+                <p class="text-success">販売中</p>
+              <% else %>
+                <p class="text-secondary">販売停止中</p>
+              <% end %>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @results, theme: 'bootstrap-5' %>
+  </div>
+
+<% else %>
+<div class="container">
+  <%= flash[:notice] %>
+  <div class="row">
+    <h2>"<%= @search %>"に一致する会員</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-secondary">
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @results.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td>
+            <%= link_to(admin_customer_path(customer.id), class:"text-muted") do %>
+              <%= customer.full_name %>
+            <% end %>
+          </td>
+          <td><%= customer.email %></td>
+          <td>
+            <% if customer.is_active %>
+              <div class="text-success"><b>有効</b></div>
+            <% else %>
+              <div class="text-secondary"><b>退会</b></div>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%# pagination bootstrap の適用, Gemfileの追加 %>
+    <%= paginate @results, theme: 'bootstrap-5' %>
+  </div>
+</div>
+<% end %>
