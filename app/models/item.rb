@@ -17,4 +17,5 @@ class Item < ApplicationRecord
     (self.price * 1.1).floor
   end
 
+
 end

@@ -32,6 +32,7 @@
         <% end %>
       </tbody>
     </table>
-    <%= paginate @customers %>
+    <%# pagination bootstrap の適用, Gemfileの追加 %>
+    <%= paginate @customers, theme: 'bootstrap-5' %>
   </div>
 </div>
