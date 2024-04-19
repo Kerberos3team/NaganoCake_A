@@ -17,5 +17,13 @@ class Item < ApplicationRecord
     (self.price * 1.1).floor
   end
 
+  def image_convert_for_index
+    image.variant( resize: "208" ).processed
+  end
+
+  def image_convert_for_show
+    image.variant( resize: "304" ).processed
+  end
+
 
 end
