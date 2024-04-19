@@ -1,17 +1,10 @@
 <div class="container p-2">
   <div class="row m-3">
     <h2>商品一覧</h2>
-    <p class="mt-3 mb-0">(全<%= @items.count %>件)</p>
+
+    <p class="mt-3 mb-0">(全<%= @items_all_counter.count %>件)</p>
+
   </div>
-  <div class="d-flex flex-wrap">
-    <% @items.each do |item| %>
-     <%= link_to item_path(item), class: "w-25 col-12 col-sm-6 col-md-4 col-lg-3 text-dark text-decoration-none", local: true do %>
-        <%= image_tag item.image_convert_for_index, style: "object-fit: cover;" , class: "d-block mx-auto" %>
-        <div class="card-body">
-          <p class="card-title"><%= item.name %></p>
-          <p class="card-subtitle">￥<%= number_with_precision(item.with_tax_price, precision: 0, delimiter: ',') %></p>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <%= render "items_index", items: @items %>
+  <%= paginate @items, theme: 'bootstrap-5' %>
 </div>

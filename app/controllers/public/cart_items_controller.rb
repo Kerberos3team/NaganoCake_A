@@ -9,13 +9,13 @@ class Public::CartItemsController < ApplicationController
 # ↓ ifが重なっちゃって汚くなってしまった！でもこれ以外のやり方が分かりません！！泣
 
   def create
-    cart_item = current_customer.cart_items.new(cart_item_params)
+    cart_item = CartItem.new(cart_item_params)
     if cart_item.amount == nil
       @item = cart_item.item_id
       redirect_to item_path(@item)
     else
-      if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
-        cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+      if CartItem.find_by(item_id: params[:cart_item][:item_id], customer_id: current_customer.id).present?
+        cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id], customer_id: current_customer.id)
         cart_item.amount += params[:cart_item][:amount].to_i
         cart_item.update(amount: cart_item.amount)
         redirect_to cart_items_path, notice: "カートに商品を追加しました。"
@@ -47,7 +47,7 @@ class Public::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount)
+    params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
 
 end

@@ -184,24 +184,6 @@ Item.find_or_create_by!(name: "満点シュークリーム") do |item|
   item.is_active = "true"
 end
 
-#cart_itemデータ作成
-CartItem.find_or_create_by!(customer_id: "1") do |cart_item|
-  cart_item.customer_id = "1"
-  cart_item.item_id = "1"
-  cart_item.amount = "2"
-end
-
-CartItem.find_or_create_by!(customer_id: "1") do |cart_item|
-  cart_item.customer_id = "1"
-  cart_item.item_id = "2"
-  cart_item.amount = "1"
-end
-
-CartItem.find_or_create_by!(customer_id: "1") do |cart_item|
-  cart_item.customer_id = "1"
-  cart_item.item_id = "3"
-  cart_item.amount = "3"
-end
 
 #orderデータ作成
 #order_detailデータ作成
