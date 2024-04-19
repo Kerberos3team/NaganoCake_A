@@ -1,9 +1,9 @@
-<div class="container px-5">
+<div class="container">
   <div class="row m-3">
-    <div class="col-md-3">
+    <div class="col-2">
       <%= render 'genre_sidebar', genres: @genres %>
     </div>
-    <div class="col-md-9">
+    <div class="col-10">
       <div class="d-flex align-items-center">
         <h2><%= @genre.name %>一覧</h2>
         <p class="m-3 mb-0">(全<%= @items.count %>件)</p>

@@ -1,7 +1,7 @@
 <div class="genre_search">
-  <table class="table">
+  <table class="table table-hover">
     <tr>
-      <th>ジャンル検索</th>
+      <th class="table-secondary">ジャンル検索</th>
     </tr>
     <%= form_with url: genre_search_path, method: :get do |f| %>
       <% genres.each do |genre| %>
