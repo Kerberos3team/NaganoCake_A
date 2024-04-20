@@ -10,7 +10,6 @@ class Admin::ItemsController < ApplicationController
     if @item.save
       redirect_to admin_item_path(@item), notice: "商品を登録しました。"
     else
-      @item = Item.new
       render "new"
     end
   end
