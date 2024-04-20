@@ -1,5 +1,5 @@
 <div class="container d-flex flex-row px-5">
-  
+
     <!--ジャンル検索-->
     <div class="col-3">
       <%= render 'public/searches/genre_sidebar', genres: @genres %>
@@ -26,7 +26,11 @@
       <div class="mt-5 mb-2">
         <h2>新着商品</h2>
         <%= render "public/items/items_index", items: @items %>
-        <p><%= link_to '全ての商品を見る ▶', items_path %></p>
+        <p>
+          <%= link_to items_path do %>
+            <i class="fa-solid fa-right-to-bracket"></i> 全ての商品を見る
+          <% end %>
+        </p>
       </div>
 
     </div>
