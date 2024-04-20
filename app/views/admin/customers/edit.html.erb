@@ -1,9 +1,10 @@
-<div class="container">
+<div class="container px-1 py-2">
+  <%= render 'layouts/errors', obj: @customer %>
   <div class="row">
     <div class="col">
-      <h2><%= @customer.full_name %>さんの会員情報編集</h2>
+      <h2 class=my-4><%= @customer.full_name %>さんの会員情報編集</h2>
       <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
-        <table class="table">
+        <table class="table table-borderless">
           <tr><th scope="col">会員ID</th><td><%= @customer.id %></td></tr>
             <tr>
               <th scope="col">氏名</th>
@@ -67,7 +68,7 @@
             </tr>
             <tr>
               <th scope="col"></th>
-              <td><%= f.submit '変更を保存', class:"btn btn-success" %></td>
+              <td><%= f.submit '変更を保存', class:"btn btn-success w-25" %></td>
             </tr>
         </table>
       <% end %>

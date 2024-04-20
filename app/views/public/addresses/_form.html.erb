@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12 mt-3">
   <%= form_with model: address, local: true do |f| %>
     <div class="form-group col-md-12">
       <%= f.label :"郵便番号（ハイフンなし）", class: "col-md-3" %>
@@ -12,6 +12,7 @@
       <%= f.label :"氏名", class: "col-md-3" %>
       <%= f.text_field :name, class: "col-md-4" %>
     </div>
+    
     <% if params[:action] == 'edit' %>
       <div class="row">
         <%= f.submit "変更内容を保存", class: "col-md-2 btn-lg btn-success pull-right" %>
