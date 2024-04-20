@@ -22,11 +22,15 @@ class Public::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     elsif params[:order][:select_address] == "2"
+      if params[:order][:postal_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
+        render :new
+      end
       @order.customer_id = current_customer.id
+    else
+      render :new
     end
       @cart_items = current_customer.cart_items
       @order_new = Order.new
-      render :confirm
   end
 
   def create
