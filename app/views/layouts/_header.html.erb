@@ -6,7 +6,7 @@
           <%= image_tag 'NAGANOCAKE.jpg', size: '320x64', class: "ml-5" %>
         <% end %>
       </div>
-        <div class="col-3 p-5 text-white">
+        <div class="col-3 d-flex align-items-center justify-content-center text-white">
           <% if customer_signed_in? %>
             <p>ようこそ、<strong><%= current_customer.last_name %></strong>さん！</p>
           <% end %>
