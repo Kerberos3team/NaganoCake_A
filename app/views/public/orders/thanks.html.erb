@@ -1,9 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col text-center">
-    <h2 class="my-5">ご注文ありがとうございました！</h2>
-    <!--後で何か画像入れる-->
-    <%= image_tag 'top-image', class: "" %>
+    <div class="col-12 col-md-8 mx-auto">
+      <h2 class="my-5 text-center">ご注文ありがとうございました！</h2>
+      <!--注文ステータスの仕組み的にメールでリンクとか送って決済してもらう？-->
+      <p class="text-left mx-3">
+        ご注文が完了いたしました。<br>
+        ご登録いただいたメールアドレスにご注文詳細確認メールを送信しましたのでご確認ください。<br>
+        銀行振込、またはクレジットカードからのご入金が確認できましたら、再度ご注文確定メールをお送りして商品の製作に入ります。<br>
+        ご入金のタイミングによっては商品の発送日が遅れますことをご了承ください。
+      </p>
+      <div>
+        <%= image_tag 'thanks', class: "img-fluid img-resize, rounded" %>
+      </div>
+      <div class="col text-center mt-4">
+        <%= link_to "TOPへ戻る", root_path, class: "btn btn-info" %>
+      </div>
     </div>
   </div>
 </div>

@@ -65,20 +65,19 @@
             <td class="text-right">
               ￥<%= number_with_precision(order_detail.item.price, precision: 0, delimiter: ',') %>
             </td>
-            <td>
+            <td class="text-center">
               <%= order_detail.amount %>
             </td>
             <td class="text-right">
               ￥<%= number_with_precision(order_detail.amount * order_detail.item.price, precision: 0, delimiter: ',') %>
             </td>
             <td>
-              <!--注文ステータスとの紐づけ必要-->
               <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
-                <div class="d-flex">
-                  <div class="mr-3">
+                <div class="row d-flex ">
+                  <div class="col-12 col-lg-7">
                     <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, { prompt: "" }, class: "form-control mb-2" %>
                   </div>
-                  <div>
+                  <div class="col-12 col-lg-5">
                     <%= f.submit '更新', class: "btn btn-info" %>
                   </div>
                 </div>

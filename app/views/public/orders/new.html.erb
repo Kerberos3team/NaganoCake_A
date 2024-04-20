@@ -7,13 +7,13 @@
       <div>
         <h2>【 支払方法 】</h2>
         <div class="row d-flex flex-column mb-4 mt-2">
-          <div class="col">
-            <%= f.radio_button :payment_method, "credit_card" %>
-            <%= f.label :payment_method, "クレジットカード", class: "font-weight-bold" %>
+          <div class="col font-weight-bold">
+            <%= f.radio_button :payment_method, :credit_card %>
+            <%= f.label :payment_method_credit_card, "クレジットカード" %>
           </div>
           <div class="col font-weight-bold">
-            <%= f.radio_button :payment_method, "transfer" %>
-            <%= f.label :payment_method, "銀行振込", class: "font-weight-bold" %>
+            <%= f.radio_button :payment_method, :transfer %>
+            <%= f.label :payment_method_transfer, "銀行振込" %>
           </div>
         </div>
       </div>
@@ -23,8 +23,8 @@
         <div class="row d-flex flex-column mt-2">
           <!--自身の住所-->
           <div class="col mb-4 ">
-            <%= f.radio_button :select_address, 0 %>
-            <%= f.label :select_address, "ご自身の住所", class: "font-weight-bold" %>
+            <!--力尽きて普通のlabelタグにしちゃいました。ちゃんとした書き方分かったら直したい-->
+            <label class="font-weight-bold"><%= f.radio_button :select_address, 0 %> ご自身の住所</label>
             <div class="ml-5">
               〒 <%= current_customer.postal_code %><br>
               <%= current_customer.address %><br>
@@ -34,8 +34,7 @@
           <!--登録済みの配送先から選択-->
           <% unless @address.blank? %>
             <div class="col mb-4">
-              <%= f.radio_button :select_address, 1 %>
-              <%= f.label :select_address, "登録済み住所から選択", class: "font-weight-bold" %>
+              <label class="font-weight-bold"><%= f.radio_button :select_address, 1 %> 登録済み住所から選択</label>
               <div class="form-group ml-5">
                 <%= f.select :address_id, options_from_collection_for_select(@address, :id, :address_display),{ prompt: "登録された配送先から選択" }, class: "form-control mb-2" %>
               </div>
@@ -43,8 +42,7 @@
           <% end %>
           <!--新しいお届け先を指定-->
           <div class="col mb-4">
-            <%= f.radio_button :select_address, 2 %>
-            <%= f.label :select_address, "新しいお届け先", class: "font-weight-bold" %>
+            <label class="font-weight-bold"><%= f.radio_button :select_address, 2 %> 新しいお届け先</label>
             <div class="ml-5">
               <div class="row d-flex flex-row pb-3">
                 <div class="col-12 col-md-3">

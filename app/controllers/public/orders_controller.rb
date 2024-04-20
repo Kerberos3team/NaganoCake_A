@@ -48,7 +48,7 @@ class Public::OrdersController < ApplicationController
       @order_details.save!
     end
     CartItem.destroy_all
-    render :thanks
+    redirect_to orders_thanks_path
   end
 
   def thanks
