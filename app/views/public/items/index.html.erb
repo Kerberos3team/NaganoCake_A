@@ -9,7 +9,7 @@
         <p class="m-3 mb-0"> (全<%= @items_all_counter.count %>件)</p>
       </div>
       <%= render "items_index", items: @items %>
+      <%= paginate @items, theme: 'bootstrap-5' %>
     </div>
-    </div>
-  <%= paginate @items, theme: 'bootstrap-5' %>
+  </div>
 </div>

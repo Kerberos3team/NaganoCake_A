@@ -1,16 +1,16 @@
 <div class="genre_search">
   <table class="table table-hover">
     <tr>
-      <th class="table-secondary">ジャンル検索</th>
+      <th class="table-secondary text-center"><i class="fa-solid fa-magnifying-glass"></i> ジャンル検索</th>
     </tr>
     <%= form_with url: genre_search_path, method: :get do |f| %>
       <% genres.each do |genre| %>
-        <tr>
+        <tr onclick='window.location="<%= genre_search_path(genre_id: genre.id) %>"', style: "cursor: pointer;", role="link" >
           <td>
-            <%= link_to genre.name, genre_search_path(genre_id: genre.id), method: :get, class:"text-decoration-none text-dark" %>
+            <%= genre.name %>
           </td>
-        </tr>  
+        </tr>
       <% end %>
-    <% end %>  
+    <% end %>
   </table>
 </div>

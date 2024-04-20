@@ -4,52 +4,7 @@
     <div class="ml-auto p-4">
       <%= link_to "新規商品登録へ", new_admin_item_path, class: "btn btn-success" %>
     </div>
-    <table class="table table-hover">
-      <thead>
-        <tr class="table-secondary">
-          <th>
-            商品ID
-          </th>
-          <th>
-            商品名
-          </th>
-          <th>
-            税抜価格
-          </th>
-          <th>
-            ジャンル
-          </th>
-          <th>
-            販売ステータス
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @items.each do |item| %>
-          <tr>
-            <th>
-              <%= item.id %>
-            </th>
-            <th>
-              <%= link_to item.name, admin_item_path(item), class: "text-muted" %>
-            </th>
-            <th>
-              <%= number_with_precision(item.price, precision: 0, delimiter: ',') %>円
-            </th>
-            <th>
-              <%= item.genre.name %>
-            </th>
-            <th>
-              <% if item.is_active %>
-                <p class="text-success">販売中</p>
-              <% else %>
-                <p class="text-secondary">販売停止中</p>
-              <% end %>
-            </th>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render "index", items: @items %>
     <%= paginate @items, theme: 'bootstrap-5' %>
   </div>
 
