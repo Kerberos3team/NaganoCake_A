@@ -1,2 +1,113 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <!--注文者情報-->
+  <div class="row">
+    <h1>注文履歴詳細</h1>
+    <table class="table">
+      <tr>
+        <td class="table-secondary">購入者</td>
+        <td>
+          <%= link_to admin_customer_path(@order.customer_id), class: "text-info" do %>
+            <%= @order.customer.full_name %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-secondary">注文日</td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary">配送先</td>
+        <td><%= @order.address %> <%= @order.name %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary">支払方法</td>
+        <td><%= @order.payment_method_i18n %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary">注文ステータス</td>
+        <td>
+        <%= form_with model: @order, url: admin_order_path do |f| %>
+          <div class="d-flex">
+            <div class="mr-3">
+              <%= f.select :status, Order.statuses_i18n.invert, { prompt: "" }, class: "form-control mb-2" %>
+            </div>
+            <div>
+              <%= f.submit '更新', class: "btn btn-info" %>
+            </div>
+          </div>
+        <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!--注文商品詳細-->
+  <div class="row">
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <tr class="table-secondary">
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+          <tr>
+            <td>
+              <%= link_to admin_item_path(order_detail.item_id), class: "text-info" do %>
+                <%= order_detail.item.name %>
+              <% end %>
+            </td>
+            <td>
+              ￥<%= number_with_precision(order_detail.item.price, precision: 0, delimiter: ',') %>
+            </td>
+            <td>
+              <%= order_detail.amount %>
+            </td>
+            <td>
+              ￥<%= number_with_precision(order_detail.amount * order_detail.item.price, precision: 0, delimiter: ',') %>
+            </td>
+            <td>
+              <!--注文ステータスとの紐づけ必要-->
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
+                <div class="d-flex">
+                  <div class="mr-3">
+                    <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, { prompt: "" }, class: "form-control mb-2" %>
+                  </div>
+                  <div>
+                    <%= f.submit '更新', class: "btn btn-info" %>
+                  </div>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <!--合計金額-->
+    <div class="col-4">
+      <table class="table">
+        <tr>
+          <td class="table-secondary">商品合計</td>
+          <td>￥<%= number_with_precision(@order.total_payment - @order.shipping_cost, precision: 0, delimiter: ',') %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">送料</td>
+          <td>￥<%= number_with_precision(@order.shipping_cost, precision: 0, delimiter: ',') %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">請求金額合計</td>
+          <td>￥<%= number_with_precision(@order.total_payment, precision: 0, delimiter: ',') %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <%= link_to admin_customer_customer_order_path(@order.customer_id), class: "btn btn-info" do %>
+    <%= @order.customer.full_name %>さんの注文履歴
+  <% end %>
+</div>
