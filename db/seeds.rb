@@ -105,16 +105,25 @@ end
 
 Item.find_or_create_by!(name: "カカオマフィン") do |item|
   item.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/mafin.jpg"), filename: "mafin.jpg")
-  item.genre_id = "4"
+  item.genre_id = "3"
   item.name = "カカオマフィン"
   item.introduction = "ビターなカカオマフィンです！紅茶と一緒にどうぞ♪"
   item.price = "480"
   item.is_active = "true"
 end
 
+Item.find_or_create_by!(name: "いっぱいキャンディ") do |item|
+  item.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ame4.jpg"), filename: "ame4.jpg")
+  item.genre_id = "4"
+  item.name = "いっぱいキャンディ"
+  item.introduction = "大容量キャンディ！1500個入り！！"
+  item.price = "5000"
+  item.is_active = "true"
+end
+
 Item.find_or_create_by!(name: "至極のパンケーキ") do |item|
   item.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/pancake.jpg"), filename: "pancake.jpg")
-  item.genre_id = "4"
+  item.genre_id = "3"
   item.name = "至極のパンケーキ"
   item.introduction = "こだわりぬいたパンケーキです！自分へのご褒美に...♪"
   item.price = "420"
@@ -123,7 +132,7 @@ end
 
 Item.find_or_create_by!(name: "チョコマフィン") do |item|
   item.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/chocomafin.jpg"), filename: "chocomafin.jpg")
-  item.genre_id = "4"
+  item.genre_id = "3"
   item.name = "チョコマフィン"
   item.introduction = "とろける甘さのチョコマフィンです！おやつにピッタリ！"
   item.price = "420"
@@ -148,9 +157,27 @@ Item.find_or_create_by!(name: "ひなまつりクッキー") do |item|
   item.is_active = "true"
 end
 
+Item.find_or_create_by!(name: "おいしいキャンディ") do |item|
+  item.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ame2.jpg"), filename: "ame2.jpg")
+  item.genre_id = "4"
+  item.name = "おいしいキャンディ"
+  item.introduction = "おいしすぎるキャンディです！口に入れた瞬間ハッピー！"
+  item.price = "500"
+  item.is_active = "true"
+end
+
+Item.find_or_create_by!(name: "カラフルキャンディ") do |item|
+  item.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ame3.jpg"), filename: "ame3.jpg")
+  item.genre_id = "4"
+  item.name = "カラフルキャンディ"
+  item.introduction = "カラフルなキャンディ！5億色あります！！"
+  item.price = "500"
+  item.is_active = "true"
+end
+
 Item.find_or_create_by!(name: "マカロン5個セット") do |item|
   item.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/macaron5.jpg"), filename: "macaron5.jpg")
-  item.genre_id = "4"
+  item.genre_id = "3"
   item.name = "マカロン5個セット"
   item.introduction = "マカロン5個セットです！たくさん並べると可愛さ満点♪"
   item.price = "230"
@@ -177,10 +204,19 @@ end
 
 Item.find_or_create_by!(name: "満点シュークリーム") do |item|
   item.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/shucream.jpg"), filename: "shucream.jpg")
-  item.genre_id = "4"
+  item.genre_id = "3"
   item.name = "満点シュークリーム"
   item.introduction = "カスタードたっぷりのシュークリームです！この甘さが堪らない...！！"
   item.price = "350"
+  item.is_active = "true"
+end
+
+Item.find_or_create_by!(name: "謎のキャンディ") do |item|
+  item.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/ame1.jpg"), filename: "ame1.jpg")
+  item.genre_id = "4"
+  item.name = "謎のキャンディ"
+  item.introduction = "正体不明のキャンディが登場！"
+  item.price = "120"
   item.is_active = "true"
 end
 

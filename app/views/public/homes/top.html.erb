@@ -1,36 +1,32 @@
 <div class="container d-flex flex-row px-5">
-  
+  <div class="row">
     <!--ジャンル検索-->
-    <div class="col-3">
+    <div class="col-2 p-4">
       <%= render 'public/searches/genre_sidebar', genres: @genres %>
     </div>
 
-    <div class="col-10">
-
+    <div class="col-md-10">
   　<!--トップ画像-->
-      <div class="card">
-        <%= image_tag 'top-image', class: "" %>
-        <div class="card-img-overlay d-flex">
-          <div class="text-white m-auto">
-            <h1>ようこそ、<strong>ながのCAKE</strong>へ！</h1>
-            <p>
-              このサイトは、ケーキ販売のECサイトになります。<br>
-              会員でない方も商品の閲覧はできますが、<br>
-              購入には会員登録が必要になります。
-            </p>
+        <div class="card">
+          <%= image_tag 'top-image', class: "" %>
+          <div class="card-img-overlay d-flex">
+            <div class="text-white m-auto">
+              <h1>ようこそ、<strong>ながのCAKE</strong>へ！</h1>
+              <p>
+                このサイトは、ケーキ販売のECサイトになります。<br>
+                会員でない方も商品の閲覧はできますが、<br>
+                購入には会員登録が必要になります。
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!--新着商品-->
-      <div class="mt-5 mb-2">
-        <h2>新着商品</h2>
-        <%= render "public/items/items_index", items: @items %>
-        <p><%= link_to '全ての商品を見る ▶', items_path %></p>
+        <!--新着商品-->
+        <div class="mt-5 mb-2">
+          <h2>新着商品</h2>
+          <%= render "public/items/items_index", items: @items %>
+          <p><%= link_to '全ての商品を見る ▶', items_path %></p>
+        </div>
       </div>
-
     </div>
-  </div>
-
-
 </div>
