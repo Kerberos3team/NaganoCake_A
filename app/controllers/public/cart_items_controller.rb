@@ -10,6 +10,7 @@ class Public::CartItemsController < ApplicationController
 
   def create
     cart_item = CartItem.new(cart_item_params)
+    cart_item.customer_id = current_customer.id
     if cart_item.amount == nil
       @item = cart_item.item_id
       redirect_to item_path(@item)
