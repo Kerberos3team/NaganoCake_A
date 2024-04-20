@@ -26,11 +26,14 @@
       <tr>
         <td class="table-secondary">注文ステータス</td>
         <td>
-        <!--ボタンだけ付けた-->
         <%= form_with model: @order, url: admin_order_path do |f| %>
-          <div class="form-group">
-            <%= f.select :status, Order.statuses_i18n.invert %>
-            <%= f.submit '更新', class: "btn btn-info" %>
+          <div class="d-flex">
+            <div class="mr-3">
+              <%= f.select :status, Order.statuses_i18n.invert, { prompt: "" }, class: "form-control mb-2" %>
+            </div>
+            <div>
+              <%= f.submit '更新', class: "btn btn-info" %>
+            </div>
           </div>
         <% end %>
         </td>
@@ -69,11 +72,15 @@
               ￥<%= number_with_precision(order_detail.amount * order_detail.item.price, precision: 0, delimiter: ',') %>
             </td>
             <td>
-              <!--ボタンだけ付けた-->
+              <!--注文ステータスとの紐づけ必要-->
               <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
-                <div class="form-group">
-                  <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
-                  <%= f.submit '更新', class: "btn btn-info" %>
+                <div class="d-flex">
+                  <div class="mr-3">
+                    <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, { prompt: "" }, class: "form-control mb-2" %>
+                  </div>
+                  <div>
+                    <%= f.submit '更新', class: "btn btn-info" %>
+                  </div>
                 </div>
               <% end %>
             </td>
@@ -100,7 +107,6 @@
       </table>
     </div>
   </div>
-  <!--道子の注文履歴と顧客情報に飛ぶリンクを付ける-->
   <%= link_to admin_customer_customer_order_path(@order.customer_id), class: "btn btn-info" do %>
     <%= @order.customer.full_name %>さんの注文履歴
   <% end %>

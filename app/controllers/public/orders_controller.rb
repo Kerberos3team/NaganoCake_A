@@ -1,5 +1,7 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :no_cart_item, only:[:new]
+
   def new
     @order = Order.new
     @address = Address.where(customer_id: current_customer.id)
@@ -58,6 +60,10 @@ class Public::OrdersController < ApplicationController
   end
 
   private
+
+  def no_cart_item
+    redirect_to items_path if CartItem.none?
+  end
 
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :customer_id, :shipping_cost, :total_payment, :status)

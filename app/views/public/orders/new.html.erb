@@ -35,7 +35,7 @@
             <%= f.radio_button :select_address, 1 %>
             <%= f.label :select_address, "登録済み住所から選択" %>
             <div class="form-group">
-              <%= f.select :address_id, options_from_collection_for_select(@address, :id, :address_display), class: "form-control" %>
+              <%= f.select :address_id, options_from_collection_for_select(@address, :id, :address_display), { prompt: "配送先を選択してください" }, class: "form-control mb-2" %>
             </div>
           </div>
           <% end %>
