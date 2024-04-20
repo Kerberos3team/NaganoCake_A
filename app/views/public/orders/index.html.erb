@@ -22,7 +22,7 @@
         </td>
         <td>
           <% order.order_details.each do |order_detail| %>
-            <li>
+            <li class="list-unstyled">
               <%= link_to item_path(order_detail.item_id), class: "text-info" do %>
                 <%= order_detail.item.name %>
               <% end %>
@@ -43,4 +43,4 @@
     </tbody>
   </table>
 </div>
-<!--ページネーションがいる-->
+<%= paginate @orders, theme: 'bootstrap-5' %>

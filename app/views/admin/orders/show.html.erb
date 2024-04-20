@@ -13,11 +13,11 @@
       </tr>
       <tr>
         <td class="table-secondary">注文日</td>
-        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
       </tr>
       <tr>
         <td class="table-secondary">配送先</td>
-        <td><%= @order.address %><%= @order.name %></td>
+        <td><%= @order.address %> <%= @order.name %></td>
       </tr>
       <tr>
         <td class="table-secondary">支払方法</td>
@@ -27,7 +27,7 @@
         <td class="table-secondary">注文ステータス</td>
         <td>
         <!--ボタンだけ付けた-->
-        <%= form_with model: @order do |f| %>
+        <%= form_with model: @order, url: admin_order_path do |f| %>
           <div class="form-group">
             <%= f.select :status, Order.statuses_i18n.invert %>
             <%= f.submit '更新', class: "btn btn-info" %>
@@ -70,7 +70,7 @@
             </td>
             <td>
               <!--ボタンだけ付けた-->
-              <%= form_with model: @order_detail do |f| %>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
                 <div class="form-group">
                   <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
                   <%= f.submit '更新', class: "btn btn-info" %>

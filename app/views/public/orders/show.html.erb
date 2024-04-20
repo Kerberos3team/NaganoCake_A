@@ -7,7 +7,7 @@
       <table class="table">
         <tr>
           <td class="table-secondary">注文日</td>
-          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
         </tr>
         <tr>
           <td class="table-secondary">配送先</td>
