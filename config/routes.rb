@@ -12,17 +12,10 @@ Rails.application.routes.draw do
 
   get 'about' => "public/homes#about", as: "about"
   delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
-  
-  post 'orders/confirm'
-  get 'orders/thanks'
 
   get "search" => "public/searches#search"
   get "admin/search" => "admin/searches#search"
 
-  delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
-
-  post 'orders/confirm'
-  get 'orders/thanks'
 
   scope module: :public do
     resources :addresses, only: [:create, :update, :destroy, :index, :edit]
@@ -34,14 +27,18 @@ Rails.application.routes.draw do
     patch "customers/information" => "customers#update"
     get 'customers/unsubscribe'
     patch 'customers/withdraw'
+    post 'orders/confirm'
+    get 'orders/thanks'
     get 'genre/search' => 'searches#genre_search'
   end
 
 
   namespace :admin do
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update] do
+      get "orders/customer_order" => "orders#customer_order", as: "customer_order"
+    end
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
     get '' => "homes#top"

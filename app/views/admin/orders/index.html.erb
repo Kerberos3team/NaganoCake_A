@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <h1>注文履歴一覧</h1>
+    <!--並び順を新しい順にする-->
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-secondary">
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+          <th>注文ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <td>
+            <%= link_to admin_order_path(order.id), class: "text-info" do %>
+              <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+            <% end %>
+          <td>
+            <%= link_to admin_customer_path(order.customer_id), class: "text-info" do %>
+              <%= order.customer.full_name %>
+            <% end %>
+          </td>
+          <td>
+            <%= order.order_details.group(:order_id).sum(:amount).values.first %> 個
+          </td>
+          <td>
+            <%= order.status_i18n %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @orders, theme: 'bootstrap-5' %>
+  </div>
+</div>
