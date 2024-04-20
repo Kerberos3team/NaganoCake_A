@@ -23,21 +23,34 @@
       <tbody>
         <% @cart_items.each do |cart_item| %>
           <tr>
-            <td class="align-middle text-left">
-              <%= image_tag cart_item.item.image, size: '64x36', style: "object-fit: cover;" %> <%= cart_item.item.name %>
+            <td class="align-middle">
+              <div class="row">
+                <div class="col-lg-6 text-center">
+                  <%= image_tag cart_item.item.image, size: '64x36', style: "object-fit: cover;" %>
+                </div>
+                <div class="col-lg-6 text-center">
+                  <%= cart_item.item.name %>
+                </div>
+              </div>
             </td>
             <td class="align-middle">
               ￥<%= number_with_precision(cart_item.item.with_tax_price, precision: 0, delimiter: ',') %>
-              <!--裏で合計金額の計算-->
               <% @total_price += cart_item.subtotal %>
             </td>
             <td class="align-middle">
               <%= form_with model: cart_item, url: cart_item_path(cart_item.id) , local: true do |f| %>
-                <%= f.select :amount, *[1..10] %> 個
-                <%= button_tag type: "submit", class: "ml-5 btn btn-success" do %>
-                  <i class="fa-solid fa-rotate"></i> 変更
-                <% end %>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <%= f.select :amount, *[1..10] %> 個
+                  </div>
+                  <div class="col-lg-6">
+                    <%= button_tag type: "submit", class: " btn btn-success" do %>
+                      <i class="fa-solid fa-rotate"></i> 変更
+                    <% end %>
+                  </div>
+                </div>
               <% end %>
+
             </td>
             <td class="align-middle text-right">￥<%= number_with_precision(cart_item.subtotal, precision: 0, delimiter: ',') %></td>
             <td class="align-middle">

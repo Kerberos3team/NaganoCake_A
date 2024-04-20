@@ -6,13 +6,13 @@
           <%= image_tag 'NAGANOCAKE.jpg', size: '320x64', class: "ml-5" %>
         <% end %>
       </div>
-        <div class="col-3 d-flex align-items-center justify-content-center text-white">
+        <div class="col d-flex align-items-center justify-content-center text-white">
           <% if customer_signed_in? %>
             <p>ようこそ、<strong><%= current_customer.last_name %></strong>さん！</p>
           <% end %>
         </div>
 
-      <div class="col-6">
+      <div class="col m-2">
 
         <% if admin_signed_in? %>
           <div class="d-flex justify-content-end">
