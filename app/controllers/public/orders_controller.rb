@@ -1,28 +1,11 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :no_cart_item, only:[:new]
+  before_action :no_cart_item, only:[:confirm]
+  before_action :no_address_paymethod, only: [:confirm]
 
   def new
     @order = Order.new
     @address = Address.where(customer_id: current_customer.id)
-  end
-
-  def create
-    order = Order.new(order_params)
-    order.save
-    @cart_items = current_customer.cart_items.all
-
-    @cart_items.each do |cart_item|
-      @order_details = OrderDetail.new
-      @order_details.order_id = order.id
-      @order_details.item_id = cart_item.item.id
-      @order_details.price = cart_item.item.price
-      @order_details.amount = cart_item.amount
-      @order_details.making_status = 0
-      @order_details.save!
-    end
-    CartItem.destroy_all
-    render :thanks
   end
 
   def confirm
@@ -46,12 +29,30 @@ class Public::OrdersController < ApplicationController
       render :confirm
   end
 
+  def create
+    order = Order.new(order_params)
+    order.save
+    @cart_items = current_customer.cart_items.all
+
+    @cart_items.each do |cart_item|
+      @order_details = OrderDetail.new
+      @order_details.order_id = order.id
+      @order_details.item_id = cart_item.item.id
+      @order_details.price = cart_item.item.price
+      @order_details.amount = cart_item.amount
+      @order_details.making_status = 0
+      @order_details.save!
+    end
+    CartItem.destroy_all
+    render :thanks
+  end
+
   def thanks
   end
 
   def index
     @order = current_customer
-    @orders = @order.orders.page(params[:page])
+    @orders = @order.orders.page(params[:page]).order(created_at: "DESC")
   end
 
   def show
@@ -61,8 +62,16 @@ class Public::OrdersController < ApplicationController
 
   private
 
+  def no_address_paymethod
+    if params[:order][:payment_method].blank? || params[:order][:select_address].blank?
+      redirect_to new_order_path
+      flash[:notice] = "※支払方法とお届け先を指定してください"
+    end
+  end
+
   def no_cart_item
-    redirect_to items_path if CartItem.none?
+    cart_items = current_customer.cart_items
+    redirect_to items_path if cart_items.none?
   end
 
   def order_params

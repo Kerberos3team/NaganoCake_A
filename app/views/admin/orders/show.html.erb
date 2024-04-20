@@ -2,9 +2,9 @@
   <!--注文者情報-->
   <div class="row">
     <h1>注文履歴詳細</h1>
-    <table class="table">
+    <table class="table table-bordered mt-4">
       <tr>
-        <td class="table-secondary">購入者</td>
+        <td class="table-secondary font-weight-bold">購入者</td>
         <td>
           <%= link_to admin_customer_path(@order.customer_id), class: "text-info" do %>
             <%= @order.customer.full_name %>
@@ -12,19 +12,19 @@
         </td>
       </tr>
       <tr>
-        <td class="table-secondary">注文日</td>
+        <td class="table-secondary font-weight-bold">注文日</td>
         <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
       </tr>
       <tr>
-        <td class="table-secondary">配送先</td>
+        <td class="table-secondary font-weight-bold">配送先</td>
         <td><%= @order.address %> <%= @order.name %></td>
       </tr>
       <tr>
-        <td class="table-secondary">支払方法</td>
+        <td class="table-secondary font-weight-bold">支払方法</td>
         <td><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
-        <td class="table-secondary">注文ステータス</td>
+        <td class="table-secondary font-weight-bold">注文ステータス</td>
         <td>
         <%= form_with model: @order, url: admin_order_path do |f| %>
           <div class="d-flex">
@@ -42,11 +42,11 @@
   </div>
 
   <!--注文商品詳細-->
-  <div class="row">
-    <div class="col-8">
-      <table class="table">
+  <div class="row mt-4">
+    <div class="col-12 col-md-8">
+      <table class="table table-bordered">
         <thead>
-          <tr class="table-secondary">
+          <tr class="table-secondary text-center">
             <th>商品名</th>
             <th>単価（税込）</th>
             <th>数量</th>
@@ -62,13 +62,13 @@
                 <%= order_detail.item.name %>
               <% end %>
             </td>
-            <td>
+            <td class="text-right">
               ￥<%= number_with_precision(order_detail.item.price, precision: 0, delimiter: ',') %>
             </td>
             <td>
               <%= order_detail.amount %>
             </td>
-            <td>
+            <td class="text-right">
               ￥<%= number_with_precision(order_detail.amount * order_detail.item.price, precision: 0, delimiter: ',') %>
             </td>
             <td>
@@ -90,19 +90,19 @@
       </table>
     </div>
   <!--合計金額-->
-    <div class="col-4">
-      <table class="table">
+    <div class="col-12 col-md-4">
+      <table class="table table-bordered">
         <tr>
-          <td class="table-secondary">商品合計</td>
-          <td>￥<%= number_with_precision(@order.total_payment - @order.shipping_cost, precision: 0, delimiter: ',') %></td>
+          <td class="table-secondary font-weight-bold">商品合計</td>
+          <td class="text-right">￥<%= number_with_precision(@order.total_payment - @order.shipping_cost, precision: 0, delimiter: ',') %></td>
         </tr>
         <tr>
-          <td class="table-secondary">送料</td>
-          <td>￥<%= number_with_precision(@order.shipping_cost, precision: 0, delimiter: ',') %></td>
+          <td class="table-secondary font-weight-bold">送料</td>
+          <td class="text-right">￥<%= number_with_precision(@order.shipping_cost, precision: 0, delimiter: ',') %></td>
         </tr>
         <tr>
-          <td class="table-secondary">請求金額合計</td>
-          <td>￥<%= number_with_precision(@order.total_payment, precision: 0, delimiter: ',') %></td>
+          <td class="table-secondary font-weight-bold">請求金額合計</td>
+          <td class="text-right">￥<%= number_with_precision(@order.total_payment, precision: 0, delimiter: ',') %></td>
         </tr>
       </table>
     </div>

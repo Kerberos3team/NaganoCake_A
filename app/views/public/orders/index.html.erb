@@ -1,8 +1,8 @@
 <!--並び順を新しい順にする-->
 <div class="container">
-  <table class="table table-hover">
+  <table class="table table-bordered">
     <thead>
-      <tr class="table-secondary">
+      <tr class="table-secondary text-center">
         <th>注文日</th>
         <th>配送先</th>
         <th>注文商品</th>
@@ -14,7 +14,7 @@
     <tbody>
       <% @orders.each do |order| %>
       <tr>
-        <td>
+        <td class="text-center">
           <%= order.created_at.strftime('%Y/%m/%d') %>
         </td>
         <td>
@@ -29,13 +29,13 @@
             </li>
           <% end %>
         </td>
-        <td>
+        <td class="text-right">
           ￥<%= number_with_precision(order.total_payment, precision: 0, delimiter: ',') %>
         </td>
-        <td>
+        <td class="text-center">
           <%= order.status_i18n %>
         </td>
-        <td>
+        <td class="text-center">
           <%= link_to '表示する', order_path(order.id), class: "btn btn-info" %>
         </td>
       </tr>

@@ -2,9 +2,9 @@
   <div class="row">
     <!--並び順を新しい順にする-->
     <h1><%= @customer.full_name %>さんの注文履歴一覧</h1>
-    <table class="table table-hover">
+    <table class="table table-bordered">
       <thead>
-        <tr class="table-secondary">
+        <tr class="table-secondary text-center">
           <th>購入日時</th>
           <th>注文個数</th>
           <th>注文ステータス</th>
@@ -13,14 +13,14 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <td>
+          <td class=" text-center">
             <%= link_to(admin_order_path(order.id), class: "text-info") do %>
               <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
             <% end %>
-          <td>
+          <td class=" text-center">
            <%= order.order_details.group(:order_id).sum(:amount).values.first %> 個
           </td>
-          <td>
+          <td class=" text-center">
             <%= order.status_i18n %>
           </td>
         </tr>
