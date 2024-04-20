@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container px-1 py-2">
   <div class="row">
-    <h2><%= @customer.full_name %>さんの会員詳細</h2>
-    <table class="table table-nonbordered">
+    <h2 class="m-3"><%= @customer.full_name %>さんの会員詳細</h2>
+    <table class="table table-borderless">
       <tr>
         <td>会員ID</td>
         <td><%= @customer.id %></td>
@@ -40,9 +40,13 @@
           <% end %>
         </td>
       </tr>
-    </table>
-    <%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-success" %>
-    <%= link_to '注文履歴一覧へ', admin_customer_customer_order_path(@customer), class: "btn btn-info" %>
-    <%#注文履歴一覧のパス%>
+      <tr>
+        <td></td>
+        <td>
+          <%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-success" %>
+          <%= link_to '注文履歴一覧を見る', admin_orders_path, class: "btn btn-info ml-5" %>
+        </td>
+      </tr>
+    </table> 
   </div>
 </div>

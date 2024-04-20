@@ -18,6 +18,11 @@ ja:
         completion: "製作完了"
 
   activerecord:
+    models:
+      genre: "ジャンル"
+      customer: "会員"
+      address: "配送先"
+      item: "商品"
     attributes:
       customer:
         last_name: "姓"
@@ -37,7 +42,8 @@ ja:
         name: "商品名"
         introduction: "商品紹介文"
         price: "税抜き価格"
-      genre:
+        image: "画像"
+      genre: 
         name: "ジャンル名"
     errors:
       messages:
