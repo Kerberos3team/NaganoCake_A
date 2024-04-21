@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
 
   get 'about' => "public/homes#about", as: "about"
+  get 'privacy' => "public/homes#privacy", as: "privacy"
+  get 'law' => "public/homes#law", as: "law"
   delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
 
   get "search" => "public/searches#search"
