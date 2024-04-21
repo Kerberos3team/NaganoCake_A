@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
 
-  belongs_to :genre
+  belongs_to :genre, optional: true #重複するので制限
   has_many :cart_items
 
   has_one_attached :image

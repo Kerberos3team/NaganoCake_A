@@ -12,6 +12,9 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+import "../stylesheets/top.css";
+import Swiper from 'swiper/swiper-bundle.js';  
+import 'swiper/swiper-bundle.css';　　　
 
 Rails.start()
 Turbolinks.start()

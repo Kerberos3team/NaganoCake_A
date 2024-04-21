@@ -12,9 +12,9 @@ class Customer < ApplicationRecord
  validates :first_name, presence: true
  validates :last_name_kana, presence: true
  validates :first_name_kana, presence: true
- validates :postal_code, presence: true
+ validates :postal_code, presence: true, length: { minimum: 7 }, numericality: {only_integer: true, greater_than_or_equal_to: 0}
  validates :address, presence: true
- validates :telephone_number, presence: true
+ validates :telephone_number, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
  validates :is_active, inclusion: {in: [true, false]}
 
   def full_name
