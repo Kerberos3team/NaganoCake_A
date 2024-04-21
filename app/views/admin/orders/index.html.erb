@@ -2,9 +2,9 @@
   <div class="row">
     <h1>注文履歴一覧</h1>
     <!--並び順を新しい順にする-->
-    <table class="table table-hover">
+    <table class="table table-bordered mt-4">
       <thead>
-        <tr class="table-secondary">
+        <tr class="table-secondary text-center">
           <th>購入日時</th>
           <th>購入者</th>
           <th>注文個数</th>
@@ -23,10 +23,10 @@
               <%= order.customer.full_name %>
             <% end %>
           </td>
-          <td>
+          <td class="text-center">
             <%= order.order_details.group(:order_id).sum(:amount).values.first %> 個
           </td>
-          <td>
+          <td class="text-center">
             <%= order.status_i18n %>
           </td>
         </tr>

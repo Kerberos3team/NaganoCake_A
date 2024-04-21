@@ -1,10 +1,36 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :no_cart_item, only:[:new]
+  before_action :no_cart_item, only:[:confirm]
+  before_action :no_address_paymethod, only: [:confirm]
 
   def new
     @order = Order.new
     @address = Address.where(customer_id: current_customer.id)
+  end
+
+  def confirm
+    @total_price = 0
+    @shipping_cost = SHIPPING_COST
+    @order = Order.new(order_params)
+    if params[:order][:select_address] == "0"
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.full_name
+    elsif params[:order][:select_address] == "1"
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    elsif params[:order][:select_address] == "2"
+      if params[:order][:postal_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
+        render :new
+      end
+      @order.customer_id = current_customer.id
+    else
+      render :new
+    end
+      @cart_items = current_customer.cart_items
+      @order_new = Order.new
   end
 
   def create
@@ -22,28 +48,7 @@ class Public::OrdersController < ApplicationController
       @order_details.save!
     end
     CartItem.destroy_all
-    render :thanks
-  end
-
-  def confirm
-    @total_price = 0
-    @shipping_cost = SHIPPING_COST
-    @order = Order.new(order_params)
-    if params[:order][:select_address] == "0"
-      @order.postal_code = current_customer.postal_code
-      @order.address = current_customer.address
-      @order.name = current_customer.full_name
-    elsif params[:order][:select_address] == "1"
-      @address = Address.find(params[:order][:address_id])
-      @order.postal_code = @address.postal_code
-      @order.address = @address.address
-      @order.name = @address.name
-    elsif params[:order][:select_address] == "2"
-      @order.customer_id = current_customer.id
-    end
-      @cart_items = current_customer.cart_items
-      @order_new = Order.new
-      render :confirm
+    redirect_to orders_thanks_path
   end
 
   def thanks
@@ -51,7 +56,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @order = current_customer
-    @orders = @order.orders.page(params[:page])
+    @orders = @order.orders.page(params[:page]).order(created_at: "DESC")
   end
 
   def show
@@ -61,8 +66,16 @@ class Public::OrdersController < ApplicationController
 
   private
 
+  def no_address_paymethod
+    if params[:order][:payment_method].blank? || params[:order][:select_address].blank?
+      redirect_to new_order_path
+      flash[:notice] = "※支払方法とお届け先を指定してください"
+    end
+  end
+
   def no_cart_item
-    redirect_to items_path if CartItem.none?
+    cart_items = current_customer.cart_items
+    redirect_to items_path if cart_items.none?
   end
 
   def order_params
