@@ -11,17 +11,17 @@
     background-size: cover;
 }
 .slider-item01 {
-  background-image: url("../../assets/images/chef.png");
+  background-image: url("../../assets/images/chef.jpg");
   background-size:  cover;
 }
 
 .slider-item02 {
-  background-image: url(../../assets/images/cheesecake.png);
+  background-image: url(../../assets/images/cheesecake.jpg);
   background-size:  cover;
 }
 
 .slider-item03 {
-  background-image: url(../../assets/images/cake.png);
+  background-image: url(../../assets/images/kitchen.jpg);
   background-size:  cover;
 }
 
