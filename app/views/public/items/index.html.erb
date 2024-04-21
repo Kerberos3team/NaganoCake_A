@@ -1,15 +1,20 @@
 <div class="container px-1 py-2">
   <div class="row">
-    <div class="col-2">
+    <div class="col-xl-2 mt-4">
       <%= render 'public/searches/genre_sidebar', genres: @genres %>
     </div>
-    <div class="col-10">
+    <div class="col-xl-10">
       <div class="d-flex align-items-center">
         <h2>商品一覧</h2>
         <p class="m-3 mb-0"> (全<%= @items_all_counter.count %>件)</p>
       </div>
       <%= render "items_index", items: @items %>
+      <div class="row">
+        <div class="col text-center m-3">
+          <%= link_to_prev_page @items, '戻る', class: "paginate py-2 px-4" %>
+          <%= link_to_next_page @items, '次へ', class: "paginate py-2 px-4" %>
+        </div>
+      </div>
     </div>
-    </div>
-  <%= paginate @items, theme: 'bootstrap-5' %>
+  </div>
 </div>

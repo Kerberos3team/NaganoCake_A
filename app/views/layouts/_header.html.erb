@@ -1,18 +1,18 @@
-<header class="">
-  <div class="container-fluid">
+<header class="header">
+  <div class="container-fluid bg-img">
     <div class="row">
       <div class="col-3 my-4">
         <%= link_to root_path do %>
           <%= image_tag 'NAGANOCAKE.jpg', size: '320x64', class: "ml-5" %>
         <% end %>
       </div>
-        <div class="col-3 d-flex align-items-center justify-content-center text-white">
+        <div class="col d-flex align-items-center justify-content-center text-white">
           <% if customer_signed_in? %>
             <p>ようこそ、<strong><%= current_customer.last_name %></strong>さん！</p>
           <% end %>
         </div>
 
-      <div class="col-6">
+      <div class="col m-2">
 
         <% if admin_signed_in? %>
           <div class="d-flex justify-content-end">
@@ -38,23 +38,22 @@
           </div>
         <% end %>
 
-        <div class="seach text-right pb-2 m-2">
+        <div class="seach text-right m-2">
           <div>
             <% if admin_signed_in? %>
               <%= form_with url: admin_search_path, method: :get do |f| %>
-                <%= f.text_field :keyword %>
-                <br>
-                <%= f.radio_button :search_obj, :customers, checked: "checked", value: "customers" %>
-                <%= f.label :customers, "ユーザー" %>
-                <%= f.radio_button :search_obj, :items, value: "items" %>
-                <%= f.label :items, "商品" %>
+                <%= f.radio_button :search_obj, :customers, checked: "checked", value: "customers", class: "cursor"%>
+                <%= f.label :search_obj_customers, "ユーザー", class: "cursor" %>
+                <%= f.radio_button :search_obj, :items, value: "items", class: "cursor" %>
+                <%= f.label :search_obj_items, "商品", class: "cursor" %>
+                <%= f.text_field :keyword, placeholder: " 検索" %>
                 <%= button_tag type: "submit", class: "btn-light" do %>
                   <i class="fas fa-search"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= form_with url: search_path, method: :get do |f| %>
-                <%= f.text_field :keyword %>
+                <%= f.text_field :keyword, placeholder: " 商品検索" %>
                 <%= button_tag type: "submit", class: "btn-light" do %>
                   <i class="fas fa-search"></i>
                 <% end %>

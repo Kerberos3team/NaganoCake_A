@@ -1,10 +1,62 @@
 @use '~bootstrap/scss/bootstrap';
 
+// layout
+
 header {
-  background-color: #C4A690;
+
+}
+
+.bg-img {
+  background-image: url('45585806_p2.png');
 }
 
 footer {
-  background-color: #C4A690;
+  background-color: #FF9B52;
 }
 
+// kaminari
+
+.paginate {
+  text-decoration: none;
+  color: #C45200;
+  border: 1px solid #FF9B52;
+  border-radius: 16px;
+}
+
+.paginate:hover {
+  background-color: #FF9B52;
+  text-decoration: none;
+  color: #fff;
+}
+
+// cursor関連
+
+.cursor {
+  cursor: pointer;
+}
+
+// テーブル関連
+
+.color-orange {
+  background-color: #FFFDE6;
+}
+
+.color-orange:hover {
+  background-color: #FFFBCC;
+}
+
+.genre-bg:hover {
+  background-color: #FFFBCC;
+}
+
+.pointer-none {
+  pointer-events: none;
+}
+
+// 商品一覧の余白
+
+.item-border{
+  border-width: 5px !important;
+  border-radius: 16px !important;
+  border-color: #fff !important;
+}
