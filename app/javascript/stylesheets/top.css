@@ -1,0 +1,47 @@
+.slider {
+  position:relative;
+  z-index: 1;
+}
+
+.slider-item {
+    width: 100vh;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.slider-item01 {
+  background-image: url("../../assets/images/chef.png");
+  background-size:  cover;
+}
+
+.slider-item02 {
+  background-image: url(../../assets/images/cheesecake.png);
+  background-size:  cover;
+}
+
+.slider-item03 {
+  background-image: url(../../assets/images/cake.png);
+  background-size:  cover;
+}
+
+
+.top_text{
+  position: absolute;
+  color: white; 
+  z-index: 2; 
+  top: 30%;
+  left: 40%; 
+  -webkit-transform: translate(-30%, 0%);
+  text-shadow: 2px 2px 2px black;
+  text-align: center;
+  font-size: 20px; 
+  letter-spacing: 0.1em; 
+  background-color: rgba(198,198,198,0.7)
+}
+
+.top_text span{
+  font-weight: bold; 
+  font-size: 34px;
+  vertical-align: bottom;
+}

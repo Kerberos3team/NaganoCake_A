@@ -19,10 +19,10 @@ ja:
 
   activerecord:
     models:
-      genre: "ジャンル"
       customer: "会員"
       address: "配送先"
       item: "商品"
+      genre: "ジャンル"
     attributes:
       customer:
         last_name: "姓"
@@ -41,10 +41,12 @@ ja:
       item:
         name: "商品名"
         introduction: "商品紹介文"
-        price: "税抜き価格"
+        price: "税抜価格"
         image: "画像"
+        genre_id: "ジャンル"
       genre: 
         name: "ジャンル名"
+        genre_id: "ジャンル"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

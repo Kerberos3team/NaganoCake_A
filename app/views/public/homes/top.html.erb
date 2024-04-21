@@ -9,21 +9,36 @@
 
     <div class="col-md-10">
   　<!--トップ画像-->
-        <div class="card">
-          <%= image_tag 'top-image', class: "" %>
-          <div class="card-img-overlay d-flex">
-            <div class="text-white m-auto">
-              <h1>ようこそ、<strong>ながのCAKE</strong>へ！</h1>
-              <p>
-                このサイトは、ケーキ販売のECサイトになります。<br>
-                会員でない方も商品の閲覧はできますが、<br>
-                購入には会員登録が必要になります。
-              </p>
-            </div>
+
+        <div class="container">
+          <div class="top_slide text-center">
+            <ul class="p-0 slider">
+              <li class="slider-item slider-item01"></li>
+              <li class="slider-item slider-item02"></li>
+              <li class="slider-item slider-item03"></li>
+            </ul>
+            <p class="top_text">
+              <span>ようこそ、ながのCAKEへ！</span><br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。
+            </p>
           </div>
+
+          <script>
+            $('.slider').slick({
+            autoplay: true,
+            autoplaySpeed: 3000,
+            speed: 1500,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: true,
+            });
+          </script>
         </div>
-
-
+        
       <!--新着商品-->
       <div class="mt-5 mb-2">
         <h2>新着商品</h2>
