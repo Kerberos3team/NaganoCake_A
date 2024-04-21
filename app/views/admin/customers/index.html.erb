@@ -1,37 +1,12 @@
 <div class="container px-1 py-2">
   <div class="row">
     <h2>会員一覧</h2>
-    <table class="table table-hover">
-      <thead>
-        <tr class="table-secondary">
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-          <th>ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @customers.each do |customer| %>
-        <tr>
-          <td><%= customer.id %></td>
-          <td>
-            <%= link_to(admin_customer_path(customer.id), class: "text-muted") do %>
-              <%= customer.full_name %>
-            <% end %>
-          </td>
-          <td><%= customer.email %></td>
-          <td>
-            <% if customer.is_active %>
-              <div class="text-success"><b>有効</b></div>
-            <% else %>
-              <div class="text-secondary"><b>退会</b></div>
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%# pagination bootstrap の適用, Gemfileの追加 %>
-    <%= paginate @customers, theme: 'bootstrap-5' %>
+  </div>
+  <%= render "imdex", customers: @customers %>
+  <div class="row">
+    <div class="col text-center m-4">
+      <%= link_to_prev_page @customers, '戻る', class: "paginate py-2 px-4" %>
+      <%= link_to_next_page @customers, '次へ', class: "paginate py-2 px-4" %>
+    </div>
   </div>
 </div>

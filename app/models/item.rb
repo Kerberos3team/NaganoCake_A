@@ -20,7 +20,11 @@ class Item < ApplicationRecord
 
 
   def self.search_for(content)
-    Item.where('name LIKE ?', '%'+content+'%')
+    if content == ""
+      Item.all
+    else
+      Item.where('name LIKE ?', '%'+content+'%')
+    end
   end
 
   def image_convert_for_index

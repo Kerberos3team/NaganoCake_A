@@ -47,15 +47,15 @@
                 <%= f.radio_button :search_obj, :items, value: "items", class: "cursor" %>
                 <%= f.label :search_obj_items, "商品", class: "cursor" %>
                 <%= f.text_field :keyword, placeholder: " 検索" %>
-                <%= button_tag type: "submit", class: "btn-light" do %>
-                  <i class="fas fa-search"></i>
+                <%= button_tag type: "submit", class: "color-green" do %>
+                  <i class="fas fa-search text-white"></i>
                 <% end %>
               <% end %>
             <% else %>
               <%= form_with url: search_path, method: :get do |f| %>
                 <%= f.text_field :keyword, placeholder: " 商品検索" %>
-                <%= button_tag type: "submit", class: "btn-light" do %>
-                  <i class="fas fa-search"></i>
+                <%= button_tag type: "submit", class: "color-green" do %>
+                  <i class="fas fa-search text-white"></i>
                 <% end %>
               <% end %>
             <% end %>

@@ -13,7 +13,7 @@
 
 .header-btn {
   background: #308029;
-  border-radius: 8px;
+  border-radius: 0px;
   text-decoration: none;
   color: #fff;
 }
@@ -28,13 +28,16 @@ footer {
   background-color: #a96021;
 }
 
+.btn {
+  border-radius: 0px;
+}
+
 // kaminari
 
 .paginate {
   text-decoration: none;
   color: #a96021;
   border: 1px solid #a96021;
-  border-radius: 8px;
 }
 
 .paginate:hover {
@@ -55,12 +58,16 @@ footer {
   background-color: #FFF5ED;
 }
 
+.color-green {
+  background-color: #308029;
+}
+
 .color-orange:hover {
   background-color: #FFD5B3;
 }
 
 .genre-bg:hover {
-  background-color: #FFD5B3;
+  background-color: #A8E6A1;
 }
 
 .pointer-none {
@@ -71,6 +78,6 @@ footer {
 
 .item-border{
   border-width: 5px !important;
-  border-radius: 16px !important;
+  border-radius: 0px !important;
   border-color: #fff !important;
 }
