@@ -69,7 +69,7 @@ class Public::OrdersController < ApplicationController
   def no_address_paymethod
     if params[:order][:payment_method].blank? || params[:order][:select_address].blank?
       redirect_to new_order_path
-      flash[:notice] = "※支払方法とお届け先を指定してください"
+      flash[:alert] = "※支払方法とお届け先を指定してください"
     end
   end
 
