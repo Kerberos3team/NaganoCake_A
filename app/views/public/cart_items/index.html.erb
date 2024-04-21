@@ -2,7 +2,6 @@
 
   <div class="m-4 d-flex justify-content-between">
     <h2>ショッピングカート</h2>
-    <!--削除ボタンとかはアイコン使ってみてもいいかも-->
     <div>
     <%= link_to cart_items_destroy_all_path, method: :delete, class: "btn btn-danger", local: true do %>
       <i class="fa-solid fa-xmark"></i> カートを空にする
@@ -12,7 +11,7 @@
 
   <div class="row">
     <table class="table table-bordered text-center">
-      <thead>
+      <thead class="table-secondary">
         <tr>
           <td>商品名</td>
           <td>単価(税込)</td>
@@ -24,23 +23,36 @@
       <tbody>
         <% @cart_items.each do |cart_item| %>
           <tr>
-            <td class="text-left">
-              <%= image_tag cart_item.item.image, size: '64x36', style: "object-fit: cover;" %> <%= cart_item.item.name %>
+            <td class="align-middle">
+              <div class="row">
+                <div class="col-lg-6 text-center">
+                  <%= image_tag cart_item.item.image, size: '64x36', style: "object-fit: cover;" %>
+                </div>
+                <div class="col-lg-6 text-center">
+                  <%= cart_item.item.name %>
+                </div>
+              </div>
             </td>
             <td class="align-middle">
               ￥<%= number_with_precision(cart_item.item.with_tax_price, precision: 0, delimiter: ',') %>
-              <!--裏で合計金額の計算-->
               <% @total_price += cart_item.subtotal %>
             </td>
             <td class="align-middle">
               <%= form_with model: cart_item, url: cart_item_path(cart_item.id) , local: true do |f| %>
-                <%= f.select :amount, *[1..10] %> 個
-                <%= button_tag type: "submit", class: "ml-5 btn btn-success" do %>
-                  <i class="fa-solid fa-rotate"></i>
-                <% end %>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <%= f.select :amount, *[1..10] %> 個
+                  </div>
+                  <div class="col-lg-6">
+                    <%= button_tag type: "submit", class: " btn btn-success" do %>
+                      <i class="fa-solid fa-rotate"></i> 変更
+                    <% end %>
+                  </div>
+                </div>
               <% end %>
+
             </td>
-            <td class="align-middle">￥<%= number_with_precision(cart_item.subtotal, precision: 0, delimiter: ',') %></td>
+            <td class="align-middle text-right">￥<%= number_with_precision(cart_item.subtotal, precision: 0, delimiter: ',') %></td>
             <td class="align-middle">
               <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-outline-danger" do %>
                 <i class="fa-solid fa-delete-left"></i> 削除
@@ -62,16 +74,14 @@
       <table class="table table-bordered">
         <tr><td>合計金額</td></tr>
         <tr>
-          <td>
-            ￥<%= number_with_precision(@total_price, precision: 0, delimiter: ',') %>
-          </td>
+          <td class="text-left">￥<%= number_with_precision(@total_price, precision: 0, delimiter: ',') %></td>
         </tr>
       </table>
     </div>
   </div>
   <div class="text-center">
     <%= link_to new_order_path, class: "btn btn-lg btn-success" do %>
-      <i class="fa-solid fa-right-to-bracket"></i> 購入手続きへ
+      <i class="fa-solid fa-right-to-bracket"></i> 情報入力に進む
     <% end %>
   </div>
 

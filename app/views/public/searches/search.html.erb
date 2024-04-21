@@ -1,7 +1,15 @@
-<div class="container p-2">
-    <div class="row m-3">
-      <h2>"<%= @keyword %>"の検索結果</h2>
-      <p class="mt-3 mb-0">(全<%= @results.count %>件)</p>
+<div class="container px-1 py-2">
+  <div class="row">
+    <div class="col-2">
+      <%= render 'public/searches/genre_sidebar', genres: @genres %>
     </div>
-    <%= render "public/items/index", items: @results %>
+    <div class="col-10">
+      <div class="d-flex align-items-center">
+        <h2>"<%= @keyword %>"の検索結果</h2>
+        <p class="m-3 mb-0">(全<%= @results_all.count %>件)</p>
+      </div>
+        <%= render "public/items/items_index", items: @results %>
+        <%= paginate @results, theme: 'bootstrap-5' %>
+      </div>
+    </div>
 </div>
