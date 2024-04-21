@@ -3,12 +3,12 @@
     <div class="row">
       <div class="col-3 my-4">
         <%= link_to root_path do %>
-          <%= image_tag 'NAGANOCAKE.jpg', size: '320x64', class: "ml-5" %>
+          <%= image_tag 'NAGANOCAKE3.jpg', size: '320x64', class: "ml-5" %>
         <% end %>
       </div>
-        <div class="col d-flex align-items-center justify-content-center text-white">
+        <div class="col d-flex align-items-center justify-content-center">
           <% if customer_signed_in? %>
-            <p>ようこそ、<strong><%= current_customer.last_name %></strong>さん！</p>
+            <p class="py-2 px-3 border rounded-pill bg-light">ようこそ、<strong><%= current_customer.last_name %></strong>さん！</p>
           <% end %>
         </div>
 
@@ -64,5 +64,7 @@
       </div>
 
     </div>
+  </div>
+  <div class="container-fluid reas-bg">
   </div>
 </header>
