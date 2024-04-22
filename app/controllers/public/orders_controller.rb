@@ -24,6 +24,14 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address] == "2"
       if params[:order][:postal_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
         render :new
+      else
+        @address = Address.new(
+          postal_code: @order.postal_code,
+          address: @order.address,
+          name: @order.name
+        )
+        @address.customer_id = current_customer.id
+        @address.save
       end
       @order.customer_id = current_customer.id
     else
@@ -81,4 +89,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :customer_id, :shipping_cost, :total_payment, :status)
   end
+  
 end
