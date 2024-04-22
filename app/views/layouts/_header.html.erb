@@ -1,44 +1,43 @@
 <header class="header">
   <div class="container-fluid bg-img">
     <div class="row">
-      <h1 class="col-12 col-md-6 col-xl-4 my-4">
-        <div class="container">
-          <%= link_to root_path do %>
-            <%= image_tag 'NAGANOCAKE6.jpg', size: '320x64', alt: "ながのケーキのアイコン", class: "ml-5" %>
-          <% end %>
-        </div>
+      <h1 class="col-12 col-md-6 col-xl-4 my-4 text-center">
+      <div class="container">
+        <%= link_to root_path do %>
+          <%= image_tag 'NAGANOCAKE6.jpg', size: '320x64', alt: "ながのケーキのアイコン", class: "header-icon" %>
+        <% end %>
+      </div>
       </h1>
-        <div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
+      <% unless admin_signed_in? %>
+        <div class="col-12 col-md-6 col-xl-3 d-flex align-items-center justify-content-center">
           <% if customer_signed_in? %>
             <p class="py-2 px-3 border rounded-pill bg-light">ようこそ、<strong><%= current_customer.last_name %></strong>さん！</p>
           <% end %>
         </div>
+      <% end %>
 
-      <div class="col m-2", style: "font-size: clamp(16px, 1.8vw, 30px);">
-
+      <div class="col m-2">
         <% if admin_signed_in? %>
-
-          <div class="d-flex justify-content-end text-white header-button">
-            <%= link_to '商品一覧', admin_items_path, class: "header-btn m-2 py-2 px-3" %>
-            <%= link_to '会員一覧', admin_customers_path, class: "header-btn m-2 py-2 px-3" %>
-            <%= link_to '注文履歴一覧', admin_path, class: "header-btn m-2 py-2 px-3" %>
-            <%= link_to 'ジャンル一覧', admin_genres_path, class: "header-btn m-2 py-2 px-3" %>
-            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "header-btn m-2 py-2 px-3" %>
-
+          <div class="row text-white text-center justify-content-between header-button">
+            <%= link_to '商品一覧', admin_items_path, class: "col-4 col-xl-2 header-btn m-2 py-2 px-3" %>
+            <%= link_to '会員一覧', admin_customers_path, class: "col-4 col-xl-2 header-btn m-2 py-2 px-3" %>
+            <%= link_to '注文履歴一覧', admin_path, class: "col-3 col-xl-2 header-btn m-2 py-2 px-3" %>
+            <%= link_to 'ジャンル一覧', admin_genres_path, class: "col-3 col-xl-2 header-btn m-2 py-2 px-3" %>
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "col-3 col-xl-2 header-btn m-2 py-2 px-3" %>
           </div>
         <% elsif customer_signed_in? %>
-          <div class="d-flex justify-content-end text-white header-button">
-            <%= link_to 'マイページ', customers_my_page_path, class: "header-btn m-2 py-2 px-3" %>
-            <%= link_to '商品一覧', items_path, class: "header-btn m-2 py-2 px-3" %>
-            <%= link_to 'カート', cart_items_path, class: "header-btn m-2 py-2 px-3" %>
-            <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "header-btn m-2 py-2 px-3" %>
+          <div class="mt-2 d-flex justify-content-end text-white header-button">
+            <%= link_to 'マイページ', customers_my_page_path, class: "header-btn m-1 py-2 px-3" %>
+            <%= link_to '商品一覧', items_path, class: "header-btn m-1 py-2 px-3" %>
+            <%= link_to 'カート', cart_items_path, class: "header-btn m-1 py-2 px-3" %>
+            <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "header-btn m-1 py-2 px-3" %>
           </div>
         <% else %>
-          <div class="d-flex justify-content-end text-white header-button">
-            <%= link_to 'About', about_path, class: "header-btn m-2 py-2 px-3" %>
-            <%= link_to '商品一覧', items_path, class: "header-btn m-2 py-2 px-3" %>
-            <%= link_to '新規登録', new_customer_registration_path, class: "header-btn m-2 py-2 px-3" %>
-            <%= link_to 'ログイン', new_customer_session_path, class: "header-btn m-2 py-2 px-3" %>
+          <div class="mt-2 d-flex justify-content-end text-white header-button">
+            <%= link_to 'About', about_path, class: "header-btn m-1 py-2 px-3" %>
+            <%= link_to '商品一覧', items_path, class: "header-btn m-1 py-2 px-3" %>
+            <%= link_to '新規登録', new_customer_registration_path, class: "header-btn m-1 py-2 px-3" %>
+            <%= link_to 'ログイン', new_customer_session_path, class: "header-btn m-1 py-2 px-3" %>
           </div>
         <% end %>
 
@@ -66,7 +65,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
   <div class="container-fluid reas-bg">

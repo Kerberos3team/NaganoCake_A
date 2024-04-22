@@ -9,80 +9,88 @@
     </div>
   </div>
 
-  <div class="row">
-    <table class="table table-bordered text-center">
-      <thead class="color-orange pointer-none">
-        <tr>
-          <td>商品名</td>
-          <td>単価(税込)</td>
-          <td>数量</td>
-          <td>小計</td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        <% @cart_items.each do |cart_item| %>
+  <% unless @cart_items.blank? %>
+    <div class="row">
+      <table class="table table-bordered text-center">
+        <thead class="color-orange pointer-none">
           <tr>
-            <td class="align-middle">
-              <div class="row">
-                <div class="col-lg-6 text-center">
-                  <%= image_tag cart_item.item.image, size: '64x36', style: "object-fit: cover;" %>
-                </div>
-                <div class="col-lg-6 text-center">
-                  <%= cart_item.item.name %>
-                </div>
-              </div>
-            </td>
-            <td class="align-middle">
-              ￥<%= number_with_precision(cart_item.item.with_tax_price, precision: 0, delimiter: ',') %>
-              <% @total_price += cart_item.subtotal %>
-            </td>
-            <td class="align-middle">
-              <%= form_with model: cart_item, url: cart_item_path(cart_item.id) , local: true do |f| %>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <%= f.select :amount, *[1..10] %> 個
-                  </div>
-                  <div class="col-lg-6">
-                    <%= button_tag type: "submit", class: " btn btn-success" do %>
-                      <i class="fa-solid fa-rotate"></i> 変更
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-
-            </td>
-            <td class="align-middle text-right">￥<%= number_with_precision(cart_item.subtotal, precision: 0, delimiter: ',') %></td>
-            <td class="align-middle">
-              <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-outline-danger" do %>
-                <i class="fa-solid fa-delete-left"></i> 削除
-              <% end %>
-            </td>
+            <td>商品名</td>
+            <td>単価(税込)</td>
+            <td>数量</td>
+            <td>小計</td>
+            <td></td>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td class="align-middle">
+                <div class="row">
+                  <div class="col-lg-6 text-center">
+                    <%= image_tag cart_item.item.image, size: '64x36', style: "object-fit: cover;" %>
+                  </div>
+                  <div class="col-lg-6 text-center">
+                    <%= cart_item.item.name %>
+                  </div>
+                </div>
+              </td>
+              <td class="align-middle">
+                ￥<%= number_with_precision(cart_item.item.with_tax_price, precision: 0, delimiter: ',') %>
+                <% @total_price += cart_item.subtotal %>
+              </td>
+              <td class="align-middle">
+                <%= form_with model: cart_item, url: cart_item_path(cart_item.id) , local: true do |f| %>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <%= f.select :amount, *[1..10] %> 個
+                    </div>
+                    <div class="col-lg-6">
+                      <%= button_tag type: "submit", class: " btn btn-success" do %>
+                        <i class="fa-solid fa-rotate"></i> 変更
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
 
-  <div class="m-4 d-flex justify-content-between">
-    <div>
-      <%= link_to items_path, class: "btn btn-outline-primary", local: true do %>
-        <i class="fa-solid fa-angles-left"></i> 買い物を続ける
-      <% end %>
-    </div>
-    <div>
-      <table class="table table-bordered">
-        <tr><td>合計金額</td></tr>
-        <tr>
-          <td class="text-left">￥<%= number_with_precision(@total_price, precision: 0, delimiter: ',') %></td>
-        </tr>
+              </td>
+              <td class="align-middle text-right">￥<%= number_with_precision(cart_item.subtotal, precision: 0, delimiter: ',') %></td>
+              <td class="align-middle">
+                <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-outline-danger" do %>
+                  <i class="fa-solid fa-delete-left"></i> 削除
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
-  </div>
-  <div class="text-center">
-    <%= link_to new_order_path, class: "btn btn-lg btn-success" do %>
-      <i class="fa-solid fa-right-to-bracket"></i> 情報入力に進む
-    <% end %>
-  </div>
+
+    <div class="m-4 d-flex justify-content-between">
+      <div>
+        <%= link_to items_path, class: "btn btn-outline-primary", local: true do %>
+          <i class="fa-solid fa-angles-left"></i> 買い物を続ける
+        <% end %>
+      </div>
+      <div>
+        <table class="table table-bordered">
+          <tr><td>合計金額</td></tr>
+          <tr>
+            <td class="text-left">￥<%= number_with_precision(@total_price, precision: 0, delimiter: ',') %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="text-center">
+      <%= link_to new_order_path, class: "btn btn-lg btn-success" do %>
+        <i class="fa-solid fa-right-to-bracket"></i> 情報入力に進む
+      <% end %>
+    </div>
+
+  <% else %>
+    <%= image_tag "empty-up", size: "200x200", class: "d-block mx-auto" %>
+    <p class="text-center h3 pt-4">
+      カートは現在空です。<%= link_to "商品一覧", items_path, class: "text-success bg-light"%> から商品をお選びください。
+    </p>
+  <% end %>
 
 </div>
