@@ -1,7 +1,7 @@
 <div class="container px-1 py-2">
   <%= render 'layouts/errors', obj: @genre %>
   <h2>ジャンル一覧・追加</h2>
-  
+
   <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
     <div class="row py-5">
       <div class="form">
@@ -12,8 +12,8 @@
     </div>
   <% end %>
 
-  <div class="col-6">
-    <table class="table">
+  <div class="row text-center">
+    <table class="col-lg-6 table table-hover">
       <thead>
         <tr  class="table-secondary text-center">
           <th>ジャンル</th>

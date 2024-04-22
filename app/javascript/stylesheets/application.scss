@@ -1,30 +1,47 @@
 @use '~bootstrap/scss/bootstrap';
 
-// layout
-
-header {
-
-}
+// layout header footer
 
 .bg-img {
-  background-image: url('45585806_p2.png');
+  background-image: url("../../assets/images/header3.jpg");
+}
+
+.reas-bg {
+  height: 29px;
+  background-image: url("../../assets/images/reasred2.png");
+}
+
+.header-btn {
+  background: #308029;
+  border-radius: 0px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.header-btn:hover {
+  background: #1D4D18;
+  text-decoration: none;
+  color: #fff;
 }
 
 footer {
-  background-color: #FF9B52;
+  background-color: #a96021;
+}
+
+.btn {
+  border-radius: 0px;
 }
 
 // kaminari
 
 .paginate {
   text-decoration: none;
-  color: #C45200;
-  border: 1px solid #FF9B52;
-  border-radius: 16px;
+  color: #a96021;
+  border: 1px solid #a96021;
 }
 
 .paginate:hover {
-  background-color: #FF9B52;
+  background-color: #a96021;
   text-decoration: none;
   color: #fff;
 }
@@ -38,15 +55,19 @@ footer {
 // テーブル関連
 
 .color-orange {
-  background-color: #FFFDE6;
+  background-color: #FFF5ED;
+}
+
+.color-green {
+  background-color: #308029;
 }
 
 .color-orange:hover {
-  background-color: #FFFBCC;
+  background-color: #FFD5B3;
 }
 
 .genre-bg:hover {
-  background-color: #FFFBCC;
+  background-color: #A8E6A1;
 }
 
 .pointer-none {
@@ -57,6 +78,6 @@ footer {
 
 .item-border{
   border-width: 5px !important;
-  border-radius: 16px !important;
+  border-radius: 0px !important;
   border-color: #fff !important;
 }

@@ -1,14 +1,13 @@
 <div class="container px-1 py-2">
   <div class="row">
-
-    <div class="col-2">
+    <div class="col-xl-2 mt-4">
       <%= render 'public/searches/genre_sidebar', genres: @genres %>
     </div>
-    <div class="col-10">
+    <div class="col-xl-10">
       <div class="container p-3">
         <div class="row">
           <div class="col-md-6 p-4">
-            <%= image_tag @item.image_convert_for_show, class: "d-block ml-auto img-fluid" %>
+            <%= image_tag @item.image_convert_for_show, class: "d-block mx-auto img-fluid" %>
           </div>
 
           <div class="col-md-6">
