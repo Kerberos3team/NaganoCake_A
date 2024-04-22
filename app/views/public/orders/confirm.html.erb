@@ -1,13 +1,13 @@
 <div class="container py-3">
-  <h1 class="mx-auto mb-4">注文情報確認</h1>
+  <h2 class="mx-auto mb-4">注文情報確認</h2>
   <!--注文詳細-->
   <div class="row">
     <div class="col-12 col-md-8">
       <table class="table table-bordered">
         <thead>
-          <tr class="table-secondary text-center">
+          <tr class="color-orange pointer-none text-center">
             <th>商品名</th>
-            <th>単価（税込）</th>
+            <th>単価(税込)</th>
             <th>数量</th>
             <th>小計</th>
           </tr>
@@ -15,11 +15,17 @@
         <tbody>
           <% @cart_items.each do |cart_item| %>
             <tr>
-              <td>
-                <%= image_tag cart_item.item.image, size: '48x27', style: "object-fit: cover;" %><%= cart_item.item.name %>
-                <%= cart_item.item.name %>
-              </td>
-              <td class="text-right">
+            <td class="align-middle p-2">
+              <div class="row">
+                <div class="col-lg-6 text-center">
+                  <%= image_tag cart_item.item.image, size: '64x36', style: "object-fit: cover;" %>
+                </div>
+                <div class="col-lg-6 text-center">
+                  <%= cart_item.item.name %>
+                </div>
+              </div>
+            </td>
+              <td class="text-right pr-4">
                 ￥<%= number_with_precision(cart_item.item.with_tax_price, precision: 0, delimiter: ',') %>
               </td>
               <td class="text-center">
@@ -36,18 +42,18 @@
     </div>
 
     <!--金額-->
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-4 d-flex align-items-end">
       <table class="table table-bordered">
         <tr>
-          <td class="table-secondary">合計金額</td>
+          <th class="color-orange pointer-none">合計金額</th>
           <td class="text-right">￥<%= number_with_precision(@total_price, precision: 0, delimiter: ',') %></td>
         </tr>
         <tr>
-          <td class="table-secondary">送料</td>
+          <th class="color-orange pointer-none">送料</th>
           <td class="text-right">￥<%= @shipping_cost %></td>
         </tr>
         <tr>
-          <td class="table-secondary">お支払い金額</td>
+          <th class="color-orange pointer-none">お支払い金額</th>
           <td class="text-right">￥<%= number_with_precision(@total_price + SHIPPING_COST, precision: 0, delimiter: ',') %></td>
         </tr>
       </table>

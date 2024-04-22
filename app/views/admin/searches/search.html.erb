@@ -1,17 +1,17 @@
-<% if @type === "items" %>
 <div class="container px-1 py-2">
   <div class="row">
-    <h2>"<%= @search %>"に一致する商品</h2>
-    <% render "admin/items/index", items: @results %>
-    <%= paginate @results, theme: 'bootstrap-5' %>
+    <% if @type === "items" %>
+      <h2>"<%= @keyword %>"に一致する商品</h2>
+      <%= render "admin/items/index", items: @results %>
+    <% else %>
+      <h2>"<%= @keyword %>"に一致する会員</h2>
+      <%= render "admin/customers/index", customers: @results %>
+    <% end %>
   </div>
-
-<% else %>
-<div class="container px-1 py-2">
   <div class="row">
-    <h2>"<%= @search %>"に一致する会員</h2>
-    <% render "admin/items/index", items: @results %>
-    <%= paginate @results, theme: 'bootstrap-5' %>
+    <div class="col text-center m-4">
+      <%= link_to_prev_page @results, '戻る', class: "paginate py-2 px-4" %>
+      <%= link_to_next_page @results, '次へ', class: "paginate py-2 px-4" %>
+    </div>
   </div>
 </div>
-<% end %>

@@ -1,13 +1,11 @@
 <div class="container px-1 py-2">
   <h2>商品詳細</h2>
 
-  <div class="mt-4 d-flex justify-content-center">
-    <div class="p-4">
-
+  <div class="mt-4 row">
+    <div class="p-4 col-lg-6 text-center">
       <%= image_tag @item.image_convert_for_show %>
-
     </div>
-    <div>
+    <div class=" col-lg-6">
       <table class="table table-borderless">
         <tr>
           <td>商品名</td>
@@ -38,8 +36,6 @@
       </table>
     </div>
   </div>
-
-
 
   <div class="text-center">
     <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success" %>

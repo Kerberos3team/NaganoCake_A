@@ -5,7 +5,11 @@
       <%= link_to "新規商品登録へ", new_admin_item_path, class: "btn btn-success" %>
     </div>
     <%= render "index", items: @items %>
-    <%= paginate @items, theme: 'bootstrap-5' %>
   </div>
-
+  <div class="row">
+    <div class="col text-center m-4">
+      <%= link_to_prev_page @items, '戻る', class: "paginate py-2 px-4" %>
+      <%= link_to_next_page @items, '次へ', class: "paginate py-2 px-4" %>
+    </div>
+  </div>
 </div>
