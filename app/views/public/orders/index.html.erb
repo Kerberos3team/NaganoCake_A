@@ -2,7 +2,7 @@
 <div class="container">
   <table class="table table-bordered">
     <thead>
-      <tr class="table-secondary text-center">
+      <tr class="color-orange pointer-none text-center">
         <th>注文日</th>
         <th>配送先</th>
         <th>注文商品</th>
@@ -22,7 +22,7 @@
         </td>
         <td>
           <% order.order_details.each do |order_detail| %>
-            <li class="list-unstyled">
+            <li class="list-unstyled text-center">
               <%= link_to item_path(order_detail.item_id), class: "text-info" do %>
                 <%= order_detail.item.name %>
               <% end %>
