@@ -15,10 +15,6 @@ class Admin::OrdersController < ApplicationController
     redirect_to request.referer
   end
 
-  def index
-    @orders = Order.page(params[:page]).order(created_at: "DESC")
-  end
-
   def customer_order
     @customer = Customer.find(params[:customer_id])
     @orders = Order.where(customer_id: params[:customer_id]).page(params[:page]).order(created_at: :desc)
