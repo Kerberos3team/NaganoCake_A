@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     patch "customers/information" => "customers#update"
     get 'customers/unsubscribe'
     patch 'customers/withdraw'
-    post 'orders/confirm', to: 'orders#confirm'
+    post 'orders/confirm'
     get 'orders/thanks'
     get 'genre/search' => 'searches#genre_search'
     resources :addresses, only: [:create, :update, :destroy, :index, :edit]
