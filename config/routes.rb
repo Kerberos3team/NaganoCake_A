@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
 
   get 'about' => "public/homes#about", as: "about"
+  get 'privacy' => "public/homes#privacy", as: "privacy"
+  get 'law' => "public/homes#law", as: "law"
   delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
 
   get "search" => "public/searches#search"
@@ -35,7 +37,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :orders, only: [:index, :show, :update]
+    resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
     resources :customers, only: [:index, :show, :edit, :update] do
       get "orders/customer_order" => "orders#customer_order", as: "customer_order"

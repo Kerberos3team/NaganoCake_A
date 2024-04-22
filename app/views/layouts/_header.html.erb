@@ -17,12 +17,14 @@
       <div class="col m-2", style: "font-size: clamp(16px, 1.8vw, 30px);">
 
         <% if admin_signed_in? %>
+
           <div class="d-flex justify-content-end text-white header-button">
             <%= link_to '商品一覧', admin_items_path, class: "header-btn m-2 py-2 px-3" %>
             <%= link_to '会員一覧', admin_customers_path, class: "header-btn m-2 py-2 px-3" %>
-            <%= link_to '注文履歴一覧', admin_orders_path, class: "header-btn m-2 py-2 px-3" %>
+            <%= link_to '注文履歴一覧', admin_path, class: "header-btn m-2 py-2 px-3" %>
             <%= link_to 'ジャンル一覧', admin_genres_path, class: "header-btn m-2 py-2 px-3" %>
             <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "header-btn m-2 py-2 px-3" %>
+
           </div>
         <% elsif customer_signed_in? %>
           <div class="d-flex justify-content-end text-white header-button">
