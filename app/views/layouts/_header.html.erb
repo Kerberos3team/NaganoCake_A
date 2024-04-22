@@ -1,18 +1,20 @@
 <header class="header">
   <div class="container-fluid bg-img">
     <div class="row">
-      <h1 class="col-3 my-4">
-        <%= link_to root_path do %>
-          <%= image_tag 'NAGANOCAKE6.jpg', size: '320x64', alt: "ながのケーキのアイコン", class: "ml-5" %>
-        <% end %>
+      <h1 class="col-12 col-md-6 col-xl-4 my-4">
+        <div class="container">
+          <%= link_to root_path do %>
+            <%= image_tag 'NAGANOCAKE6.jpg', size: '320x64', alt: "ながのケーキのアイコン", class: "ml-5" %>
+          <% end %>
+        </div>
       </h1>
-        <div class="col d-flex align-items-center justify-content-center">
+        <div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
           <% if customer_signed_in? %>
             <p class="py-2 px-3 border rounded-pill bg-light">ようこそ、<strong><%= current_customer.last_name %></strong>さん！</p>
           <% end %>
         </div>
 
-      <div class="col m-2">
+      <div class="col m-2", style: "font-size: clamp(16px, 1.8vw, 30px);">
 
         <% if admin_signed_in? %>
           <div class="d-flex justify-content-end text-white header-button">
