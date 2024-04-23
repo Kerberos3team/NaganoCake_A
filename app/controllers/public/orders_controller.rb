@@ -63,6 +63,13 @@ class Public::OrdersController < ApplicationController
     redirect_to orders_thanks_path
   end
 
+  def confirm_redirect
+    redirect_to cart_items_path
+    unless current_customer.cart_items.none?
+      flash[:alert] = "再度情報入力してください"
+    end
+  end
+
   def thanks
   end
 
