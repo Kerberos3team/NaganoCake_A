@@ -3,7 +3,7 @@
   <div class="m-4 d-flex justify-content-between">
     <h2>ショッピングカート</h2>
     <div>
-    <%= link_to cart_items_destroy_all_path, method: :delete, class: "btn btn-danger", local: true do %>
+    <%= link_to cart_items_destroy_all_path, method: :delete, class: "btn btn-orange", local: true do %>
       <i class="fa-solid fa-xmark"></i> カートを空にする
     <% end %>
     </div>
@@ -45,7 +45,7 @@
                       <%= f.select :amount, *[1..10] %> 個
                     </div>
                     <div class="col-lg-6">
-                      <%= button_tag type: "submit", class: " btn btn-success" do %>
+                      <%= button_tag type: "submit", class: " btn" do %>
                         <i class="fa-solid fa-rotate"></i> 変更
                       <% end %>
                     </div>
@@ -55,7 +55,7 @@
               </td>
               <td class="align-middle text-right">￥<%= number_with_precision(cart_item.subtotal, precision: 0, delimiter: ',') %></td>
               <td class="align-middle">
-                <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-outline-danger" do %>
+                <%= link_to cart_item_path(cart_item), method: :delete, class: "btn btn-orange" do %>
                   <i class="fa-solid fa-delete-left"></i> 削除
                 <% end %>
               </td>
@@ -67,7 +67,7 @@
 
     <div class="m-4 d-flex justify-content-between">
       <div>
-        <%= link_to root_path, class: "btn btn-outline-primary", local: true do %>
+        <%= link_to root_path, class: "btn btn-green-line", local: true do %>
           <i class="fa-solid fa-angles-left"></i> 買い物を続ける
         <% end %>
       </div>

@@ -1,5 +1,18 @@
 @use '~bootstrap/scss/bootstrap';
 
+// 全体
+
+body {
+  font-family: "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro", "Hiragino Maru Gothic W4 JIS2004", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #404040;
+}
+
+h2 {
+  font-family: YuGothic, "Yu Gothic Medium", "Yu Gothic", sans-serif;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
 // layout header footer
 
 .bg-img {
@@ -26,11 +39,46 @@
 }
 
 footer {
-  background-color: #a96021;
+  background-color: #E48864;
 }
+
+// ボタン
 
 .btn {
   border-radius: 0px;
+  background: #308029;
+  color: #fff;
+}
+
+.btn:hover {
+  background: #1D4D18;
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-green-line {
+  border-radius: 0px;
+  background: #fff;
+  color: #1D4D18;
+  border: solid 1px #1D4D18;
+}
+
+.btn-green-line:hover {
+  background: #a96021;
+  text-decoration: none;
+  color: #1D4D18;
+  border: solid 1px #94C08F;
+}
+
+.btn-orange {
+  background: #E16C3E;
+  color: #fff;
+}
+
+.btn-orange:hover {
+  background: #B4522C;
+  text-decoration: none;
+  color: #fff;
 }
 
 // kaminari
@@ -75,12 +123,16 @@ footer {
   pointer-events: none;
 }
 
-// 商品一覧の余白
+// 商品一覧
 
-.item-border{
+.item-border {
   border-width: 5px !important;
   border-radius: 0px !important;
   border-color: #fff !important;
+}
+
+.item-price{
+  font-size: 0.9em;
 }
 
 
