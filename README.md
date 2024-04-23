@@ -26,13 +26,9 @@ InstagramのDMやメールで通販の注文を受けておりましたが、情
 | |BootStrap|
 |バックエンド|Ruby3.1.2|
 | |Rails 6.1.7.7|
-| |javascript|
+| |Javascript|
 |データベース|SQLite|
-|認証||
-|環境構築||
-|CI/CD||
 |インフラ|Amazon Web Service|
-|API||
 |その他|git/github|
 ## ER図
 ※添付
