@@ -82,7 +82,7 @@ gem "enum_help"
 ## 使用方法
 #### インストール方法
 ```
-$ git clone 
+$ git clone git@github.com:Kerberos3team/NaganoCake_A.git
 $ cd NaganoCake_A
 $ bundle install
 $ rails db:migrate
