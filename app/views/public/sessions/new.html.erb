@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <h4 class="col m-3">会員の方はこちらからログイン</h4>
-  </div>  
+  </div>
   <div class="row pt-2">
     <div class="mx-auto">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -43,9 +43,9 @@
       <h4 class="col m-3">会員登録がお済みでない方</h4>
     </div>
     <div class="row justify-content-center">
-      <%= link_to "こちら", new_customer_registration_path %>から新規会員登録を行ってください。
+      <%= link_to "こちら", new_customer_registration_path, class: "text-green" %>から新規会員登録を行ってください。
     </div>
-  </div>  
-  
+  </div>
+
 </div>
 

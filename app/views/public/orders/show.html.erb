@@ -1,8 +1,9 @@
 <div class="container">
   <h2>注文履歴詳細</h2>
+  <hr class="heading-line">
   <div class="row mt-4">
     <div class="col-12 col-md-8">
-      <h2>注文情報</h2>
+      <h3>注文情報</h3>
       <table class="table table-bordered">
         <tr>
           <th class="color-orange pointer-none text-center">注文日</th>
@@ -24,7 +25,7 @@
     </div>
 
     <div class="col-12 col-md-4 ">
-    <h2>請求情報</h2>
+    <h3>請求情報</h3>
       <table class="table table-bordered">
         <tr>
           <th class="color-orange pointer-none text-center">商品合計</th>
@@ -43,7 +44,7 @@
   </div>
 
   <div class="mt-4">
-    <h2>注文内容</h2>
+    <h3>注文内容</h3>
     <div class="row">
       <div class="col">
         <table class="table table-bordered">
@@ -59,7 +60,7 @@
             <% @order_details.each do |order_detail| %>
             <tr>
               <td class="text-center">
-                <%= link_to item_path(order_detail.item_id), class: "text-info" do %>
+                <%= link_to item_path(order_detail.item_id), class: "text-green" do %>
                   <%= order_detail.item.name %>
                 <% end %>
               </td>

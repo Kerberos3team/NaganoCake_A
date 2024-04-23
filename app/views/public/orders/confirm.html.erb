@@ -57,19 +57,22 @@
       </table>
     </div>
   </div>
-
-  <h2>【 支払方法 】</h2>
-  <div class="col mb-4 ml-5">
-    <%= @order.payment_method_i18n %>
+  <div class="bg-orange">
+    <h3>【 支払方法 】</h3>
+    <div class="col mb-4 ml-5">
+      <%= @order.payment_method_i18n %>
+    </div>
   </div>
 
-  <h2>【 お届け先 】</h2>
-  <div class="col mb-4 ml-5">
-    <p>
-      <%= @order.postal_code %><br>
-      <%= @order.address %><br>
-      <%= @order.name %>
-    </p>
+  <div class="bg-orange">
+    <h3>【 お届け先 】</h3>
+    <div class="col mb-4 ml-5">
+      <p>
+        〒<%= @order.postal_code %><br>
+        <%= @order.address %><br>
+        <%= @order.name %>
+      </p>
+    </div>
   </div>
   <div class="col-2 mx-auto">
     <%= form_with model: @order_new, url: '/orders' do |f| %>
@@ -81,7 +84,7 @@
       <%= f.hidden_field :total_payment, value: @total_price + SHIPPING_COST %>
       <%= f.hidden_field :payment_method, value: @order.payment_method %>
       <%= f.hidden_field :status, value: "waiting" %>
-      <%= f.submit '注文を確定する', class: "btn btn-info" %>
+      <%= f.submit '注文を確定する', class: "btn" %>
     <% end %>
   </div>
 </div>

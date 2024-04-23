@@ -13,6 +13,26 @@ h2 {
   margin-left: 30px;
 }
 
+.heading-line {
+  width: 98%;
+  margin-top: -5px;
+}
+
+.bg-orange {
+  background: #FFF5ED;
+  padding: 30px 70px;
+  margin: 20px 0;
+  border: solid 1px #DBB9B5;
+}
+
+.text-green {
+  color: #00A900;
+}
+
+.text-green:hover {
+  color: #004900;
+}
+
 // layout header footer
 
 .bg-img {
@@ -25,11 +45,11 @@ h2 {
 }
 
 .header-btn {
-  font-size: 14px;
   background: #308029;
   border-radius: 0px;
   text-decoration: none;
   color: #fff;
+  margin: 0 7px;
 }
 
 .header-btn:hover {

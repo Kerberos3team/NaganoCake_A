@@ -24,7 +24,7 @@
           <td>
             <% order.order_details.each do |order_detail| %>
               <li class="list-unstyled text-center">
-                <%= link_to item_path(order_detail.item_id), class: "text-info" do %>
+                <%= link_to item_path(order_detail.item_id), class: "text-green" do %>
                   <%= order_detail.item.name %>
                 <% end %>
               </li>
@@ -37,7 +37,7 @@
             <%= order.status_i18n %>
           </td>
           <td class="text-center">
-            <%= link_to '表示する', order_path(order.id), class: "btn btn-info" %>
+            <%= link_to '表示する', order_path(order.id), class: "btn" %>
           </td>
         </tr>
         <% end %>

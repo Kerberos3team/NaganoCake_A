@@ -2,11 +2,11 @@
   <%= render 'layouts/errors', obj: @order %>
   <div class="d-flex flex-column">
 
-    <h1 class="mx-auto">注文情報入力</h1>
+    <h2 class="mx-auto">注文情報入力</h2>
       <%= form_with model: @order, url: '/orders/confirm' do |f| %>
-      <div>
-        <h2>【 支払方法 】</h2>
-        <div class="row d-flex flex-column mb-4 mt-2">
+      <div class="bg-orange">
+        <h3>【 支払方法 】</h3>
+        <div class="row d-flex flex-column">
           <div class="col font-weight-bold">
             <%= f.radio_button :payment_method, :credit_card %>
             <%= f.label :payment_method_credit_card, "クレジットカード" %>
@@ -18,8 +18,8 @@
         </div>
       </div>
 
-      <div>
-        <h2>【 お届け先 】</h2>
+      <div class="bg-orange">
+        <h3>【 お届け先 】</h3>
         <div class="row d-flex flex-column mt-2">
           <div class="col mb-4 ">
             <label class="font-weight-bold"><%= f.radio_button :select_address, 0 %> ご自身の住所</label>
@@ -29,7 +29,7 @@
               <%= current_customer.last_name %> <%= current_customer.first_name %> 様
             </div>
           </div>
- 
+
           <% unless @address.blank? %>
             <div class="col mb-4">
               <label class="font-weight-bold"><%= f.radio_button :select_address, 1 %> 登録済み住所から選択</label>
@@ -68,10 +68,10 @@
               </div>
             </div>
             </div>
-            <div class="col-2 mx-auto">
-              <%= f.submit '確認画面へ進む', class: "btn btn-info" %>
-            </div>
         </div>
+      </div>
+      <div class="col-2 mx-auto">
+        <%= f.submit '確認画面へ進む', class: "btn" %>
       </div>
     <% end %>
 
