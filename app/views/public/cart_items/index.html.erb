@@ -67,7 +67,7 @@
 
     <div class="m-4 d-flex justify-content-between">
       <div>
-        <%= link_to items_path, class: "btn btn-outline-primary", local: true do %>
+        <%= link_to root_path, class: "btn btn-outline-primary", local: true do %>
           <i class="fa-solid fa-angles-left"></i> 買い物を続ける
         <% end %>
       </div>
@@ -87,7 +87,7 @@
     </div>
 
   <% else %>
-    <%= image_tag "empty-up", size: "200x200", class: "d-block mx-auto" %>
+    <%= image_tag "empty-up", size: "200x200", class: "m-5 d-block mx-auto" %>
     <p class="text-center h3 pt-4">
       カートは現在空です。<%= link_to "商品一覧", items_path, class: "text-success bg-light"%> から商品をお選びください。
     </p>
