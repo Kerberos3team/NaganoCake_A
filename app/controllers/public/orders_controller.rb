@@ -17,28 +17,32 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.name = current_customer.full_name
     elsif params[:order][:select_address] == "1"
-      @address = Address.find(params[:order][:address_id])
-      @order.postal_code = @address.postal_code
-      @order.address = @address.address
-      @order.name = @address.name
-    elsif params[:order][:select_address] == "2"
-      if params[:order][:postal_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
-        render :new
+      if params[:order][:address_id].blank?
+        redirect_to new_order_path
+        flash[:alert] = "支払方法とお届け先を指定してください"
       else
+        @address = Address.find(params[:order][:address_id])
+        @order.postal_code = @address.postal_code
+        @order.address = @address.address
+        @order.name = @address.name
+      end
+    elsif params[:order][:select_address] == "2"
         @address = Address.new(
           postal_code: @order.postal_code,
           address: @order.address,
           name: @order.name
         )
         @address.customer_id = current_customer.id
-        @address.save
+      unless @address.save
+        redirect_to new_order_path
+        flash[:alert] = "支払方法とお届け先を指定してください"
       end
       @order.customer_id = current_customer.id
     else
-      render :new
+      redirect_to new_order_path
     end
-      @cart_items = current_customer.cart_items
-      @order_new = Order.new
+    @cart_items = current_customer.cart_items
+    @order_new = Order.new
   end
 
   def create
@@ -77,7 +81,7 @@ class Public::OrdersController < ApplicationController
   def no_address_paymethod
     if params[:order][:payment_method].blank? || params[:order][:select_address].blank?
       redirect_to new_order_path
-      flash[:alert] = "※支払方法とお届け先を指定してください"
+      flash[:alert] = "支払方法とお届け先を指定してください"
     end
   end
 
@@ -89,5 +93,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :customer_id, :shipping_cost, :total_payment, :status)
   end
-  
+
 end
