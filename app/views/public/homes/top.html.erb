@@ -37,7 +37,7 @@
         <h2>新着商品</h2>
         <%= render "public/items/items_index", items: @items %>
 
-        <p class="mt-4 mb-2">
+        <p class="mt-4 mb-2 text-right">
           <%= link_to items_path, class: "text-decoration-none text-dark h5" do %>
             <i class="fa-solid fa-right-to-bracket"></i> 全ての商品を見る
           <% end %>

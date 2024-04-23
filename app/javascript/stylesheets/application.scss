@@ -12,6 +12,7 @@
 }
 
 .header-btn {
+  font-size: 14px;
   background: #308029;
   border-radius: 0px;
   text-decoration: none;
@@ -80,4 +81,24 @@ footer {
   border-width: 5px !important;
   border-radius: 0px !important;
   border-color: #fff !important;
+}
+
+
+@media (max-width: 1200px) {
+
+  .header-btn {
+    font-size: 10px;
+  }
+
+  .btn {
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 425px) {
+  .header-icon {
+    width: 80vw;
+    height: auto;
+  }
 }
