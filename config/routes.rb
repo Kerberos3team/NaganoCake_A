@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     patch "customers/information" => "customers#update"
     get 'customers/unsubscribe'
     patch 'customers/withdraw'
+    get 'orders/confirm' => "orders#confirm_redirect"
     post 'orders/confirm'
     get 'orders/thanks'
     get 'genre/search' => 'searches#genre_search'

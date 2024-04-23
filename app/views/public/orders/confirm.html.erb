@@ -15,16 +15,16 @@
         <tbody>
           <% @cart_items.each do |cart_item| %>
             <tr>
-            <td class="align-middle p-2">
-              <div class="row">
-                <div class="col-lg-6 text-center">
-                  <%= image_tag cart_item.item.image, size: '64x36', style: "object-fit: cover;" %>
+              <td class="align-middle p-2">
+                <div class="row">
+                  <div class="col-lg-6 text-center">
+                    <%= image_tag cart_item.item.image, size: '64x36', style: "object-fit: cover;" %>
+                  </div>
+                  <div class="col-lg-6 text-center">
+                    <%= cart_item.item.name %>
+                  </div>
                 </div>
-                <div class="col-lg-6 text-center">
-                  <%= cart_item.item.name %>
-                </div>
-              </div>
-            </td>
+              </td>
               <td class="text-right pr-4">
                 ￥<%= number_with_precision(cart_item.item.with_tax_price, precision: 0, delimiter: ',') %>
               </td>
