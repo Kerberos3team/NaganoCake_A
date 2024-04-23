@@ -1,7 +1,6 @@
 <div class="container px-1 py-2">
   <div class="row">
     <div class="col-xl-10 col-md-12 order-xl-1">
-  　<!--トップ画像-->
 
         <div class="container">
           <div class="top_slide text-center">
@@ -32,7 +31,6 @@
           </script>
         </div>
 
-      <!--新着商品-->
       <div class="mt-4 mb-2">
         <h2>新着商品</h2>
         <%= render "public/items/items_index", items: @items %>
@@ -44,9 +42,10 @@
         </p>
       </div>
     </div>
-  <!--ジャンル検索-->
-  <div class="col-xl-2 order-xl-0 mt-4">
-    <%= render 'public/searches/genre_sidebar', genres: @genres %>
+
+    <div class="col-xl-2 order-xl-0 mt-4">
+      <%= render 'public/searches/genre_sidebar', genres: @genres %>
+    </div>
   </div>
 </div>
 

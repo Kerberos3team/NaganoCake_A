@@ -21,9 +21,7 @@
       <div>
         <h2>【 お届け先 】</h2>
         <div class="row d-flex flex-column mt-2">
-          <!--自身の住所-->
           <div class="col mb-4 ">
-            <!--力尽きて普通のlabelタグにしちゃいました。ちゃんとした書き方分かったら直したい-->
             <label class="font-weight-bold"><%= f.radio_button :select_address, 0 %> ご自身の住所</label>
             <div class="ml-5">
               〒 <%= current_customer.postal_code %><br>
@@ -31,7 +29,7 @@
               <%= current_customer.last_name %> <%= current_customer.first_name %> 様
             </div>
           </div>
-          <!--登録済みの配送先から選択-->
+ 
           <% unless @address.blank? %>
             <div class="col mb-4">
               <label class="font-weight-bold"><%= f.radio_button :select_address, 1 %> 登録済み住所から選択</label>
@@ -40,7 +38,7 @@
               </div>
             </div>
           <% end %>
-          <!--新しいお届け先を指定-->
+
           <div class="col mb-4">
             <label class="font-weight-bold"><%= f.radio_button :select_address, 2 %> 新しいお届け先</label>
             <div class="ml-5">

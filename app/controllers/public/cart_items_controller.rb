@@ -6,8 +6,6 @@ class Public::CartItemsController < ApplicationController
     @total_price = 0
   end
 
-# ↓ ifが重なっちゃって汚くなってしまった！でもこれ以外のやり方が分かりません！！泣
-
   def create
     cart_item = CartItem.new(cart_item_params)
     cart_item.customer_id = current_customer.id

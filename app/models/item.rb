@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
 
-  belongs_to :genre, optional: true #重複するので制限
+  belongs_to :genre, optional: true
   has_many :cart_items
 
   has_one_attached :image
@@ -12,12 +12,9 @@ class Item < ApplicationRecord
   validates :genre_id, presence: true
   validates :is_active, inclusion: {in: [true, false]}
 
-
-#税込価格の計算
   def with_tax_price
     (self.price * 1.1).floor
   end
-
 
   def self.search_for(content)
     if content == ""
@@ -34,6 +31,5 @@ class Item < ApplicationRecord
   def image_convert_for_show
     image.variant( resize: "304" ).processed
   end
-
 
 end

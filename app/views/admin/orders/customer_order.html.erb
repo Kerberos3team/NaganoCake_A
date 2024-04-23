@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row">
-    <!--並び順を新しい順にする-->
     <h1><%= @customer.full_name %>さんの注文履歴一覧</h1>
     <table class="table table-bordered">
       <thead>
@@ -27,9 +26,12 @@
         <% end %>
       </tbody>
     </table>
-    <%= paginate @orders, theme: 'bootstrap-5' %>
+    <div class="row">
+      <div class="col text-center m-4">
+        <%= link_to_prev_page @orders, '戻る', class: "paginate py-2 px-4" %>
+        <%= link_to_next_page @orders, '次へ', class: "paginate py-2 px-4" %>
+      </div>
+    </div>
   </div>
 
 </div>
-
-<!--ページネーションがいる-->
