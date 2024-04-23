@@ -1,34 +1,35 @@
 <div class="container px-1 py-2">
   <div class="row">
     <h2 class="col">ログイン</h2>
+    <hr class="heading-line">
   </div>
   <div class="row">
-    <h4 class="col m-3">会員の方はこちらからログイン</h4>
+    <h3 class="col mt-4">会員の方はこちらからログイン</h3>
   </div>
-  <div class="row pt-2">
+  <div class="bg-orange row pt-2">
     <div class="mx-auto">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <table class="table table-borderless">
           <tr><th class="col">メールアドレス</th>
           <td>
             <div class="field">
-              <%= f.email_field :email, autofocus: true,:size=>"50", autocomplete: "email", placeholder: "sample@example.com" %>
+              <%= f.email_field :email, autofocus: true,:size=>"50", autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
             </div>
           </td>
           </tr>
           <tr>
             <th class="col">パスワード</th>
             <td>
-                <div class="field">
-                  <%= f.password_field :password,:size=>"50",autocomplete: "current-password" %>
-                </div>
+              <div class="field">
+                <%= f.password_field :password,:size=>"50",autocomplete: "current-password", class: "form-control" %>
+              </div>
             </td>
           </tr>
           <tr>
             <td></td>
             <td>
               <div class="actions">
-                <%= f.submit "ログイン", class: "btn btn-primary submit-btn" %>
+                <%= f.submit "ログイン", class: "btn submit-btn" %>
               </div>
             </td>
           </tr>
@@ -40,9 +41,9 @@
 
   <div class="container">
     <div class="row">
-      <h4 class="col m-3">会員登録がお済みでない方</h4>
+      <h3 class="col mt-5">会員登録がお済みでない方</h3>
     </div>
-    <div class="row justify-content-center">
+    <div class="bg-orange row justify-content-center">
       <%= link_to "こちら", new_customer_registration_path, class: "text-green" %>から新規会員登録を行ってください。
     </div>
   </div>

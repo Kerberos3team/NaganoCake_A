@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <h3 class="col mt-4">管理者ログイン</h3>
+    <h2 class="col mt-4">管理者ログイン</h2>
+    <hr class="heading-line">
   </div>
-  
+
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row">
+    <div class="bg-orange row">
       <table class="table table-sm table-borderless col-8 mx-auto mt-4">
         <tr class="form-group">
           <td><%= f.label :メールアドレス %></td>
@@ -21,7 +22,7 @@
           <td></td>
           <td>
             <div class="active">
-              <%= f.submit "ログイン", class: "btn btn-primary submit-btn w-50"%>
+              <%= f.submit "ログイン", class: "btn submit-btn w-50"%>
             </div>
           </td>
         </tr>

@@ -12,8 +12,9 @@
 
           <div class="col-md-6">
             <div class="p-3">
-              <h2 class="mb-4"><%= @item.name %></h2>
-              <p class="mb-5"><%= @item.introduction %></p>
+              <h1 class="item-title-h1 mb-2"><%= @item.name %></h1>
+              <hr class="heading-line">
+              <p class="mt-2 mb-5"><%= @item.introduction %></p>
               <p><strong class="h3">￥<%= number_with_precision(@item.with_tax_price, precision: 0, delimiter: ',') %></strong>(税込)</p>
 
               <% if @item.is_active %>

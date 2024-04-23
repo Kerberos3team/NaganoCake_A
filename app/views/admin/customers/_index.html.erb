@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table">
   <thead>
     <tr class="table-secondary">
       <th>会員ID</th>
@@ -12,7 +12,7 @@
     <tr>
       <td><%= customer.id %></td>
       <td>
-        <%= link_to(admin_customer_path(customer.id), class: "text-muted") do %>
+        <%= link_to admin_customer_path(customer.id), class: "text-green" do %>
           <%= customer.full_name %>
         <% end %>
       </td>
