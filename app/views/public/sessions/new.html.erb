@@ -1,31 +1,26 @@
-<div class="container px-1 py-2">
+<div class="container">
   <div class="row">
-    <h2 class="col">ログイン</h2>
+    <h2 class="col mt-4">ログイン</h2>
     <hr class="heading-line">
   </div>
   <div class="row">
     <h3 class="col mt-4">会員の方はこちらからログイン</h3>
   </div>
-  <div class="bg-orange row pt-2">
-    <div class="mx-auto">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <table class="table table-borderless">
-          <tr><th class="col">メールアドレス</th>
-          <td>
-            <div class="field">
-              <%= f.email_field :email, autofocus: true,:size=>"50", autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
-            </div>
-          </td>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="bg-orange row">
+        <table class="table table-sm table-borderless col-8 mx-auto mt-4">
+          <tr class="form-group">
+            <td><%= f.label :メールアドレス %></td>
+            <td><%= f.email_field :email, class: "form-control",style: "width:80%", autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></td>
+          </tr>
+          <tr class="form-group">
+            <td><%= f.label :パスワード %></td>
+            <td><%= f.password_field :password, class: "form-control ",style: "width:80%", autocomplete: "current-password" %></td>
           </tr>
           <tr>
-            <th class="col">パスワード</th>
-            <td>
-              <div class="field">
-                <%= f.password_field :password,:size=>"50",autocomplete: "current-password", class: "form-control" %>
-              </div>
-            </td>
+            <td></td>
           </tr>
-          <tr>
+          <tr class="form-group">
             <td></td>
             <td>
               <div class="actions">
@@ -34,9 +29,8 @@
             </td>
           </tr>
         </table>
-      <% end %>
-    </div>
-  </div>
+      </div>
+    <% end %>
 
 
   <div class="container">

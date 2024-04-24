@@ -2,11 +2,13 @@
   <%= render 'layouts/errors', obj: @order %>
   <div class="d-flex flex-column">
 
-    <h2 class="mx-auto">注文情報入力</h2>
+    <h2>注文情報入力</h2>
+    <hr class="heading-line">
       <%= form_with model: @order, url: '/orders/confirm' do |f| %>
       <div class="bg-orange">
-        <h3>【 支払方法 】</h3>
-        <div class="row d-flex flex-column">
+        <h3>支払方法</h3>
+        <hr class="heading-line">
+        <div class="row d-flex flex-column mt-4">
           <div class="col font-weight-bold">
             <%= f.radio_button :payment_method, :credit_card %>
             <%= f.label :payment_method_credit_card, "クレジットカード" %>
@@ -19,8 +21,9 @@
       </div>
 
       <div class="bg-orange">
-        <h3>【 お届け先 】</h3>
-        <div class="row d-flex flex-column mt-2">
+        <h3>お届け先</h3>
+        <hr class="heading-line">
+        <div class="row d-flex flex-column mt-4">
           <div class="col mb-4 ">
             <label class="font-weight-bold"><%= f.radio_button :select_address, 0 %> ご自身の住所</label>
             <div class="ml-5">

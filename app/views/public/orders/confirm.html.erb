@@ -1,5 +1,6 @@
 <div class="container py-3">
   <h2 class="mx-auto mb-4">注文情報確認</h2>
+  <hr class="heading-line">
   <div class="row">
     <div class="col-12 col-md-8">
       <table class="table table-bordered">
@@ -58,20 +59,21 @@
     </div>
   </div>
   <div class="bg-orange">
-    <h3>【 支払方法 】</h3>
+    <h3>支払方法</h3>
+    <hr class="heading-line">
     <div class="col mb-4 ml-5">
-      <%= @order.payment_method_i18n %>
+      <p><b><%= @order.payment_method_i18n %></b></p>
     </div>
   </div>
-
   <div class="bg-orange">
-    <h3>【 お届け先 】</h3>
+    <h3>お届け先</h3>
+    <hr class="heading-line">
     <div class="col mb-4 ml-5">
-      <p>
+      <p><b>
         〒<%= @order.postal_code %><br>
         <%= @order.address %><br>
         <%= @order.name %>
-      </p>
+      </b></p>
     </div>
   </div>
   <div class="col-2 mx-auto">
