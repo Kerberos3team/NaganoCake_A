@@ -10,7 +10,6 @@ body {
 h2 {
   font-family: YuGothic, "Yu Gothic Medium", "Yu Gothic", sans-serif;
   font-weight: bold;
-  margin-left: 30px;
 }
 
 a {
@@ -58,6 +57,13 @@ a:hover {
   padding: 30px 70px;
   margin: 20px 0;
   border: solid 1px #DBB9B5;
+}
+
+.bg-gray {
+  background: #EAEAEA;
+  padding: 30px 70px;
+  margin: 20px 0;
+  border: solid 1px #B8B8B8;
 }
 
 
@@ -201,10 +207,35 @@ footer {
   margin-bottom: 30px;
 }
 
+// 新規登録フォーム
+.form-new table{
+  width: 100%;
+}
+.form-new th,
+.form-new td{
+  text-align:center;
+}
+
+.form-new th {
+  text-align: left;
+  padding: 30px 0 40px;
+}
+
+.form-new tr {
+  border-top: solid 1px #DBDBDB;
+}
+
+.form-new tr:first-child {
+  border-top: none;
+}
+
+.border-none tr {
+  border-top: none;
+}
+
 
 
 @media (max-width: 1200px) {
-
   .header-btn {
     font-size: 10px;
   }
@@ -213,11 +244,35 @@ footer {
     font-size: 12px;
   }
 
+  .form-new th {
+    margin: 20px 0 10px;
+  }
+
+  // 新規登録フォームのレスポンシブ
+  .form-new  {
+    width: 100%;
+  }
+  table.form-new  th,
+  table.form-new  td {
+    display: block;
+    width: 100%;
+  }
+
+  .form-new th {
+    padding: 30px 0 10px;
+  }
+
 }
 
-@media (max-width: 425px) {
+@media (max-width: 600px) {
   .header-icon {
     width: 80vw;
     height: auto;
+  }
+
+  .bg-orange,
+  .bg-gray {
+    padding: 10px 2% 30px;
+    margin: 10px 0 30px;
   }
 }

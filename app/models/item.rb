@@ -29,7 +29,7 @@ class Item < ApplicationRecord
   end
 
   def image_convert_for_show
-    image.variant( resize: "304" ).processed
+    image.variant( resize: "500" ).processed
   end
 
 end

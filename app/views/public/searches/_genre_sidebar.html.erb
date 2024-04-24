@@ -6,7 +6,7 @@
     <%= form_with url: genre_search_path, method: :get do |f| %>
       <% genres.each do |genre| %>
         <tr onclick='window.location="<%= genre_search_path(genre_id: genre.id) %>"', role="link", class="cursor" >
-          <td class="text-center genre-bg font-weight-bold">
+          <td class="text-left genre-bg font-weight-bold">
             <%= genre.name %>
           </td>
         </tr>
