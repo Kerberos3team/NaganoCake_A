@@ -1,7 +1,8 @@
 <div class="container px-1 py-2">
   <div class="row">
     <h2>注文履歴一覧</h2>
-    <table class="table table-hover">
+    <hr class="heading-line">
+    <table class="table">
       <thead>
         <tr class="table-secondary">
           <th>購入日時</th>
@@ -14,11 +15,11 @@
         <% @orders.each do |order| %>
         <tr>
           <td>
-            <%= link_to admin_order_path(order.id), class: "text-info" do %>
+            <%= link_to admin_order_path(order.id), class: "text-green" do %>
               <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
             <% end %>
           <td>
-            <%= link_to admin_customer_path(order.customer_id), class: "text-info mx-auto" do %>
+            <%= link_to admin_customer_path(order.customer_id), class: "text-green mx-auto" do %>
               <%= order.customer.full_name %>
             <% end %>
           </td>

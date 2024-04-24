@@ -8,6 +8,7 @@
         <h2>商品一覧</h2>
         <p class="m-3 mb-0"> (全<%= @items_all_counter.count %>件)</p>
       </div>
+      <hr class="heading-line">
       <%= render "items_index", items: @items %>
       <div class="row">
         <div class="col text-center m-4">

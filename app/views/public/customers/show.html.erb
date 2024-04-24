@@ -2,43 +2,44 @@
   <div class="row">
     <div class="col">
       <h2 class="my-5">マイページ</h2>
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center mb-2">
         <h3><strong>登録情報</strong></h3>
-        <%= link_to "編集する", customers_information_edit_path, class:"btn btn-success ml-3" %>
+        <%= link_to "編集する", customers_information_edit_path, class: "btn btn-success ml-3" %>
       </div>
+      <hr class="heading-line">
       <table class="table table-bordered mt-3">
         <tr>
-          <td class="bg-light">氏名</td>
+          <td class="color-orange pointer-none">氏名</td>
           <td><%= @customer.full_name %></td>
         </tr>
         <tr>
-          <td class= "bg-light">カナ</td>
+          <td class= "color-orange pointer-none">カナ</td>
           <td><%= @customer.full_name_kana %></td>
         </tr>
         <tr>
-          <td class="bg-light">郵便番号</td>
+          <td class="color-orange pointer-none">郵便番号</td>
           <td><%= @customer.postal_code %></td>
         </tr>
         <tr>
-          <td class="bg-light">電話番号</td>
+          <td class="color-orange pointer-none">電話番号</td>
           <td><%= @customer.telephone_number %></td>
         </tr>
         <tr>
-          <td class="bg-light">メールアドレス</td>
+          <td class="color-orange pointer-none">メールアドレス</td>
           <td><%= @customer.email %></td>
         </tr>
       </table>
       <div class="row">
-        <table>
-          <tr style="height: 80px;">
-            <th scope="col"><h3><strong>配送先</strong></h3></th>
-            <td class="pl-5"><%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %></td>
-          </tr>
-          <tr　style="height: 80px;">
-            <th scope="col"><h3><strong>注文履歴</strong></h3></th>
-            <td class="pl-5"><%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %></td>
-          </tr>
-        </table>
+        <div class="d-flex align-items-center mt-3 mb-2">
+          <h3><strong>配送先</strong></h3>
+          <%= link_to "一覧を見る", addresses_path, class: "btn btn-success ml-4" %>
+        </div>
+        <hr class="heading-line">
+        <div class="d-flex align-items-center mt-3 mb-2">
+          <h3><strong>注文履歴</strong></h3>
+          <%= link_to "一覧を見る", orders_path, class: "btn btn-success ml-4" %>
+        </div>
+        <hr class="heading-line">
       </div>
     </div>
   </div>

@@ -1,5 +1,66 @@
 @use '~bootstrap/scss/bootstrap';
 
+// 全体
+
+body {
+  font-family: "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro", "Hiragino Maru Gothic W4 JIS2004", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #404040;
+}
+
+h2 {
+  font-family: YuGothic, "Yu Gothic Medium", "Yu Gothic", sans-serif;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+a {
+  color: #00A900;
+}
+
+a:hover {
+  color: #004900;
+}
+
+.alert-danger {
+  color: #A33614;
+  background-color: #F8E3D7;
+  border-color: #F5D5C6;
+}
+
+.item-title-h1 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.about-h2 {
+  color: #7F4432;
+}
+
+.about-title {
+  font-weight: bold;
+  color: #7F4432;
+  margin: 60px 0 40px;
+}
+
+.about-text {
+  font-weight: bold;
+  color: #7F4432;
+  font-size: 18px;
+}
+
+.heading-line {
+  width: 99%;
+  margin-top: -5px;
+}
+
+.bg-orange {
+  background: #FFF5ED;
+  padding: 30px 70px;
+  margin: 20px 0;
+  border: solid 1px #DBB9B5;
+}
+
+
 // layout header footer
 
 .bg-img {
@@ -12,11 +73,11 @@
 }
 
 .header-btn {
-  font-size: 14px;
   background: #308029;
   border-radius: 0px;
   text-decoration: none;
   color: #fff;
+  margin: 0 7px;
 }
 
 .header-btn:hover {
@@ -26,11 +87,46 @@
 }
 
 footer {
-  background-color: #a96021;
+  background-color: #E48864;
 }
+
+// ボタン
 
 .btn {
   border-radius: 0px;
+  background: #308029;
+  color: #fff;
+}
+
+.btn:hover {
+  background: #1D4D18;
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-green-line {
+  border-radius: 0px;
+  background: #fff;
+  color: #1D4D18;
+  border: solid 1px #1D4D18;
+}
+
+.btn-green-line:hover {
+  background: #C3EABE;
+  text-decoration: none;
+  color: #1D4D18;
+  border: solid 1px #94C08F;
+}
+
+.btn-orange {
+  background: #E16C3E;
+  color: #fff;
+}
+
+.btn-orange:hover {
+  background: #B4522C;
+  text-decoration: none;
+  color: #fff;
 }
 
 // kaminari
@@ -57,6 +153,7 @@ footer {
 
 .color-orange {
   background-color: #FFF5ED;
+  font-weight: bold;
 }
 
 .color-green {
@@ -75,13 +172,35 @@ footer {
   pointer-events: none;
 }
 
-// 商品一覧の余白
+// 商品一覧
 
-.item-border{
+.item-border {
   border-width: 5px !important;
   border-radius: 0px !important;
   border-color: #fff !important;
 }
+
+.item-price{
+  font-size: 0.9em;
+  font-weight: lighter;
+}
+
+
+// infomation
+.infomation h2 {
+  font-size: 30px;
+}
+
+.infomation h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.infomation p {
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
 
 
 @media (max-width: 1200px) {

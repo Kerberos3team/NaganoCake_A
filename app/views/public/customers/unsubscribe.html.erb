@@ -19,14 +19,14 @@
   <div class="row pt-5 justify-content-center">
     <div class="col-4">
       <div class="d-flex justify-content-end">
-       <%= link_to '退会しない', customers_my_page_path, class:"btn btn-info w-50" %>
+       <%= link_to '退会しない', customers_my_page_path, class: "btn w-50" %>
       </div>
     </div>
     <div class="col-4">
       <div class="d-flex justify-content-start">
-        <%= link_to '退会する', customers_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class:"btn btn-danger w-50" %>
+        <%= link_to '退会する', customers_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-orange w-50" %>
       </div>
     </div>
   </div>
-  
+
 </div>
