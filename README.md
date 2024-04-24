@@ -33,7 +33,9 @@ InstagramのDMやメールで通販の注文を受けておりましたが、情
 ```
 gem 'devise'
 gem 'kaminari','~> 1.2.1'
-gem "enum_help"
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'
+gem 'enum_help'
+gem 'rails-i18n'
 ```
 
 ## ER図
