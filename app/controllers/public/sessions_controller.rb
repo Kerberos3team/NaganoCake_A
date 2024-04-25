@@ -41,7 +41,9 @@ class Public::SessionsController < Devise::SessionsController
     return if customer.nil?
     return unless customer.valid_password?(params[:customer][:password])
     if customer.is_active
-    else redirect_to new_customer_registration_path
+    else 
+      flash[:alert] = "すでに退会されているアカウントです。管理者にお問い合わせください。"
+      redirect_to new_customer_registration_path
     end
   end
   
