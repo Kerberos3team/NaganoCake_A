@@ -27,6 +27,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(current_customer.id)
     @customer.update(is_active: false)
     session.destroy
+    flash[:notice] = "退会しました。再ログインできません。"
     redirect_to root_path
   end
 
