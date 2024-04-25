@@ -5,35 +5,39 @@
     <div class="col-12 col-md-8 mx-auto">
       <table class="table table-bordered">
         <tr>
-          <td class="font-weight-bold table-active">会員ID</td>
+          <th class="table-active">会員ID</th>
           <td><%= @customer.id %></td>
         </tr>
         <tr>
-          <td class="font-weight-bold table-active">氏名</td>
-          <td><%= @customer.full_name %></td>
+          <th class="table-active">氏名</th>
+          <td><%= @customer.full_name %>
+            （<%= link_to admin_customer_customer_order_path(@customer.id) do %>
+              <%= @customer.full_name %>さんの注文履歴
+            <% end %>）
+          </td>
         </tr>
         <tr>
-          <td class="font-weight-bold table-active">フリガナ</td>
+          <th class="table-active">フリガナ</th>
           <td><%= @customer.full_name_kana %></td>
         </tr>
         <tr>
-          <td class="font-weight-bold table-active">郵便番号</td>
+          <th class="table-active">郵便番号</th>
           <td><%= @customer.postal_code %></td>
         </tr>
         <tr>
-          <td class="font-weight-bold table-active">住所</td>
+          <th class="table-active">住所</th>
           <td><%= @customer.address %></td>
         </tr>
         <tr>
-          <td class="font-weight-bold table-active">電話番号</td>
+          <th class="table-active">電話番号</th>
           <td><%= @customer.telephone_number %></td>
         </tr>
         <tr>
-          <td class="font-weight-bold table-active">メールアドレス</td>
+          <th class="table-active">メールアドレス</th>
           <td><%= @customer.email %></td>
         </tr>
         <tr>
-          <td class="font-weight-bold table-active">会員ステータス</td>
+          <th class="table-active">会員ステータス</th>
           <td>
             <% if @customer.is_active %>
               <div class="text-success"><b>有効</b></div>
@@ -46,7 +50,7 @@
     </div>
     <div class="col-12 col-md-8 mx-auto">
       <%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn" %>
-      <%= link_to '注文履歴一覧を見る', admin_path, class: "btn ml-5" %>
+      <%= link_to '注文履歴一覧を見る', admin_path, class: "btn" %>
     </div>
   </div>
 </div>

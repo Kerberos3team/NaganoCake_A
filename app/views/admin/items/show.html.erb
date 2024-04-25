@@ -1,30 +1,31 @@
 <div class="container px-1 py-2">
   <h2>商品詳細</h2>
+  <hr class="heading-line">
 
   <div class="mt-4 row">
-    <div class="p-4 col-lg-6 text-center">
-      <%= image_tag @item.image_convert_for_show %>
+    <div class="col-12 col-lg-6 text-center p-4">
+      <%= image_tag @item.image_convert_for_show, class: "w-100" %>
     </div>
-    <div class=" col-lg-6">
-      <table class="table table-borderless">
+    <div class="col-12 col-lg-6 mt-5 p-4">
+      <table class="table">
         <tr>
-          <td>商品名</td>
+          <th>商品名</th>
           <td><%= @item.name %></td>
         </tr>
         <tr>
-          <td>商品説明</td>
+          <th>商品説明</th>
           <td><%= @item.introduction %></td>
         </tr>
         <tr>
-          <td>ジャンル</td>
+          <th>ジャンル</th>
           <td><%= @item.genre.name %></td>
         </tr>
         <tr>
-          <td>税込価格<br>(税抜価格)</td>
+          <th>税込価格<br>(税抜価格)</th>
           <td><%= number_with_precision(@item.with_tax_price, precision: 0, delimiter: ',') %>円<br><%= number_with_precision(@item.price, precision: 0, delimiter: ',') %>円</td>
         </tr>
         <tr>
-          <td>販売ステータス</td>
+          <th>販売ステータス</th>
           <td>
             <% if @item.is_active %>
               <div class="text-success">販売中</div>
@@ -38,7 +39,7 @@
   </div>
 
   <div class="text-center">
-    <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success" %>
+    <%= link_to "編集する", edit_admin_item_path(@item), class: "btn" %>
   </div>
 
 </div>

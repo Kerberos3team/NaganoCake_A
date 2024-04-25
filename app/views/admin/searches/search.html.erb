@@ -1,10 +1,12 @@
 <div class="container px-1 py-2">
-  <div class="row">
+  <div class="row mt-5">
     <% if @type === "items" %>
       <h2>"<%= @keyword %>"に一致する商品</h2>
+      <hr class="heading-line">
       <%= render "admin/items/index", items: @results %>
     <% else %>
       <h2>"<%= @keyword %>"に一致する会員</h2>
+      <hr class="heading-line">
       <%= render "admin/customers/index", customers: @results %>
     <% end %>
   </div>

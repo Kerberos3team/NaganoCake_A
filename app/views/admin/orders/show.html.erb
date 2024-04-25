@@ -5,7 +5,7 @@
       <tr>
         <td class="table-secondary font-weight-bold">購入者</td>
         <td>
-          <%= link_to admin_customer_path(@order.customer_id), class: "text-info" do %>
+          <%= link_to admin_customer_path(@order.customer_id) do %>
             <%= @order.customer.full_name %>
           <% end %>
         </td>
@@ -31,7 +31,7 @@
               <%= f.select :status, Order.statuses_i18n.invert, { prompt: "" }, class: "form-control mb-2" %>
             </div>
             <div>
-              <%= f.submit '更新', class: "btn btn-info" %>
+              <%= f.submit '更新', class: "btn" %>
             </div>
           </div>
         <% end %>
@@ -56,7 +56,7 @@
           <% @order_details.each do |order_detail| %>
           <tr>
             <td>
-              <%= link_to admin_item_path(order_detail.item_id), class: "text-info" do %>
+              <%= link_to admin_item_path(order_detail.item_id) do %>
                 <%= order_detail.item.name %>
               <% end %>
             </td>
@@ -76,7 +76,7 @@
                     <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, { prompt: "" }, class: "form-control mb-2" %>
                   </div>
                   <div class="col-12 col-lg-5">
-                    <%= f.submit '更新', class: "btn btn-info" %>
+                    <%= f.submit '更新', class: "btn" %>
                   </div>
                 </div>
               <% end %>
@@ -86,7 +86,7 @@
         </tbody>
       </table>
     </div>
-    
+
     <div class="col-12 col-md-4">
       <table class="table table-bordered">
         <tr>
@@ -104,7 +104,7 @@
       </table>
     </div>
   </div>
-  <%= link_to admin_customer_customer_order_path(@order.customer_id), class: "btn btn-info" do %>
+  <%= link_to admin_customer_customer_order_path(@order.customer_id), class: "btn" do %>
     <%= @order.customer.full_name %>さんの注文履歴
   <% end %>
 </div>
