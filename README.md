@@ -22,8 +22,8 @@ InstagramのDMやメールで通販の注文を受けておりましたが、情
 - 友人や家族へのプレゼントなど、注文者の住所以外にも商品を発送できます。
 - 支払い方法はクレジットカード、銀行振込から選択できます。
 
-## 動作や機能がわかるような画像や動画
-＜完成したら添付＞
+## 実際の画面
+![Image from Gyazo](https://gyazo.com/950e9d8212f2aaa0fe7283306925bc34.gif)
 
 ## 使用技術
 [![My Skills](https://skillicons.dev/icons?i=html,css,bootstrap,ruby,rails,js,aws,git,github)](https://skillicons.dev)
