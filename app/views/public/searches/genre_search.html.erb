@@ -8,6 +8,7 @@
         <h2><%= @genre.name %>一覧</h2>
         <p class="m-3 mb-0">(全<%= @items.count %>件)</p>
       </div>
+      <hr class="heading-line">
       <%= render "public/items/items_index", items: @items %>
       <div class="row">
         <div class="col text-center m-3">

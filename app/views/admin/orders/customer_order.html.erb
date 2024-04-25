@@ -27,12 +27,11 @@
         <% end %>
       </tbody>
     </table>
-    <div class="row">
-      <div class="col text-center m-4">
-        <%= link_to_prev_page @orders, '戻る', class: "paginate py-2 px-4" %>
-        <%= link_to_next_page @orders, '次へ', class: "paginate py-2 px-4" %>
-      </div>
+  </div>
+  <div class="row">
+    <div class="col text-center m-4">
+      <%= link_to_prev_page @orders, '戻る', class: "paginate py-2 px-4" %>
+      <%= link_to_next_page @orders, '次へ', class: "paginate py-2 px-4" %>
     </div>
   </div>
-
 </div>
