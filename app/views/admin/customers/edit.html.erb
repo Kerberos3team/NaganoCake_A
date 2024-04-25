@@ -1,17 +1,17 @@
 <div class="container px-1 py-2">
   <%= render 'layouts/errors', obj: @customer %>
   <div class="row">
-    <div class="col">
+    <div class="col-12 col-lg-8 mx-auto">
       <h2 class=my-4><%= @customer.full_name %>さんの会員情報編集</h2>
       <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
-        <div class="bg-orange">
-          <table class="table table-borderless">
+        <div class="bg-gray">
+          <table class="form-new table table-borderless">
             <tr><th scope="col">会員ID</th><td><%= @customer.id %></td></tr>
               <tr>
                 <th scope="col">氏名</th>
                 <td>
-                  <div class="field">
-                    <%= f.text_field :last_name, class: "form-control" %>
+                  <div class="field d-flex justify-content-between">
+                    <%= f.text_field :last_name, class: "form-control mr-1" %>
                     <%= f.text_field :first_name, class: "form-control" %>
                   </div>
                 </td>
@@ -19,8 +19,8 @@
               <tr>
                 <th scope="col">フリガナ</th>
                 <td>
-                  <div class="field">
-                    <%= f.text_field :last_name_kana, class: "form-control" %>
+                  <div class="field d-flex justify-content-between">
+                    <%= f.text_field :last_name_kana, class: "form-control mr-1" %>
                     <%= f.text_field :first_name_kana, class: "form-control" %>
                   </div>
                 </td>
