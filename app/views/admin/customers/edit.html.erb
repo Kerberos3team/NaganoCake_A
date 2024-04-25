@@ -1,8 +1,8 @@
 <div class="container px-1 py-2">
   <%= render 'layouts/errors', obj: @customer %>
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-12 col-lg-8 mx-auto">
-      <h2 class=my-4><%= @customer.full_name %>さんの会員情報編集</h2>
+      <h2><%= @customer.full_name %>さんの会員情報編集</h2>
       <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
         <div class="bg-gray">
           <table class="form-new table table-borderless">
