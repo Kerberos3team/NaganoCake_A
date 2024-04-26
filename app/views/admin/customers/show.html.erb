@@ -1,2 +1,56 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container px-1 py-2">
+  <div class="row d-flex flex-row">
+    <h2 class="m-3"><%= @customer.full_name %>さんの会員詳細</h2>
+    <hr class="heading-line">
+    <div class="col-12 col-md-8 mx-auto">
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-active">会員ID</th>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th class="table-active">氏名</th>
+          <td><%= @customer.full_name %>
+            （<%= link_to admin_customer_customer_order_path(@customer.id) do %>
+              <%= @customer.full_name %>さんの注文履歴
+            <% end %>）
+          </td>
+        </tr>
+        <tr>
+          <th class="table-active">フリガナ</th>
+          <td><%= @customer.full_name_kana %></td>
+        </tr>
+        <tr>
+          <th class="table-active">郵便番号</th>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th class="table-active">住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th class="table-active">電話番号</th>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th class="table-active">メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th class="table-active">会員ステータス</th>
+          <td>
+            <% if @customer.is_active %>
+              <div class="text-success"><b>有効</b></div>
+            <% else %>
+              <div class="text-secondary"><b>退会</b></div>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-12 col-md-8 mx-auto">
+      <%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn" %>
+      <%= link_to '注文履歴一覧を見る', admin_path, class: "btn" %>
+    </div>
+  </div>
+</div>

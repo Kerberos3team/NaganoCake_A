@@ -1,2 +1,54 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+<div class="container px-1 py-2">
+  <div class="row">
+    <h2>注文履歴一覧</h2>
+    <hr class="heading-line">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="color-orange pointer-none text-center">
+          <th>注文日</th>
+          <th>配送先</th>
+          <th>注文商品</th>
+          <th>支払金額</th>
+          <th>ステータス</th>
+          <th>注文詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <td class="text-center">
+            <%= order.created_at.strftime('%Y/%m/%d') %>
+          </td>
+          <td>
+            <%= order.address %>
+          </td>
+          <td>
+            <% order.order_details.each do |order_detail| %>
+              <li class="list-unstyled text-center">
+                <%= link_to item_path(order_detail.item_id), class: "text-green" do %>
+                  <%= order_detail.item.name %>
+                <% end %>
+              </li>
+            <% end %>
+          </td>
+          <td class="text-right">
+            ￥<%= number_with_precision(order.total_payment, precision: 0, delimiter: ',') %>
+          </td>
+          <td class="text-center">
+            <%= order.status_i18n %>
+          </td>
+          <td class="text-center">
+            <%= link_to '表示する', order_path(order.id), class: "btn" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col text-center m-4">
+      <%= link_to_prev_page @orders, '戻る', class: "paginate py-2 px-4" %>
+      <%= link_to_next_page @orders, '次へ', class: "paginate py-2 px-4" %>
+    </div>
+  </div>
+</div>

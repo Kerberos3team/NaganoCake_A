@@ -1,0 +1,11 @@
+<div class="d-flex flex-wrap">
+  <% items.each do |item| %>
+    <%= link_to item_path(item), class: "pt-3 col-12 col-sm-6 col-md-3 text-dark text-decoration-none color-orange border item-border", local: true do %>
+      <%= image_tag item.image_convert_for_index, size: '192x108', style: "object-fit: cover;", class: "d-block mx-auto col-12" %>
+      <div class="card-body pt-2 px-1 pb-4">
+        <p class="card-title font-weight-bold"><%= item.name %></p>
+        <p class="item-price card-subtitle">￥<%= number_with_precision(item.with_tax_price, precision: 0, delimiter: ',') %>(税込)</p>
+      </div>
+    <% end %>
+  <% end %>
+</div>

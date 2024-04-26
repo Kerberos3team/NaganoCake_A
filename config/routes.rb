@@ -1,30 +1,48 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :customers
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
 
-  root to: "homes#top"
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
 
-  get 'about' => "homes#about", as: "about"
+  root to: "public/homes#top"
 
-  resources :addresses, only: [:create, :update, :destroy, :index, :edit]
-  resources :cart_items, only: [:index, :create, :update, :destroy]
-  delete "cart_items/destroy_all" => "cart_items#destroy_all"
+  get 'about' => "public/homes#about", as: "about"
+  get 'privacy' => "public/homes#privacy", as: "privacy"
+  get 'law' => "public/homes#law", as: "law"
+  delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
 
-  resources :items, only: [:index, :show]
-  resources :orders, only: [:new, :index, :show, :create]
-  post 'orders/confirm'
-  get 'orders/thanks'
+  get "search" => "public/searches#search"
+  get "admin/search" => "admin/searches#search"
 
-  get "customers/my_page" => "customers#show"
-  get "customers/information/edit" => "customers#edit"
-  patch "customers/information" => "customers#update"
-  get 'customers/unsubscribe'
-  patch 'customers/withdraw'
+
+  scope module: :public do
+    get "customers/my_page" => "customers#show", as: "customers_my_page"
+    get "customers/information/edit" => "customers#edit"
+    patch "customers/information" => "customers#update"
+    get 'customers/unsubscribe'
+    patch 'customers/withdraw'
+    get 'orders/confirm' => "orders#confirm_redirect"
+    post 'orders/confirm'
+    get 'orders/thanks'
+    get 'genre/search' => 'searches#genre_search'
+    resources :addresses, only: [:create, :update, :destroy, :index, :edit]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :items, only: [:index, :show]
+    resources :orders, only: [:new, :index, :show, :create]
+
+  end
+
 
   namespace :admin do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update] do
+      get "orders/customer_order" => "orders#customer_order", as: "customer_order"
+    end
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
     get '' => "homes#top"

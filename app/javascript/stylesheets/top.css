@@ -1,0 +1,60 @@
+.slider {
+  position:relative;
+  z-index: 1;
+}
+
+.slider-item {
+    width: 100vh;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.slider-item01 {
+  background-image: url("../../assets/images/chef.jpg");
+  background-size:  cover;
+}
+
+.slider-item02 {
+  background-image: url(../../assets/images/cheesecake.jpg);
+  background-size:  cover;
+}
+
+.slider-item03 {
+  background-image: url(../../assets/images/kitchen.jpg);
+  background-size:  cover;
+}
+
+
+.top_text{
+  margin-top: 100px;
+  padding: 16px;
+  position: absolute;
+  color: white;
+  z-index: 2;
+  top: 0%;
+  left: 40%;
+  -webkit-transform: translate(-30%, 0%);
+  text-shadow: 2px 2px 2px black;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  background-color: rgba(105,130,111,0.7);
+}
+
+.top_text span{
+  line-height: 64px;
+  font-weight: bold;
+  font-size: 32px;
+  vertical-align: bottom;
+}
+
+@media (max-width: 767px) {
+
+  .top_text{
+    margin-top: 100px;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+}

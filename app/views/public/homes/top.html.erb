@@ -1,2 +1,52 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container px-1 py-2">
+  <div class="row">
+    <div class="col-xl-10 col-md-12 order-xl-1">
+
+        <div class="container">
+          <div class="top_slide text-center">
+            <ul class="p-0 slider">
+              <li class="slider-item slider-item01"></li>
+              <li class="slider-item slider-item02"></li>
+              <li class="slider-item slider-item03"></li>
+            </ul>
+            <p class="top_text">
+              <span>ようこそ、ながのCAKEへ！</span><br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。
+            </p>
+          </div>
+
+          <script>
+            $('.slider').slick({
+            autoplay: true,
+            autoplaySpeed: 3000,
+            speed: 1500,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: true,
+            });
+          </script>
+        </div>
+
+      <div class="mt-4 mb-2">
+        <h2>新着商品</h2>
+        <hr class="heading-line">
+        <%= render "public/items/items_index", items: @items %>
+
+        <p class="mt-4 mb-2 text-right">
+          <%= link_to items_path, class: "text-decoration-none" do %>
+            <i class="fa-solid fa-right-to-bracket"></i> 全ての商品を見る
+          <% end %>
+        </p>
+      </div>
+    </div>
+
+    <div class="col-xl-2 order-xl-0 mt-4">
+      <%= render 'public/searches/genre_sidebar', genres: @genres %>
+    </div>
+  </div>
+</div>
+

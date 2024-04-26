@@ -1,2 +1,83 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container px-1 py-2">
+  <h2>注文履歴詳細</h2>
+  <hr class="heading-line">
+  <div class="row mt-4">
+    <div class="col-12 col-md-8">
+      <h3>注文情報</h3>
+      <table class="table table-bordered">
+        <tr>
+          <th class="color-orange pointer-none text-center">注文日</th>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th class="color-orange pointer-none text-center">配送先</th>
+          <td><%= @order.address %></td>
+        </tr>
+        <tr>
+          <th class="color-orange pointer-none text-center">支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <th class="color-orange pointer-none text-center">ステータス</th>
+          <td><%= @order.status_i18n %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-12 col-md-4 ">
+    <h3>請求情報</h3>
+      <table class="table table-bordered">
+        <tr>
+          <th class="color-orange pointer-none text-center">商品合計</th>
+          <td class="text-right">￥<%= number_with_precision(@order.total_payment - @order.shipping_cost, precision: 0, delimiter: ',') %></td>
+        </tr>
+        <tr>
+          <th class="color-orange pointer-none text-center">配送料</th>
+          <td class="text-right">￥<%= number_with_precision(@order.shipping_cost, precision: 0, delimiter: ',') %></td>
+        </tr>
+        <tr>
+          <th class="color-orange pointer-none text-center">お支払い金額</th>
+          <td class="text-right">￥<%= number_with_precision(@order.total_payment, precision: 0, delimiter: ',') %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h3>注文内容</h3>
+    <div class="row">
+      <div class="col">
+        <table class="table table-bordered">
+          <thead>
+            <tr class="color-orange pointer-none text-center">
+              <th>商品</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order_details.each do |order_detail| %>
+            <tr>
+              <td class="text-center">
+                <%= link_to item_path(order_detail.item_id), class: "text-green" do %>
+                  <%= order_detail.item.name %>
+                <% end %>
+              </td>
+              <td class="text-right">
+                ￥<%= number_with_precision(order_detail.item.price, precision: 0, delimiter: ',') %>
+              </td>
+              <td class="text-center">
+                <%= order_detail.amount %>
+              </td>
+              <td class="text-right">
+                ￥<%= number_with_precision(order_detail.amount * order_detail.item.price, precision: 0, delimiter: ',') %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

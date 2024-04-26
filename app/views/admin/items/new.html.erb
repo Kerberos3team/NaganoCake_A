@@ -1,2 +1,5 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container px-1 py-2">
+  <%= render 'layouts/errors', obj: @item %>
+  <h2 class="m-3">商品新規登録</h2>
+  <%= render "form", item: @item %>
+</div>

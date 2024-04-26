@@ -1,2 +1,111 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1>注文履歴詳細</h1>
+    <hr class="heading-line">
+    <table class="table table-bordered mt-4">
+      <tr>
+        <td class="table-secondary font-weight-bold">購入者</td>
+        <td>
+          <%= link_to admin_customer_path(@order.customer_id) do %>
+            <%= @order.customer.full_name %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td class="table-secondary font-weight-bold">注文日</td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary font-weight-bold">配送先</td>
+        <td><%= @order.address %> <%= @order.name %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary font-weight-bold">支払方法</td>
+        <td><%= @order.payment_method_i18n %></td>
+      </tr>
+      <tr>
+        <td class="table-secondary font-weight-bold">注文ステータス</td>
+        <td>
+        <%= form_with model: @order, url: admin_order_path do |f| %>
+          <div class="d-flex">
+            <div class="mr-3">
+              <%= f.select :status, Order.statuses_i18n.invert, { prompt: "" }, class: "form-control mb-2" %>
+            </div>
+            <div>
+              <%= f.submit '更新', class: "btn" %>
+            </div>
+          </div>
+        <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12 col-md-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="table-secondary text-center">
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+          <tr>
+            <td>
+              <%= link_to admin_item_path(order_detail.item_id) do %>
+                <%= order_detail.item.name %>
+              <% end %>
+            </td>
+            <td class="text-right">
+              ￥<%= number_with_precision(order_detail.item.price, precision: 0, delimiter: ',') %>
+            </td>
+            <td class="text-center">
+              <%= order_detail.amount %>
+            </td>
+            <td class="text-right">
+              ￥<%= number_with_precision(order_detail.amount * order_detail.item.price, precision: 0, delimiter: ',') %>
+            </td>
+            <td>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
+                <div class="row d-flex ">
+                  <div class="col-12 col-lg-7">
+                    <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, { prompt: "" }, class: "form-control mb-2" %>
+                  </div>
+                  <div class="col-12 col-lg-5">
+                    <%= f.submit '更新', class: "btn" %>
+                  </div>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <table class="table table-bordered">
+        <tr>
+          <td class="table-secondary font-weight-bold">商品合計</td>
+          <td class="text-right">￥<%= number_with_precision(@order.total_payment - @order.shipping_cost, precision: 0, delimiter: ',') %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary font-weight-bold">送料</td>
+          <td class="text-right">￥<%= number_with_precision(@order.shipping_cost, precision: 0, delimiter: ',') %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary font-weight-bold">請求金額合計</td>
+          <td class="text-right">￥<%= number_with_precision(@order.total_payment, precision: 0, delimiter: ',') %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <%= link_to admin_customer_customer_order_path(@order.customer_id), class: "btn" do %>
+    <%= @order.customer.full_name %>さんの注文履歴
+  <% end %>
+</div>

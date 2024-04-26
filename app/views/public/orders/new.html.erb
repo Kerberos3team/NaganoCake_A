@@ -1,2 +1,82 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class="container py-3">
+  <%= render 'layouts/errors', obj: @order %>
+  <div class="d-flex flex-column">
+
+    <h2>注文情報入力</h2>
+    <hr class="heading-line">
+      <%= form_with model: @order, url: '/orders/confirm' do |f| %>
+      <div class="bg-orange">
+        <h3>支払方法</h3>
+        <hr class="heading-line">
+        <div class="row d-flex flex-column mt-4">
+          <div class="col font-weight-bold">
+            <%= f.radio_button :payment_method, :credit_card %>
+            <%= f.label :payment_method_credit_card, "クレジットカード" %>
+          </div>
+          <div class="col font-weight-bold">
+            <%= f.radio_button :payment_method, :transfer %>
+            <%= f.label :payment_method_transfer, "銀行振込" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-orange">
+        <h3>お届け先</h3>
+        <hr class="heading-line">
+        <div class="row d-flex flex-column mt-4">
+          <div class="col mb-4 ">
+            <label class="font-weight-bold"><%= f.radio_button :select_address, 0 %> ご自身の住所</label>
+            <div class="ml-5">
+              〒 <%= current_customer.postal_code %><br>
+              <%= current_customer.address %><br>
+              <%= current_customer.last_name %> <%= current_customer.first_name %> 様
+            </div>
+          </div>
+
+          <% unless @address.blank? %>
+            <div class="col mb-4">
+              <label class="font-weight-bold"><%= f.radio_button :select_address, 1 %> 登録済み住所から選択</label>
+              <div class="form-group ml-5">
+                <%= f.select :address_id, options_from_collection_for_select(@address, :id, :address_display),{ prompt: "登録された配送先から選択" }, class: "form-control mb-2" %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="col mb-4">
+            <label class="font-weight-bold"><%= f.radio_button :select_address, 2 %> 新しいお届け先</label>
+            <div class="ml-5">
+              <div class="row d-flex flex-row pb-3">
+                <div class="col-12 col-md-3">
+                  <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+                </div>
+                <div class="col-12 col-md-3">
+                  <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control" %>
+                </div>
+              </div>
+              <div class="row d-flex flex-row pb-3">
+                <div class="col-12 col-md-3">
+                  <%= f.label :address, "住所" %>
+                </div>
+                <div class="col-12 col-md-7">
+                  <%= f.text_field :address, placeholder: "東京都渋谷区代々木神薗町 0-0", class: "form-control" %>
+                </div>
+              </div>
+              <div class="row d-flex flex-row">
+                <div class="col-12 col-md-3">
+                  <%= f.label :name, "宛名" %>
+                </div>
+                <div class="col-12 col-md-4 d-flex flex-row">
+                  <%= f.text_field :name, placeholder: "令和 道子", class: "form-control" %>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-2 mx-auto">
+        <%= f.submit '確認画面へ進む', class: "btn" %>
+      </div>
+    <% end %>
+
+　</div>
+</div>

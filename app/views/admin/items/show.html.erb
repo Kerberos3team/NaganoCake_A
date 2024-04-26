@@ -1,2 +1,45 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container px-1 py-2">
+  <h2>商品詳細</h2>
+  <hr class="heading-line">
+
+  <div class="mt-4 row">
+    <div class="col-12 col-lg-6 text-center p-4">
+      <%= image_tag @item.image_convert_for_show, class: "w-100" %>
+    </div>
+    <div class="col-12 col-lg-6 mt-5 p-4">
+      <table class="table">
+        <tr>
+          <th>商品名</th>
+          <td><%= @item.name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @item.genre.name %></td>
+        </tr>
+        <tr>
+          <th>税込価格<br>(税抜価格)</th>
+          <td><%= number_with_precision(@item.with_tax_price, precision: 0, delimiter: ',') %>円<br><%= number_with_precision(@item.price, precision: 0, delimiter: ',') %>円</td>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <td>
+            <% if @item.is_active %>
+              <div class="text-success">販売中</div>
+            <% else %>
+              <div class="text-secondary">販売停止中</div>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <%= link_to "編集する", edit_admin_item_path(@item), class: "btn" %>
+  </div>
+
+</div>
